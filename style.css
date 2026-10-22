@@ -92,4 +92,12 @@
         border-width: 18px 12px 0 12px;
         border-color: #1e3a8a transparent transparent transparent;
     }
+
+.visual-icons img {
+    filter: brightness(0) invert(1); /* convierte negro -> blanco */
+    transition: filter 0.2s;
+}
+.visual-icons a:hover img {
+  filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3); /* se pone celestito #89cad9 */
+}
 }
