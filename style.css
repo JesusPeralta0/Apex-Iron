@@ -1,0 +1,257 @@
+.main-footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 50px 30px 25px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.footer-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* --- primer columna --- */
+.footer-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.school-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.robot-img {
+  width: 90px;
+  height: auto;
+  object-fit: contain;
+}
+
+.speech-bubble {
+  background: #0099ff;
+  border-radius: 26px;
+  padding: 12px 20px;
+  position: relative;
+}
+
+/* Flechita del globo apuntando hacia el robot */
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  border-width: 8px 10px 8px 0;
+  border-style: solid;
+  border-color: transparent #0099ff transparent transparent;
+}
+
+.speech-bubble h4 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.speech-bubble p {
+  margin: 3px 0 0;
+  font-size: 0.85rem;
+  color: #f0f0f0;
+}
+
+.footer-links-group h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer-links-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-group ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links-group ul li a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links-group ul li a:hover {
+  color: #0099ff;
+}
+
+/* --- segunda columna --- */
+.footer-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.promo-card {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.promo-img {
+  width: 110px;
+  height: auto;
+  margin-bottom: 20px;
+  transition: transform 0.25s ease;
+}
+
+.promo-card:hover .promo-img {
+  transform: scale(1.08);
+}
+
+.promo-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+}
+
+/* --- tercer columna --- */
+.footer-col-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo img {
+  width: 110px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Botones de Redes Sociales */
+.social-icons {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+}
+
+.social-btn.facebook {
+  background-color: #1877f2;
+}
+
+.social-btn.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  border-radius: 12px; 
+}
+
+.social-btn.whatsapp {
+  background-color: #25d366;
+  border-radius: 12px;
+}
+
+.contact-info h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.contact-info p {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  line-height: 1.4;
+}
+
+.contact-info a {
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+  color: #0099ff;
+}
+
+/* --- derechos --- */
+.footer-bottom {
+  border-top: 1px solid #1f2937;
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.footer-bottom strong {
+  color: #ffffff;
+}
+
+/* --- RESPONSIVE (Móviles / Tablets) --- */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col-left,
+  .footer-col-right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .school-banner {
+    flex-direction: column;
+  }
+
+  .speech-bubble::before {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 8px 10px 8px;
+    border-color: transparent transparent #0099ff transparent;
+  }
+}
