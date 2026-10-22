@@ -1,3 +1,8 @@
+
+
+/*-----------------
+------FOOTER-------
+-----------------*/
 .main-footer {
   background-color: #000000;
   color: #ffffff;
@@ -36,7 +41,7 @@
 }
 
 .robot-img {
-  width: 90px;
+  width: 200px;
   height: auto;
   object-fit: contain;
 }
@@ -118,13 +123,13 @@
 }
 
 .promo-img {
-  width: 110px;
+  width: 280px;
   height: auto;
   margin-bottom: 20px;
   transition: transform 0.25s ease;
 }
 
-.promo-card:hover .promo-img {
+.promo-img:hover  {
   transform: scale(1.08);
 }
 
@@ -144,7 +149,7 @@
 }
 
 .footer-logo img {
-  width: 110px;
+  width: 300px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -152,8 +157,8 @@
 /* Botones de Redes Sociales */
 .social-icons {
   display: flex;
-  gap: 14px;
-  margin-bottom: 22px;
+  gap: 16px;
+  margin-bottom: 30px;
 }
 
 .social-btn {
@@ -229,7 +234,7 @@
   color: #ffffff;
 }
 
-/* --- RESPONSIVE (Móviles / Tablets) --- */
+/* --- RESPONSIVO --- */
 @media (max-width: 900px) {
   .footer-container {
     flex-direction: column;
