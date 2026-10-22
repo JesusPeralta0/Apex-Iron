@@ -1,5 +1,63 @@
+/* =========================================
+   SECCIÓN DE MARCAS - APEX IRON
+   ========================================= */
 
+#patrocinadores {
+    width: 100%;
+    overflow: hidden;
+    background-color: #d0d0d0;
+    padding: 35px 0;
+}
 
+/* Contenedor donde se mueven los logos */
+.marcas-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: max-content;
+    animation: moverMarcas 22s linear infinite;
+}
+
+/* Estilo de los logos */
+.logo-patrocinador {
+    width: 150px;
+    height: 70px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background-color: transparent;
+}
+
+/* Animación de la pasarela */
+@keyframes moverMarcas {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive para tablet y celular */
+@media (max-width: 768px) {
+    #patrocinadores {
+        padding: 25px 0;
+    }
+
+    .marcas-track {
+        gap: 35px;
+        animation-duration: 16s;
+    }
+
+    .logo-patrocinador {
+        width: 110px;
+        height: 55px;
+    }
+}
+
+/* =========================================
+   AIRONCITO
+   ========================================= */
 
 .aironcito-section {
     background: linear-gradient(180deg, #a0c4ff 0%, #e6f0ff 100%);
@@ -18,6 +76,7 @@
     /*propiedad para reducir el espacio entre el globo y el asset de ironcito. no olvidar*/
     gap: 1.5rem;
 }
+
 .aironcito-speech-bubble {
     /*este color lo extraje del wireframe de drive*/
     background-color: #1e3a8a;
@@ -37,12 +96,12 @@
     position: absolute;
     right: -16px;
     bottom: 12px;
-    
+
     /*prueba de medidas de la cola del globo para que corresponda con lo que tenemos en el wireframe*/
     width: 24px;
     height: 24px;
     background-color: #1e3a8a;
-    
+
     /*propiedad para forma curva de la cola. no olvidar.*/
     clip-path: polygon(0 0, 100% 50%, 0 100%);
     border-bottom-right-radius: 6px;
@@ -78,12 +137,12 @@
     filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.2));
 }
 
-/* media query para que sea responsivo. me imagino que para lo demas usaremos elementos flexibles de bootstrap para no batallar*/
+/* media query para que sea responsivo */
 @media (max-width: 768px) {
     .aironcito-container {
         flex-direction: column;
     }
-    
+
     .aironcito-speech-bubble::after {
         right: 50%;
         top: 100%;
@@ -91,15 +150,21 @@
         border-width: 18px 12px 0 12px;
         border-color: #1e3a8a transparent transparent transparent;
     }
+}
+
+/* =========================================
+   ÍCONOS DEL NAVBAR
+   ========================================= */
 
 .visual-icons img {
     filter: brightness(0) invert(1); /* convierte negro -> blanco */
     transition: filter 0.2s;
 }
+
 .visual-icons a:hover img {
-  filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3); /* se pone celestito #89cad9 */
+    filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3); /* se pone celestito #89cad9 */
 }
-}
+
 /*-----------------
 ------FOOTER-------
 -----------------*/
@@ -229,7 +294,7 @@
   transition: transform 0.25s ease;
 }
 
-.promo-img:hover  {
+.promo-img:hover {
   transform: scale(1.08);
 }
 
@@ -285,7 +350,7 @@
 
 .social-btn.instagram {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
-  border-radius: 12px; 
+  border-radius: 12px;
 }
 
 .social-btn.whatsapp {
@@ -359,3 +424,4 @@
     border-width: 0 8px 10px 8px;
     border-color: transparent transparent #0099ff transparent;
   }
+}
