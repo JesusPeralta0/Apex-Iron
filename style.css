@@ -83,8 +83,8 @@
 @media (max-width: 768px) {
     .aironcito-container {
         flex-direction: column;
-    }
     
+}
     .aironcito-speech-bubble::after {
         right: 50%;
         top: 100%;
@@ -101,3 +101,4 @@
   filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3); /* se pone celestito #89cad9 */
 }
 }
+
