@@ -28,22 +28,19 @@
     border: none;
     border-radius: 10px;
 
-    overflow: hidden;
+    overflow: visible;
 }
 
-.card img{
-    min-width: 60px;
-    min-height: 100px;
-    width: 100%;
-    height: 250px;
+.card img {
+    height: 300px;
 
     object-fit: cover;
 
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover{
+.card:hover {
     transform: scale(1.01);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 15px 35px #093b9997, 0 -15px 35px #89cad9a0;
 }
