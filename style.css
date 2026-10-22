@@ -1,0 +1,7 @@
+.visual-icons img {
+  filter: brightness(0) invert(1); /* convierte negro -> blanco */
+  transition: filter 0.2s;
+}
+.visual-icons a:hover img {
+  filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3); /* se pone celestito #89cad9 */
+}
