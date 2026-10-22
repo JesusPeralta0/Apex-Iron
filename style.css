@@ -1,0 +1,83 @@
+/*sección ironcito */
+.aironcito-section {
+    background: linear-gradient(180deg, #a0c4ff 0%, #e6f0ff 100%);
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aironcito-container {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.aironcito-speech-bubble {
+
+    /*este color lo extraje del wireframe de drive*/
+    background-color: #1e3a8a;
+    color: #ffffff;
+    padding: 2rem 2.5rem;
+    border-radius: 40px;
+    position: relative;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.aironcito-speech-bubble::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 12px 0 12px 18px;
+    border-style: solid;
+    border-color: transparent transparent transparent #1e3a8a;
+}
+
+.aironcito-speech-bubble h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.aironcito-speech-bubble p {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+/*wrapper del asset*/
+.aironcito-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aironcito-img {
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+}
+
+/* media query para que sea responsivo en movil */
+@media (max-width: 768px) {
+    .aironcito-container {
+        flex-direction: column;
+    }
+    
+    .aironcito-speech-bubble::after {
+        right: 50%;
+        top: 100%;
+        transform: translateX(50%);
+        border-width: 18px 12px 0 12px;
+        border-color: #1e3a8a transparent transparent transparent;
+    }
+}
