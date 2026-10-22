@@ -1,10 +1,13 @@
-/* ===== Variables (solo existen dentro de .nosotros) ===== */
+/* ===== Variables y fondo (solo existen dentro de .nosotros) ===== */
 .nosotros {
   --bg: #0b0f14;
   --surface: #151b23;
   --border: #1e2630;
   --text: #e6edf3;
   --accent: #00d1ff;
+
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
 
   background-color: var(--bg);
   background-image:
@@ -17,8 +20,10 @@
   color: var(--text);
 }
 
+/* ===== Títulos de sección: Lexend Deca Medium 28 px ===== */
 .nosotros h2 {
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 28px;
   letter-spacing: .08em;
 }
 
@@ -44,16 +49,15 @@
 }
 
 .nosotros .nosotros-panel p {
-  font-size: 1.05rem;
+  font-size: 18px;
   line-height: 1.7;
 }
-
 
 /* ----- Acerca de nosotros: logo sin caja ----- */
 .nosotros .nosotros-img {
   background: transparent;
   border: none;
-  min-height: 220px;         
+  min-height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +83,7 @@
 }
 
 .nosotros .nosotros-mision p {
-  font-size: 1.15rem;
+  font-size: 18px;
   line-height: 1.8;
 }
 
@@ -122,9 +126,11 @@
   box-shadow: 0 0 18px rgba(0, 209, 255, .25);
 }
 
+/* Nombre en la cara frontal */
 .nosotros .flip-front p {
   margin: .5rem 0 0;
   font-weight: 500;
+  font-size: 16px;
 }
 
 .nosotros .flip-back {
@@ -137,14 +143,17 @@
   border-color: var(--accent);
 }
 
+/* Nombre en la cara trasera: Regular 16 px */
 .nosotros .flip-back h5 {
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 16px;
   color: var(--accent);
   margin: auto 0 .5rem;
 }
 
+/* Descripción de la tarjeta */
 .nosotros .flip-back p {
-  font-size: .9rem;
+  font-size: 14px;
   margin: 0 0 auto;
 }
 
@@ -156,10 +165,16 @@
   border-radius: .5rem;
 }
 
-
 @media (min-width: 992px) {
   .nosotros .nosotros-col {
     flex: 0 0 auto;
     width: calc((100% - 4 * 1rem) / 5);
   }
 }
+
+/* En móvil, 28 px puede verse grande */
+@media (max-width: 575px) {
+  .nosotros h2 { font-size: 24px; }
+}
+
+
