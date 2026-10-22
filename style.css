@@ -1,5 +1,23 @@
+:root {
+    --apex-dark: #1e1e1e;
+    --apex-primary: #093c99;
+    --apex-secondary: #89cad9;
+    --apex-accent: #bfc3c8;
+    --apex-background: #ffffff
+}
 
+/* Colores para cosas. Luego ver como para modo oscuro */
+.bg-apex {
+    background-color: var(--apex-background);
+}
 
+.text-apex {
+    color: var(--apex-dark);
+}
+
+.header-apex {
+    color: var(--apex-primary);
+}
 
 .aironcito-section {
     background: linear-gradient(180deg, #a0c4ff 0%, #e6f0ff 100%);
@@ -359,3 +377,31 @@
     border-width: 0 8px 10px 8px;
     border-color: transparent transparent #0099ff transparent;
   }
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card-category {
+    border: none;
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.card img {
+    min-width: 60px;
+    min-height: 100px;
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
