@@ -1,103 +1,528 @@
+:root {
+  --apex-dark: #1e1e1e;
+  --apex-primary: #093c99;
+  --apex-secondary: #89cad9;
+  --apex-accent: #bfc3c8;
+  --apex-background: #ffffff
+}
+
+body {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 14pt;
+}
+
+
+/* Colores para cosas. Luego ver como para modo oscuro */
+.bg-apex {
+  background-color: var(--apex-background);
+}
+
+.text-apex {
+  color: var(--apex-dark);
+}
+
+.header-apex {
+  color: var(--apex-primary) !important;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+/*----------------Estilos sección Inicio-Hero----------------------*/
+/* Sección completa con imagen de fondo */
+.hero {
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 60, .85) 0%, rgba(0, 0, 60, .4) 100%),
+    url("src/img_hero/fondo_hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+
+/* Textos */
+.hero-titulo {
+  font-size: 40pt;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hero-texto {
+  font-size: 18pt;
+  font-weight: 400;
+
+}
+
+/* Botón */
+.btn-hero  {
+  font-family: inherit !important;
+  font-size: 13pt !important;
+  font-weight: 600!important;
+  background-color: #1a00c9 !important;
+  color: #fff!important;
+  padding: .6rem 1.8rem!important;
+  border-radius: 10px!important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .5)!important;
+  transition: transform .2s, background-color .2s!important;
+}
+
+.btn-hero:hover {
+  background-color: #3a2cff!important;
+  color: #fff!important;
+  transform: translateY(-2px)!important;
+
+}
+
+
+/* =========================================
+   SECCIÓN DE MARCAS - APEX IRON
+   ========================================= */
+
+#patrocinadores {
+  width: 100%;
+  overflow: hidden;
+  background-color: #d0d0d0;
+  padding: 35px 0;
+}
+
+/* Contenedor donde se mueven los logos */
+.marcas-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: max-content;
+  animation: moverMarcas 22s linear infinite;
+}
+
+/* Estilo de los logos */
+.logo-patrocinador {
+  width: 150px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+/* Animación de la pasarela */
+@keyframes moverMarcas {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive para tablet y celular */
+@media (max-width: 768px) {
+  #patrocinadores {
+    padding: 25px 0;
+  }
+
+  .marcas-track {
+    gap: 35px;
+    animation-duration: 16s;
+  }
+
+  .logo-patrocinador {
+    width: 110px;
+    height: 55px;
+  }
+}
+
+/* =========================================
+   AIRONCITO
+   ========================================= */
 .aironcito-section {
-    background: linear-gradient(180deg, #a0c4ff 0%, #e6f0ff 100%);
-    padding: 3rem 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: linear-gradient(180deg, #a0c4ff 0%, #e6f0ff 100%);
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .aironcito-container {
-    max-width: 1000px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*propiedad para reducir el espacio entre el globo y el asset de ironcito. no olvidar*/
-    gap: 1.5rem;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*propiedad para reducir el espacio entre el globo y el asset de ironcito. no olvidar*/
+  gap: 1.5rem;
 }
-
 
 .aironcito-speech-bubble {
-
-    /*este color lo extraje del wireframe de drive*/
-    background-color: #1e3a8a;
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    padding: 2rem 2.5rem;
-    border-radius: 35px;
-    position: relative;
-    max-width: 480px;
-    text-align: center;
-    /*filter drop-shadow para incluir la punta */
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
+  /*este color lo extraje del wireframe de drive*/
+  background-color: #1e3a8a;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 35px;
+  position: relative;
+  max-width: 480px;
+  text-align: center;
+  /*filter drop-shadow para incluir la punta */
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
 }
 
-
 .aironcito-speech-bubble::after {
-    content: '';
-    position: absolute;
-    right: -16px;
-    bottom: 12px;
-    
-    /*prueba de medidas de la cola del globo para que corresponda con lo que tenemos en el wireframe*/
-    width: 24px;
-    height: 24px;
-    background-color: #1e3a8a;
-    
-    /*propiedad para forma curva de la cola. no olvidar.*/
-    clip-path: polygon(0 0, 100% 50%, 0 100%);
-    border-bottom-right-radius: 6px;
+  content: '';
+  position: absolute;
+  right: -16px;
+  bottom: 12px;
+
+  /*prueba de medidas de la cola del globo para que corresponda con lo que tenemos en el wireframe*/
+  width: 24px;
+  height: 24px;
+  background-color: #1e3a8a;
+
+  /*propiedad para forma curva de la cola. no olvidar.*/
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  border-bottom-right-radius: 6px;
 }
 
 .aironcito-speech-bubble h2 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .aironcito-speech-bubble p {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 400;
-    opacity: 0.95;
-    line-height: 1.3;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.95;
+  line-height: 1.3;
 }
 
 /*wrapper del asset*/
 .aironcito-image-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .aironcito-img {
-    max-width: 260px;
-    height: auto;
-    object-fit: contain;
-    /*sombra para el asset*/
-    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.2));
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
+  /*sombra para el asset*/
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.2));
 }
 
-/* media query para que sea responsivo. me imagino que para lo demas usaremos elementos flexibles de bootstrap para no batallar*/
+/* media query para que sea responsivo */
 @media (max-width: 768px) {
-    .aironcito-container {
-        flex-direction: column;
-    }
-    
-    .aironcito-speech-bubble::after {
-        right: 50%;
-        top: 100%;
-        transform: translateX(50%);
-        border-width: 18px 12px 0 12px;
-        border-color: #1e3a8a transparent transparent transparent;
-    }
+  .aironcito-container {
+    flex-direction: column;
+  }
+
+  .aironcito-speech-bubble::after {
+    right: 50%;
+    top: 100%;
+    transform: translateX(50%);
+    border-width: 18px 12px 0 12px;
+    border-color: #1e3a8a transparent transparent transparent;
+  }
+}
+
+/* =========================================
+   ÍCONOS DEL NAVBAR
+   ========================================= */
 
 .visual-icons img {
-    filter: brightness(0) invert(1); /* convierte negro -> blanco */
-    transition: filter 0.2s;
+  filter: brightness(0) invert(1);
+  /* convierte negro -> blanco */
+  transition: filter 0.2s;
 }
+
 .visual-icons a:hover img {
-  filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3); /* se pone celestito #89cad9 */
+  filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3);
+  /* se pone celestito #89cad9 */
 }
+
+/*-----------------
+------FOOTER-------
+-----------------*/
+.main-footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 50px 30px 25px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.footer-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* --- primer columna --- */
+.footer-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.school-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.robot-img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+.speech-bubble {
+  background: #0099ff;
+  border-radius: 26px;
+  padding: 12px 20px;
+  position: relative;
+}
+
+/* Flechita del globo apuntando hacia el robot */
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  border-width: 8px 10px 8px 0;
+  border-style: solid;
+  border-color: transparent #0099ff transparent transparent;
+}
+
+.speech-bubble h4 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.speech-bubble p {
+  margin: 3px 0 0;
+  font-size: 0.85rem;
+  color: #f0f0f0;
+}
+
+.footer-links-group h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer-links-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-group ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links-group ul li a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links-group ul li a:hover {
+  color: #0099ff;
+}
+
+/* --- segunda columna --- */
+.footer-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.promo-card {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.promo-img {
+  width: 280px;
+  height: auto;
+  margin-bottom: 20px;
+  transition: transform 0.25s ease;
+}
+
+.promo-img:hover {
+  transform: scale(1.08);
+}
+
+.promo-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+}
+
+/* --- tercer columna --- */
+.footer-col-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo img {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Botones de Redes Sociales */
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+}
+
+.social-btn.facebook {
+  background-color: #1877f2;
+}
+
+.social-btn.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  border-radius: 12px;
+}
+
+.social-btn.whatsapp {
+  background-color: #25d366;
+  border-radius: 12px;
+}
+
+.contact-info h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.contact-info p {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  line-height: 1.4;
+}
+
+.contact-info a {
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+  color: #0099ff;
+}
+
+/* --- derechos --- */
+.footer-bottom {
+  border-top: 1px solid #1f2937;
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.footer-bottom strong {
+  color: #ffffff;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col-left,
+  .footer-col-right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .school-banner {
+    flex-direction: column;
+  }
+
+  .speech-bubble::before {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 8px 10px 8px;
+    border-color: transparent transparent #0099ff transparent;
+  }
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card-category {
+  border: none;
+  border-radius: 10px;
+
+  overflow: visible;
+}
+
+.card img {
+  height: 300px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 15px 35px #093b9997, 0 -15px 35px #89cad9a0;
 }

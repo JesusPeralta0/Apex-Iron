@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acerca de nosotros</title>
+  <link rel="icon" type="image/x-icon" href="src/logos/favicon.ico" sizes="32x32">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Tipografía Lexend Deca (la usa el header) -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos del header -->
+  <style>
+    .no-arrow::after { display: none !important; }
+    .dropdown-item:hover {
+      background-color: #093c99 !important;
+      color: white !important;
+    }
+    .nav-link:hover { color: #89cad9 !important; }
+  </style>
+  
+  <link href="nosotros.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark px-4 py-1" style="background-color: #1e1e1e; font-family: 'Lexend Deca', sans-serif;">
+      <div class="container-fluid">
+
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="src/logos/apexiron.png" alt="Apex Iron Logo" style="height: 80px !important; width: auto; object-fit: contain;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarApexIron" aria-controls="navbarApexIron" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarApexIron">
+          <ul class="navbar-nav mb-2 mb-lg-0 gap-4">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="index.html" style="font-size: 20px; font-weight: 400;">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="nosotros.html" style="font-size: 20px; font-weight: 500;">Acerca de Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#" style="font-size: 20px; font-weight: 400;">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#" style="font-size: 20px; font-weight: 400;">Contacto</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 visual-icons">
+          <a href="#" class="text-decoration-none">
+            <img src="src/iconos/lupa.svg" alt="Buscar" width="24" height="24" style="filter: brightness(0) invert(1);">
+          </a>
+
+          <a href="#" class="text-decoration-none">
+            <img src="src/iconos/carrito.svg" alt="Carrito" width="24" height="24" style="filter: brightness(0) invert(1);">
+          </a>
+
+          <div class="dropdown">
+            <a href="#" class="text-white text-decoration-none dropdown-toggle no-arrow" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="src/iconos/usuario.svg" alt="Usuario" width="24" height="24" style="filter: brightness(0) invert(1);">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownPerfil" style="background-color: #1e1e1e; border: 1px solid #333;">
+              <li>
+                <a class="dropdown-item text-white d-flex align-items-center gap-2" href="#" style="font-size: 14px;">
+                  <img src="src/iconos/usuario.svg" alt="Admin" width="16" height="16" style="filter: brightness(0) invert(1);">Vista Administrador</a>
+              </li>
+              <li><hr class="dropdown-divider" style="border-color: #333;"></li>
+              <li><a class="dropdown-item text-white" href="#" style="font-size: 14px;">Mi Perfil</a></li>
+              <li><a class="dropdown-item text-danger" href="#" style="font-size: 14px;">Cerrar Sesión</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="nosotros py-5">
+    <div class="container">
+
+      <!-- Acerca de nosotros -->
+     <section id="nosotros" class="mb-5">
+  <div class="row g-4 align-items-center">
+    <div class="col-md-7">
+      <div class="nosotros-panel">
+        <h2 class="mb-3">ACERCA DE NOSOTROS</h2>
+        <p>En Binary Minds, somos un equipo multidisciplinario de mentes creativas y programadores detrás de Apex-Iron. Nuestra mayor fortaleza no radica solo en la excelencia técnica de cada integrante, sino en la forma en que nos complementamos: donde uno ve un desafío lógico, otro encuentra una solución de diseño impecable y un tercero asegura una estructura completa. Nos une la pasión por la innovación y el compromiso de transformar ideas complejas en experiencias web extraordinarias, robustas y de alto rendimiento.</p>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="nosotros-img">
+        <img src="src/logos/binaryminds.png" alt="Binary">
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Misión -->
+      <section id="mision" class="nosotros-mision text-center mb-5 mx-auto">
+        <h2 class="mb-3">NUESTRA MISIÓN</h2>
+        <p>Conectar a las personas con los componentes de computación idóneos para sus proyectos mediante una experiencia digital intuitiva y confiable; asegurando que la compra de tecnología sea un proceso sencillo, informado y al alcance de todos.</p>
+      </section>
+
+      <!-- Equipo -->
+     <section id="equipo" class="text-center">
+  <h2 class="mb-4">BINARYMINDS</h2>
+  <div class="row g-3 justify-content-center">
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/alan.png" alt="Alann">
+            <p>Alann</p>
+          </div>
+          <div class="flip-back">
+            <h5>Alann</h5>
+            <p>Ingeniero en Sistemas y Desarrollador Full Stack enfocado en soluciones web escalables y de alto impacto. Especialista en arquitecturas robustas e interfaces dinámicas con Java, Spring Boot, JavaScript, React y bases de datos SQL. Implemento flujos ágiles y código limpio mediante Git, Docker, Postman y consumo de APIs REST. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/carla.png" alt="Carla">
+            <p>Carla</p>
+          </div>
+          <div class="flip-back">
+            <h5>Carla</h5>
+            <p>Desarrolladora Java Full Stack con experiencia en frontend y backend. Desarrolla aplicaciones web con Java (Spring Boot), interfaces con HTML, CSS y JavaScript, y gestión de datos con SQL. Complementa con Python para soluciones eficientes e innovadoras.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/carlos.png" alt="Carlos">
+            <p>Carlos</p>
+          </div>
+          <div class="flip-back">
+            <h5>Carlos</h5>
+            <p>Ingeniero en sistemas computacionales especializado en apps móviles, plataformas web y desarrollo de software embebido. Apasionado de aprender cosas nuevas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/cear.png" alt="Cesar">
+            <p>Cesar</p>
+          </div>
+          <div class="flip-back">
+            <h5>Cesar</h5>
+            <p>Desarrollador Java Full Stack Jr. en plena transición de carrera hacia el mundo de la tecnología. Actualmente cursa el bootcamp de Generation México, donde desarrolla proyectos web con HTML, CSS, JavaScript y Bootstrap, y fortalece sus bases en Java, bases de datos y control de versiones con Git y GitHub.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/jesus.png" alt="Jesus">
+            <p>Jesus</p>
+          </div>
+          <div class="flip-back">
+            <h5>Jesus</h5>
+            <p>Desarrollador Java Full Stack Jr, con más de 3 años de experiencia en el desarrollo y mantenimiento de procesos ETL utilizando AB Initio, SQL y Teradata. Cuento con experiencia práctica en Java y Spring Boot para el desarrollo backend, así como conocimientos de HTML, CSS, JavaScript y Bootstrap para el desarrollo frontend.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/laura.png" alt="Laura">
+            <p>Laura</p>
+          </div>
+          <div class="flip-back">
+            <h5>Laura</h5>
+            <p>Se desempeña como Desarrolladora Java Full Stack Jr. con un perfil versátil en desarrollo frontend y backend. Su trayectoria destaca por su dominio en el  área del Diseño Web Front End, mantiene su formación técnica en un bootcamp de Generation Mx.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/raul.png" alt="Raul">
+            <p>Raul</p>
+          </div>
+          <div class="flip-back">
+            <h5>Raul</h5>
+            <p>Desarrollador de Software para el diseño y desarrollo de aplicaciones web utilizando tecnologías tanto del lado del frontend como del backend. Cuenta con conocimientos en el desarrollo de aplicaciones escalables y aplicando metodologías orientadas a la calidad y la innovación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/rodrigo.png" alt="Rodrigo">
+            <p>Rodrigo</p>
+          </div>
+          <div class="flip-back">
+            <h5>Rodrigo</h5>
+            <p>Desarrollador de Software con experiencia en el desarrollo y mantenimiento de aplicaciones web utilizando React, JavaScript, HTML y CSS. Conocimientos en Java, C#, .NET, SQL y Bootstrap, así como en Git/GitHub, Scrum y Jira. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4 nosotros-col">
+      <div class="nosotros-card" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="src/imgNos/yessica.png" alt="Yessica">
+            <p>Yessica</p>
+          </div>
+          <div class="flip-back">
+            <h5>Yessica</h5>
+            <p>Desarrolladora Java Full Stack Jr. en formación en Generation México y licenciada en Economía por la UACh. Cuenta con conocimientos en HTML, CSS, JavaScript, Bootstrap, Java y MySQL. Destaca por su pensamiento analítico, resolución de problemas y trabajo en equipo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    </div>
+  </main>
+
+   <footer class="main-footer">
+        <div class="footer-container">
+            <!-- Primera columna -->
+            <div class="footer-col footer-col-left">
+                <!-- Escuela virtual -->
+                <a href="#" class="school-banner">
+                    <img src="src/IMG/aironcito_academia.png" alt="Imagen de bot" class="robot-img">
+                    <div class="speech-bubble">
+                        <h4>Escuela Virtual</h4>
+                        <p>Te enseñamos sobre computadoras</p>
+                    </div>
+                </a>
+
+                <!-- Lista de enlaces -->
+                <div class="footer-links-group">
+                    <h3>Comunícate con nosotros</h3>
+                    <ul>
+                        <li><a href="#">Soporte</a></li>
+                        <li><a href="#">Envíos</a></li>
+                        <li><a href="#">Garantías</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Segunda columna -->
+            <div class="footer-col footer-col-center">
+                <a href="#" class="promo-card">
+                    <img src="src/IMG/descuento-img.png" alt="Imagen de cupones" class="promo-img">
+                    <h3 class="promo-title">
+                        ¡Únete a nuestro canal<br>
+                        de promociones y<br>
+                        <strong>Descuentos Exclusivos!</strong>
+                    </h3>
+                </a>
+            </div>
+
+            <!-- Tercera columna -->
+            <div class="footer-col footer-col-right">
+                <!-- Logo -->
+                <div class="footer-logo">
+                    <img src="src/logos/apexiron.png" alt="Logo apex iron" class="logo-footer-img">
+                </div>
+
+                <!-- Redes sociales -->
+                <div class="social-icons">
+                    <a href="#" class="social-btn facebook" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn instagram" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn whatsapp" aria-label="WhatsApp"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                </div>
+
+                <!-- Datos de contacto -->
+                <div class="contact-info">
+                    <h4>Dirección</h4>
+                    <p>Calle Esmeralda 123, León,<br>Guanajuato, México 10000</p>
+                    <p><a href="mailto:hola@apexiron.mx">hola@apexiron.mx</a></p>
+                    <p><a href="tel:5512345656">(55) 1234 5656</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p><strong>Apex Iron ©</strong></p>
+            <p>Todos los Derechos Reservados</p>
+        </div>
+    </footer>
+
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="nosotros.js"></script>
+</body>
+</html>
