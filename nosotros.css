@@ -1,0 +1,180 @@
+/* ===== Variables y fondo (solo existen dentro de .nosotros) ===== */
+.nosotros {
+  --bg: #0b0f14;
+  --surface: #151b23;
+  --border: #1e2630;
+  --text: #e6edf3;
+  --accent: #00d1ff;
+
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
+    url("src/fondo/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+/* ===== Títulos de sección: Lexend Deca Medium 28 px ===== */
+.nosotros h2 {
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: .08em;
+}
+
+/* línea de acento debajo de cada título */
+.nosotros h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: .6rem;
+}
+
+.nosotros .text-center h2::after {
+  margin-inline: auto;
+}
+
+/* ----- Acerca de nosotros: panel de texto ----- */
+.nosotros .nosotros-panel {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.nosotros .nosotros-panel p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ----- Acerca de nosotros: logo sin caja ----- */
+.nosotros .nosotros-img {
+  background: transparent;
+  border: none;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;          /* permite que el logo "sobresalga" sin recortarse */
+}
+
+.nosotros .nosotros-img img {
+  max-width: 100%;
+  max-height: 260px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transform: scale(1.5);      /* cambia este valor: 1.3, 1.5, 1.8... */
+  transform-origin: center;
+}
+
+/* ----- Misión (sin caja) ----- */
+.nosotros .nosotros-mision {
+  max-width: 800px;
+  background: transparent;
+  border: none;
+  padding: 1rem;
+}
+
+.nosotros .nosotros-mision p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* ----- Equipo ----- */
+.nosotros .nosotros-card {
+  perspective: 800px;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+
+.nosotros .flip-inner {
+  position: relative;
+  height: 100%;
+  transition: transform .6s;
+  transform-style: preserve-3d;
+}
+
+.nosotros .nosotros-card.volteada .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.nosotros .flip-front,
+.nosotros .flip-back {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: .5rem;
+  padding: .5rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.nosotros .flip-front {
+  transition: border-color .3s, box-shadow .3s;
+}
+
+.nosotros .nosotros-card:hover .flip-front {
+  border-color: var(--accent);
+  box-shadow: 0 0 18px rgba(0, 209, 255, .25);
+}
+
+/* Nombre en la cara frontal */
+.nosotros .flip-front p {
+  margin: .5rem 0 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.nosotros .flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-color: var(--accent);
+}
+
+/* Nombre en la cara trasera: Regular 16 px */
+.nosotros .flip-back h5 {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--accent);
+  margin: auto 0 .5rem;
+}
+
+/* Descripción de la tarjeta */
+.nosotros .flip-back p {
+  font-size: 14px;
+  margin: 0 0 auto;
+}
+
+.nosotros .nosotros-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  border-radius: .5rem;
+}
+
+@media (min-width: 992px) {
+  .nosotros .nosotros-col {
+    flex: 0 0 auto;
+    width: calc((100% - 4 * 1rem) / 5);
+  }
+}
+
+/* En móvil, 28 px puede verse grande */
+@media (max-width: 575px) {
+  .nosotros h2 { font-size: 24px; }
+}
+
+
