@@ -1,0 +1,30 @@
+name: Deploy al servidor
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # - name: Build project
+      #   run: |
+      #     npm install
+      #     npm run build
+
+      - name: Sync files to server via rsync
+        uses: burnettk/rsync-deployments@main
+        with:
+          SWITCHES: -avzr --delete
+          PATH: ./
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          REMOTE_PORT: 2285
+          DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          TARGET: /var/www/apexiron.carlosestrchz.me/html/
