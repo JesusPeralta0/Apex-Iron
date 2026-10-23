@@ -6,7 +6,7 @@
 .main-footer {
   background-color: #000000;
   color: #ffffff;
-  padding: 50px 30px 25px;
+  padding: 25px 24px 14px;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 40px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
@@ -25,11 +25,11 @@
   min-width: 280px;
 }
 
-/* --- primer columna --- */
+/* --- primera columna --- */
 .footer-col-left {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 16px;
 }
 
 .school-banner {
@@ -41,7 +41,7 @@
 }
 
 .robot-img {
-  width: 200px;
+  width: 140px;
   height: auto;
   object-fit: contain;
 }
@@ -49,7 +49,7 @@
 .speech-bubble {
   background: #0099ff;
   border-radius: 26px;
-  padding: 12px 20px;
+  padding: 9px 14px;
   position: relative;
 }
 
@@ -67,21 +67,21 @@
 
 .speech-bubble h4 {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 14pt;
   font-weight: 700;
   color: #ffffff;
 }
 
 .speech-bubble p {
   margin: 3px 0 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #f0f0f0;
 }
 
 .footer-links-group h3 {
-  font-size: 1.25rem;
+  font-size: 15pt;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin: 0 0 8px;
 }
 
 .footer-links-group ul {
@@ -91,13 +91,13 @@
 }
 
 .footer-links-group ul li {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .footer-links-group ul li a {
   color: #d1d5db;
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   transition: color 0.2s ease;
 }
 
@@ -123,24 +123,25 @@
 }
 
 .promo-img {
-  width: 280px;
+  width: 190px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   transition: transform 0.25s ease;
 }
 
-.promo-img:hover  {
+.promo-img:hover {
   transform: scale(1.08);
 }
 
 .promo-title {
-  font-size: 1.35rem;
+  font-size: 20pt;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.25;
+  margin: 0;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
 }
 
-/* --- tercer columna --- */
+/* --- tercera columna --- */
 .footer-col-right {
   display: flex;
   flex-direction: column;
@@ -149,26 +150,26 @@
 }
 
 .footer-logo img {
-  width: 300px;
+  width: 210px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
-/* Botones de Redes Sociales */
+/* Botones de redes sociales */
 .social-icons {
   display: flex;
-  gap: 16px;
-  margin-bottom: 30px;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
 .social-btn {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #ffffff;
   text-decoration: none;
   transition: transform 0.2s ease, filter 0.2s ease;
@@ -184,8 +185,15 @@
 }
 
 .social-btn.instagram {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
-  border-radius: 12px; 
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  border-radius: 12px;
 }
 
 .social-btn.whatsapp {
@@ -194,16 +202,16 @@
 }
 
 .contact-info h4 {
-  font-size: 1.15rem;
+  font-size: 15pt;
   font-weight: 700;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 
 .contact-info p {
-  margin: 0 0 8px;
-  font-size: 0.95rem;
+  margin: 0 0 5px;
+  font-size: 0.9rem;
   color: #e5e7eb;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .contact-info a {
@@ -216,17 +224,17 @@
   color: #0099ff;
 }
 
-/* --- derechos --- */
+/* --- derechos reservados --- */
 .footer-bottom {
   border-top: 1px solid #1f2937;
-  margin-top: 40px;
-  padding-top: 20px;
+  margin-top: 22px;
+  padding-top: 12px;
   text-align: center;
 }
 
 .footer-bottom p {
   margin: 2px 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #9ca3af;
 }
 
@@ -234,12 +242,17 @@
   color: #ffffff;
 }
 
-/* --- RESPONSIVO --- */
+/* --- diseño responsivo --- */
 @media (max-width: 900px) {
   .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .footer-col {
+    width: 100%;
+    min-width: 0;
   }
 
   .footer-col-left,
