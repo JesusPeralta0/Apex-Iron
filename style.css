@@ -53,25 +53,24 @@ body {
 }
 
 /* Botón */
-.btn-hero {
-  font-family: inherit;
-  font-size: 13pt;
-  font-weight: 600;
-  background-color: #1a00c9;
-  color: #fff;
-  padding: .6rem 1.8rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
-  transition: transform .2s, background-color .2s;
+.btn-hero  {
+  font-family: inherit !important;
+  font-size: 13pt !important;
+  font-weight: 600!important;
+  background-color: #1a00c9 !important;
+  color: #fff!important;
+  padding: .6rem 1.8rem!important;
+  border-radius: 10px!important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .5)!important;
+  transition: transform .2s, background-color .2s!important;
 }
 
 .btn-hero:hover {
-  background-color: #3a2cff;
-  color: #fff;
-  transform: translateY(-2px);
+  background-color: #3a2cff!important;
+  color: #fff!important;
+  transform: translateY(-2px)!important;
 
 }
-
 
 
 /* =========================================
