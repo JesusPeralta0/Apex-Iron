@@ -16,7 +16,8 @@
 }
 
 .header-apex {
-    color: var(--apex-primary);
+    color: var(--apex-primary) !important;
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 /* =========================================
@@ -453,11 +454,13 @@
 .card-category {
     border: none;
     border-radius: 10px;
+
     overflow: visible;
 }
 
 .card img {
     height: 300px;
+
     object-fit: cover;
 
     border-radius: 10px;
