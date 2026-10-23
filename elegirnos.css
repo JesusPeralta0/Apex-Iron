@@ -1,0 +1,171 @@
+
+/* CONFIGURACIÓN GENERAL */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* SECCIÓN POR QUÉ ELEGIRNOS */
+
+.elegirnos {
+  width: 100%;
+  min-height: 75vh;
+  padding: 90px 20px;
+
+  background: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.elegirnos-contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* TÍTULO */
+
+.elegirnos-titulo {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: #093c99;
+
+  margin-bottom: 65px;
+}
+
+/* CONTENEDOR DE BENEFICIOS */
+
+.elegirnos-beneficios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 55px;
+  align-items: start;
+}
+
+/* TARJETAS */
+
+.beneficio-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 20px;
+
+  transition: transform 0.3s ease;
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+
+.beneficio-card:hover {
+  transform: translateY(-10px);
+}
+
+/* ICONOS */
+
+.beneficio-icono {
+  font-size: 110px;
+  line-height: 1.2;
+
+  color: #093c99;
+
+  margin-bottom: 20px;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+/* EFECTO DE ICONOS */
+
+.beneficio-card:hover .beneficio-icono {
+  transform: scale(1.1);
+  color: #093c99;
+}
+
+/* TÍTULOS DE BENEFICIOS */
+
+.beneficio-card h3 {
+  font-size: 21px;
+  font-weight: 700;
+
+  color: #1e1e1e;
+
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* DESCRIPCIONES */
+
+.beneficio-card p {
+  font-size: 15px;
+  font-weight: 400;
+
+  color: #1e1e1e;
+
+  line-height: 1.7;
+  max-width: 290px;
+}
+
+/* RESPONSIVE PARA TABLETS */
+
+@media (max-width: 900px) {
+
+  .elegirnos-beneficios {
+    gap: 20px;
+  }
+
+  .beneficio-icono {
+    font-size: 85px;
+  }
+
+  .beneficio-card h3 {
+    font-size: 18px;
+  }
+}
+
+/* RESPONSIVE PARA CELULARES */
+
+@media (max-width: 650px) {
+
+  .elegirnos {
+    padding: 65px 20px;
+  }
+
+  .elegirnos-titulo {
+    margin-bottom: 35px;
+  }
+
+  .elegirnos-beneficios {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .beneficio-icono {
+    font-size: 90px;
+  }
+
+  .beneficio-card {
+    padding: 10px;
+  }
+}
+
+/* ACCESIBILIDAD: REDUCIR MOVIMIENTO */
+
+@media (prefers-reduced-motion: reduce) {
+  .beneficio-card,
+  .beneficio-icono,
+  .beneficio-card.revelar {
+    transition: none;
+  }
+}
