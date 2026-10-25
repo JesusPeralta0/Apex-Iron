@@ -1,0 +1,132 @@
+html,body {
+    height: 110vh;
+}
+
+.cardd {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.cardd.active .card-inner {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    backface-visibility: hidden;
+}
+
+.front {
+    background: #3498db;
+}
+
+.back {
+    background: #e74c3c;
+    transform: rotateY(180deg);
+}
+
+
+.debug-line {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  pointer-events: none;
+  z-index: 9999;
+}
+.debug-top {
+    top: 30%;
+    background: red;
+}
+.debug-bot {
+    top: 70%;
+    background: blue;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+:root {
+  --apex-dark: #1e1e1e;
+  --apex-primary: #093c99;
+  --apex-secondary: #89cad9;
+  --apex-accent: #bfc3c8;
+  --apex-background: #ffffff
+}
+.bg-apex-dark {
+  background-color: var(--apex-dark) !important;
+}
+.text-apex-dark {
+  color: var(--apex-accent) !important;
+}
+
+.footer-images {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+.dialogo {
+  /*este color lo extraje del wireframe de drive*/
+  position: relative;
+
+  background-color: var(--apex-secondary);
+  color: var(--apex-dark);
+  border-radius: 35px;
+
+  padding: 1rem;
+  /* height: fit-content; */
+  height: 6rem;
+  min-width: 300px;
+  text-align: center;
+}
+
+.dialogo::after {
+    height: 3rem;
+    content: '';
+    display: flex;
+    position: relative;
+    right: 25px;
+    bottom: 10px;
+    width: 3rem;
+    background-color: var(--apex-secondary);
+    clip-path: polygon(20% 50%, 20% 0%, 100% 50%, 0% 100%);
+}
+
+.dialogo h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.dialogo p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.95;
+  line-height: 1.3;
+}
