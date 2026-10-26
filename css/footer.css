@@ -1,149 +1,5 @@
-:root {
-  --apex-dark: #1e1e1e;
-  --apex-primary: #093c99;
-  --apex-secondary: #89cad9;
-  --apex-accent: #bfc3c8;
-  --apex-background: #ffffff
-}
-
-body {
-  font-family: 'Lexend Deca', sans-serif;
-  font-size: 14pt;
-}
-
-
-/* Colores para cosas. Luego ver como para modo oscuro */
-.bg-apex {
-  background-color: var(--apex-background);
-}
-
-.text-apex {
-  color: var(--apex-dark);
-}
-
-.header-apex {
-  color: var(--apex-primary) !important;
-  font-family: 'Lexend Deca', sans-serif;
-}
-
-/*----------------Estilos sección Inicio-Hero----------------------*/
-/* Sección completa con imagen de fondo */
-.hero {
-  background-image:
-    linear-gradient(90deg, rgba(0, 0, 60, .85) 0%, rgba(0, 0, 60, .4) 100%),
-    url("src/img_hero/fondo_hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
-}
-
-
-/* Textos */
-.hero-titulo {
-  font-size: 40pt;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.hero-texto {
-  font-size: 18pt;
-  font-weight: 400;
-
-}
-
-/* Botón */
-.btn-hero  {
-  font-family: inherit !important;
-  font-size: 13pt !important;
-  font-weight: 600!important;
-  background-color: #1a00c9 !important;
-  color: #fff!important;
-  padding: .6rem 1.8rem!important;
-  border-radius: 10px!important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .5)!important;
-  transition: transform .2s, background-color .2s!important;
-}
-
-.btn-hero:hover {
-  background-color: #3a2cff!important;
-  color: #fff!important;
-  transform: translateY(-2px)!important;
-
-}
-
-
-/* =========================================
-   SECCIÓN DE MARCAS - APEX IRON
-   ========================================= */
-
-#patrocinadores {
-  width: 100%;
-  overflow: hidden;
-  background-color: #d0d0d0;
-  padding: 35px 0;
-}
-
-/* Contenedor donde se mueven los logos */
-.marcas-track {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  width: max-content;
-  animation: moverMarcas 22s linear infinite;
-}
-
-/* Estilo de los logos */
-.logo-patrocinador {
-  width: 150px;
-  height: 70px;
-  object-fit: contain;
-  flex-shrink: 0;
-  background-color: transparent;
-}
-
-/* Animación de la pasarela */
-@keyframes moverMarcas {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* Responsive para tablet y celular */
-@media (max-width: 768px) {
-  #patrocinadores {
-    padding: 25px 0;
-  }
-
-  .marcas-track {
-    gap: 35px;
-    animation-duration: 16s;
-  }
-
-  .logo-patrocinador {
-    width: 110px;
-    height: 55px;
-  }
-}
-
-/* =========================================
-   ÍCONOS DEL NAVBAR
-   ========================================= */
-
-.visual-icons img {
-  filter: brightness(0) invert(1);
-  /* convierte negro -> blanco */
-  transition: filter 0.2s;
-}
-
-.visual-icons a:hover img {
-  filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3);
-  /* se pone celestito #89cad9 */
-}
+@import url("/css/variables.css");
+@import url("/css/generales.css");
 
 /*-----------------
 ------FOOTER-------
@@ -419,27 +275,17 @@ body {
   }
 }
 
-.card {
-  transition: all 0.3s ease;
+/* =========================================
+   ÍCONOS DEL NAVBAR
+   ========================================= */
+
+.visual-icons img {
+  filter: brightness(0) invert(1);
+  /* convierte negro -> blanco */
+  transition: filter 0.2s;
 }
 
-.card-category {
-  border: none;
-  border-radius: 10px;
-
-  overflow: visible;
-}
-
-.card img {
-  height: 300px;
-
-  object-fit: cover;
-
-  border-radius: 10px;
-  box-shadow: 0 0 35px rgba(0, 0, 0, 0.3);
-}
-
-.card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 15px 35px #093b9997, 0 -15px 35px #89cad9a0;
+.visual-icons a:hover img {
+  filter: brightness(0) invert(1) sepia(1) hue-rotate(160deg) saturate(3);
+  /* se pone celestito #89cad9 */
 }
