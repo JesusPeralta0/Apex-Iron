@@ -1,3 +1,6 @@
+@import url("/css/variables.css");
+@import url("/css/generales.css");
+
 /* ===== Variables y fondo (solo existen dentro de .nosotros) ===== */
 .nosotros {
   --bg: #0b0f14;
@@ -12,7 +15,7 @@
   background-color: var(--bg);
   background-image:
     linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
-    url("src/fondo/fondo.jpg");
+    url("/res/fondos/nosotros.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -2,6 +2,27 @@ body {
   font-family: 'Lexend Deca', sans-serif;
 }
 
+.contacto {
+  --bg: #0b0f14;
+  --surface: #151b23;
+  --border: #1e2630;
+  --text: #e6edf3;
+  --accent: #00d1ff;
+
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
+    url("/res/fondos/nosotros.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text);
+}
+
 /* Contenedor tipo vidrio */
 .contacto .container {
   background: rgba(10, 15, 40, 0.65);
