@@ -1,0 +1,17 @@
+@import url("/css/variables.css");
+@import url("/css/generales.css");
+
+.navbar .no-arrow::after {
+    display: none !important;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #093c99 !important;
+    /* Azul oficial Apex Iron */
+    color: white !important;
+}
+
+.navbar .nav-link:hover {
+    color: #89cad9 !important;
+    /* Celeste de la paleta al pasar el mouse */
+}

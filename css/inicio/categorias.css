@@ -1,0 +1,24 @@
+.categorias .card {
+  transition: all 0.3s ease;
+}
+
+.categorias .card-category {
+  border: none;
+  border-radius: 10px;
+
+  overflow: visible;
+}
+
+.categorias .card img {
+  height: 300px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.3);
+}
+
+.categorias .card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 15px 35px #093b9997, 0 -15px 35px #89cad9a0;
+}
