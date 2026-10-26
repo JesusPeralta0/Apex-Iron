@@ -1,3 +1,5 @@
+@import url("/css/variables.css");
+@import url("/css/generales.css");
 
 /* CONFIGURACIÓN GENERAL */
 
@@ -7,7 +9,7 @@
   box-sizing: border-box;
 }
 
-body {
+body .elegirnos {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -27,7 +29,7 @@ body {
 
 /* CONTENEDOR PRINCIPAL */
 
-.elegirnos-contenedor {
+.elegirnos .elegirnos-contenedor {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -36,7 +38,7 @@ body {
 
 /* TÍTULO */
 
-.elegirnos-titulo {
+.elegirnos .elegirnos-titulo {
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   color: #093c99;
@@ -46,7 +48,7 @@ body {
 
 /* CONTENEDOR DE BENEFICIOS */
 
-.elegirnos-beneficios {
+.elegirnos .elegirnos-beneficios {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 55px;
@@ -55,7 +57,7 @@ body {
 
 /* TARJETAS */
 
-.beneficio-card {
+.elegirnos .beneficio-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,13 +69,13 @@ body {
 
 /* EFECTO AL PASAR EL MOUSE */
 
-.beneficio-card:hover {
+.elegirnos .beneficio-card:hover {
   transform: translateY(-10px);
 }
 
 /* ICONOS */
 
-.beneficio-icono {
+.elegirnos .beneficio-icono {
   font-size: 110px;
   line-height: 1.2;
 
@@ -88,14 +90,14 @@ body {
 
 /* EFECTO DE ICONOS */
 
-.beneficio-card:hover .beneficio-icono {
+.elegirnos .beneficio-card:hover .elegirnos .beneficio-icono {
   transform: scale(1.1);
   color: #093c99;
 }
 
 /* TÍTULOS DE BENEFICIOS */
 
-.beneficio-card h3 {
+.elegirnos .beneficio-card h3 {
   font-size: 21px;
   font-weight: 700;
 
@@ -107,7 +109,7 @@ body {
 
 /* DESCRIPCIONES */
 
-.beneficio-card p {
+.elegirnos .beneficio-card p {
   font-size: 15px;
   font-weight: 400;
 
@@ -121,15 +123,15 @@ body {
 
 @media (max-width: 900px) {
 
-  .elegirnos-beneficios {
+  .elegirnos .elegirnos-beneficios {
     gap: 20px;
   }
 
-  .beneficio-icono {
+  .elegirnos .beneficio-icono {
     font-size: 85px;
   }
 
-  .beneficio-card h3 {
+  .elegirnos .beneficio-card h3 {
     font-size: 18px;
   }
 }
@@ -142,20 +144,20 @@ body {
     padding: 65px 20px;
   }
 
-  .elegirnos-titulo {
+  .elegirnos .elegirnos-titulo {
     margin-bottom: 35px;
   }
 
-  .elegirnos-beneficios {
+  .elegirnos .elegirnos-beneficios {
     grid-template-columns: 1fr;
     gap: 35px;
   }
 
-  .beneficio-icono {
+  .elegirnos .beneficio-icono {
     font-size: 90px;
   }
 
-  .beneficio-card {
+  .elegirnos .beneficio-card {
     padding: 10px;
   }
 }
@@ -163,9 +165,9 @@ body {
 /* ACCESIBILIDAD: REDUCIR MOVIMIENTO */
 
 @media (prefers-reduced-motion: reduce) {
-  .beneficio-card,
-  .beneficio-icono,
-  .beneficio-card.revelar {
+  .elegirnos .beneficio-card,
+  .elegirnos .beneficio-icono,
+  .elegirnos .beneficio-card.revelar {
     transition: none;
   }
 }

@@ -1,0 +1,103 @@
+body {
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+.contacto {
+  --bg: #0b0f14;
+  --surface: #151b23;
+  --border: #1e2630;
+  --text: #e6edf3;
+  --accent: #00d1ff;
+
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
+    url("/res/fondos/nosotros.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+/* Contenedor tipo vidrio */
+.contacto .container {
+  background: rgba(10, 15, 40, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(137, 202, 217, 0.25);
+  border-radius: 16px;
+  padding: 2.5rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.contacto h1 {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Labels */
+.contacto .form-label {
+  color: #89cad9;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Inputs translúcidos */
+.contacto .form-control {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(137, 202, 217, 0.3);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  transition: all 0.25s ease;
+}
+
+.contacto .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.contacto .form-control:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #89cad9;
+  color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(137, 202, 217, 0.25);
+}
+
+/* Estados de validación visibles sobre fondo oscuro */
+.contacto .form-control.is-invalid {
+  border-color: #ff6b6b;
+  background-image: none;
+}
+
+.contacto .form-control.is-valid {
+  border-color: #4ade80;
+  background-image: none;
+}
+
+.contacto .invalid-feedback {
+  color: #ff8c8c;
+  font-size: 0.85rem;
+}
+
+/* Botón */
+.contacto .btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #093c99, #1a6dff);
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contacto .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 109, 255, 0.45);
+}
