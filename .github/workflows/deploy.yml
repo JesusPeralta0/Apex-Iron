@@ -20,12 +20,12 @@ jobs:
       #     npm run build
 
       - name: Sync files to server via rsync
-        uses: burnett01/rsync-deployments@v9
-        with:
-          SWITCHES: -avzr --delete
-          PATH: ./
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-          REMOTE_PORT: 2285
-          REMOTE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_PATH: /var/www/apexiron.carlosestrchz.me/html/
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s' "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          rsync -avzr --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p 2285 -o StrictHostKeyChecking=no" \
+            ./ \
+            "${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/apexiron.carlosestrchz.me/html/"
