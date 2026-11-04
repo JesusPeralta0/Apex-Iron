@@ -10,18 +10,36 @@
   --accent: #00d1ff;
   --accent-2: #7c5cff;
 
+  position: relative;
+  isolation: isolate;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   color: var(--text);
   background-color: var(--bg);
+}
+
+/* Fondo fijo al viewport (evita que la imagen se estire y pixelee) */
+.nosotros::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-image:
     radial-gradient(circle at 15% 10%, rgba(0, 209, 255, .12), transparent 45%),
     radial-gradient(circle at 85% 60%, rgba(124, 92, 255, .12), transparent 45%),
     linear-gradient(rgba(5, 8, 20, .80), rgba(5, 8, 20, .70)),
-    url("/res/fondos/nosotros.jpg");
+    url("/res/fondos/fondo_acercanosotros.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Mantener header y footer por encima del fondo fijo */
+header,
+.main-footer {
+  position: relative;
+  z-index: 10;
 }
 
 /* ===== Títulos ===== */
