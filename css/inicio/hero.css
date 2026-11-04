@@ -1,45 +1,167 @@
 /*----------------Estilos sección Inicio-Hero----------------------*/
-/* Sección completa con imagen de fondo */
+/* Sección completa */
 .hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  background-color: #03031a;
   background-image:
-    linear-gradient(90deg, rgba(0, 0, 60, .85) 0%, rgba(0, 0, 60, .4) 100%),
-    url("/res/fondos/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    radial-gradient(circle at 72% 50%, rgba(28, 20, 128, .35), transparent 50%);
   color: #fff;
 }
 
+/* Imagen de fondo desenfocada */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20px; /* esconde los bordes que se aclaran con el blur */
+  background: url("/res/fondos/hero.jpg") center / cover no-repeat;
+  opacity: .35;
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Funde los bordes con un tono oscuro */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, transparent 35%, rgba(3, 3, 26, .85) 100%);
+  pointer-events: none;
+}
+
+/* El contenido queda por encima */
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Resplandor detrás de la PC */
+.hero .col-lg-7 {
+  position: relative;
+}
+
+.hero .col-lg-7::before {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  background: radial-gradient(circle, rgba(25, 0, 255, .5), transparent 65%);
+  filter: blur(50px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero #carruselEquipos {
+  position: relative;
+  z-index: 1;
+}
 
 /* Textos */
 .hero .hero-titulo {
-  font-size: 40pt;
-  font-weight: 800;
-  line-height: 1;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 20px;
 }
 
 .hero .hero-texto {
-  font-size: 18pt;
+  color: rgba(255, 255, 255, .75);
+  font-size: 18px;
   font-weight: 400;
-
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 0;
 }
 
-/* Botón */
+/* Contenedor de botones */
+.hero .hero-botones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 58px; /* separación con el texto */
+}
+
+/* Botón 1 */
 .hero .btn-hero {
   font-family: inherit !important;
-  font-size: 13pt !important;
-  font-weight: 600!important;
-  background-color: #1a00c9 !important;
-  color: #fff!important;
-  padding: .6rem 1.8rem!important;
-  border-radius: 10px!important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .5)!important;
-  transition: transform .2s, background-color .2s!important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, #0c024e, #2515cc) !important;
+  color: #fff !important;
+  padding: 10px 29px !important;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(54, 53, 53, .5) !important;
+  transition: transform .2s !important;
 }
 
 .hero .btn-hero:hover {
-  background-color: #3a2cff!important;
-  color: #fff!important;
-  transform: translateY(-2px)!important;
+  background: #89cad9 !important;
+  color: #131111 !important;
+  transform: translateY(-2px) !important;
+}
 
+/* Botón 2 */
+.hero .btn-hero-sec {
+  font-family: inherit !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  padding: 10px 29px !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, .06) !important;
+  border: 1px solid rgba(255, 255, 255, .35) !important;
+  backdrop-filter: blur(6px);
+  transition: transform .2s, background-color .2s, border-color .2s !important;
+}
+
+.hero .btn-hero-sec:hover {
+  background: rgba(255, 255, 255, .16) !important;
+  border-color: rgba(255, 255, 255, .7) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Indicadores del carrusel */
+.hero .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+}
+
+.hero .carousel-indicators .active {
+  width: 28px;
+  border-radius: 10px;
+}
+
+/* Flechas del carrusel */
+.hero .carousel-control-prev,
+.hero .carousel-control-next {
+  width: 20px;
+  opacity: .8;
+  top: 60%;
+}
+
+.hero .carousel-control-prev { left: -40px; }
+.hero .carousel-control-next { right: -40px; }
+
+/* Tablet y móvil */
+@media (max-width: 991px) {
+  .hero .hero-titulo { font-size: 42px; }
+  .hero .hero-texto { font-size: 16px; }
+  .hero .carousel-control-prev { left: 0; }
+  .hero .carousel-control-next { right: 0; }
+}
+
+.guia-modal {
+  background: #03031a;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 16px;
+}
+
+.modal-backdrop.show {
+  opacity: .7;
 }
