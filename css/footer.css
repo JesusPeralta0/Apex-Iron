@@ -158,20 +158,22 @@
 
 /* Botones de redes sociales */
 .social-icons {
+  
   display: flex;
   gap: 12px;
   margin-bottom: 18px;
 }
 
+
 .social-btn {
   width: 38px;
   height: 38px;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  color: #ffffff;
+  font-size: 2.00rem;
+  color:#ffffff;
   text-decoration: none;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
@@ -179,13 +181,14 @@
 .social-btn:hover {
   transform: translateY(-3px);
   filter: brightness(1.15);
+  color: #0099ff;
 }
 
-.social-btn.facebook {
+/*.social-btn.facebook {
   background-color: #1877f2;
-}
+}*/
 
-.social-btn.instagram {
+/*.social-btn.instagram {
   background: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
@@ -195,12 +198,12 @@
     #285aeb 90%
   );
   border-radius: 12px;
-}
+}*/
 
-.social-btn.whatsapp {
+/*.social-btn.whatsapp {
   background-color: #25d366;
   border-radius: 12px;
-}
+}*/
 
 .contact-info h4 {
   font-size: 15pt;
