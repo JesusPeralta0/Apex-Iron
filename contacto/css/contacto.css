@@ -15,7 +15,7 @@ body {
   background-color: var(--bg);
   background-image:
     linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
-    url("/res/fondos/nosotros.jpg");
+    url("/res/fondos/fondo_acercanosotros.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
