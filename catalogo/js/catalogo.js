@@ -33,7 +33,7 @@ function inyectarProductos() {
     for(const PRODUCTO of productos) {
         let tarjetaProducto = 
         `
-        <div class="container-fluid d-flex justify-content-evenly col-6 col-md-4 card g-4 p-2 border border-0">
+        <div class="producto-card container-fluid d-flex justify-content-evenly col-6 col-md-4 card g-4 p-2 border border-0" data-categoria="${PRODUCTO.categoriaPadre}">
             <div class="card-img img-fluid border border-light d-flex align-items-center justify-content-center overflow-hidden">
                 <img src="${PRODUCTO.imagenes[0]}" alt="Accecibilidad de producto 1" loading="lazy" class="img-fluid rounded" />
             </div>
