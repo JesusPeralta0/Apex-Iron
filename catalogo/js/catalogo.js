@@ -43,8 +43,8 @@ function inyectarProductos() {
                         <div class="carousel-indicators">
                             ${PRODUCTO.imagenes.map((_, i) => `
                             <button type="button" data-bs-target="#galeria-${PRODUCTO.id}" data-bs-slide-to="${i}"
-                                class="bg-apex-secondary ${i === 0 ? "active" : ""}" ${i === 0 ? 'aria-current="true"' : ""}
-                                aria-label="Imagen ${i + 1}"></button>`).join("")}
+                                class="bg-apex-primary ${i === 0 ? "active" : ""}" ${i === 0 ? 'aria-current="true"' : ""}
+                                aria-label="Imagen ${i + 1}"></button>`).join('')}
                         </div>
 
                         <!-- Imágenes -->
@@ -52,7 +52,7 @@ function inyectarProductos() {
                         ${PRODUCTO.imagenes.map((src, i) => `
                             <div class="carousel-item h-100 ${i === 0 ? "active" : ""}">
                             <img class="rounded img-fluid" src="${src}" alt="${PRODUCTO.name} ${i + 1}" loading="lazy">
-                            </div>`).join("")}
+                            </div>`).join('')}
                         </div>
                     </div>
 
