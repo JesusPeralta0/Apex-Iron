@@ -31,7 +31,7 @@ function renderProducto(producto) {
   // Galería: slides
   document.getElementById("p-galeria").innerHTML = imagenes.map((src, i) => `
     <div class="carousel-item h-100 ${i === 0 ? "active" : ""}">
-      <img class="rounded img-fluid" src="${src}" alt="${producto.name} ${i + 1}" loading="lazy">
+      <img class="rounded img-fluid h-100" src="${src}" alt="${producto.name} ${i + 1}" loading="lazy">
     </div>`).join("");
 }
 
