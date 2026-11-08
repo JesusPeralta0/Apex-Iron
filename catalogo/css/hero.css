@@ -1,4 +1,106 @@
 .hero-catalogo {
-  height: 200px;
-  background-color: red;
+  /* posiciones del texto y del botón (escritorio) */
+  --izq: 21.7%;       /* borde izquierdo del "40" */
+  --txt-top: 36%;     /* altura del texto, justo arriba del "40" */
+  --btn-top: 80%;     /* altura del botón, debajo del "OFF" */
+
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1920 / 800;
+  background: url("/res/fondos/hero_catalogo.webp") center / cover no-repeat;
+}
+
+/* la sección interna no debe tapar la imagen */
+.hero-catalogo .hero {
+  background: transparent !important;
+  height: 100%;
+}
+
+/* Texto  */
+.hero-catalogo .hero-texto {
+  position: absolute;
+  left: var(--izq);     /* lo mueve a izquierda o derecha */
+  top: var(--txt-top);  /* sube o baja el texto */
+  max-width: none;
+  white-space: nowrap;  /* una sola línea */
+  margin: 0;
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 600;
+  font-size: 2.1vw;     /* escala con la pantalla */
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Botón 1 */
+.hero .btn-hero {
+  font-family: inherit !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, #776bc2, #2515cc) !important;
+  color: #fff !important;
+  padding: 10px 29px !important;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(54, 53, 53, .5) !important;
+  transition: transform .2s !important;
+}
+
+.hero .btn-hero:hover {
+  background: #89cad9 !important;
+  color: #131111 !important;
+  transform: translateY(-2px) !important;
+}
+
+.hero-catalogo .hero-boton {
+  position: absolute !important;
+  left: var(--izq) !important;
+  top: var(--btn-top) !important;
+}
+
+/* ===== RESPONSIVO ===== */
+
+/* Tablet (hasta 991 px) */
+@media (max-width: 991.98px) {
+  .hero-catalogo {
+    --izq: 7.5%;
+    --txt-top: 40%;
+    --btn-top: 74%;
+    aspect-ratio: 1200 / 750;
+    background-image: url("/res/fondos/hero_catalogo_tablet.webp");
+  }
+
+  .hero-catalogo .hero-texto {
+    font-size: 2.4vw;
+  }
+
+  .hero .btn-hero {
+    font-size: 15px !important;
+    padding: 8px 22px !important;
+  }
+}
+
+/* Celular (hasta 575 px) */
+@media (max-width: 575.98px) {
+  .hero-catalogo {
+    --izq: 13%;        /* borde izquierdo del "40" */
+    --txt-top: 12.5%;  /* arriba del "40", sin tocarlo */
+    --btn-top: 44%;    /* justo debajo del "OFF" */
+    aspect-ratio: 800 / 900;
+    background-image: url("/res/fondos/hero_catalogo_movil.webp");
+  }
+
+  .hero-catalogo .hero-texto {
+    font-size: 4.3vw;
+  }
+
+  .hero-catalogo .hero-boton {
+    --izq: 10%;        /* un poco más a la izquierda para no tapar el gabinete */
+  }
+
+  .hero .btn-hero {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
 }
