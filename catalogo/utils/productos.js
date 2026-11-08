@@ -181,7 +181,7 @@ const product9= {
 };
 
 const product10 = {
-    id: " acc-004",
+    id: "acc-004",
     name: "Adaptador WiFi ASUS USB-AX56",
     description: "Adaptador USB dual band WiFi 6 que ofrece hasta 1,800 Mbps de velocidad general con soporte para Beamforming y cifrado WPA3.",
     categoriaPadre: "laptops-equipos-armados",
@@ -200,7 +200,7 @@ const product10 = {
 };
 
 const product11 = {
-    id: " acc-005",
+    id: "acc-005",
     name: "Disco duro externo ADATA HD710 Pro 2TB",
     description: "Disco portátil ultra resistente con protección contra agua y polvo IP68, carcasa de triple capa a prueba de golpes y sensor de impacto.",
     categoriaPadre: "laptops-equipos-armados",
@@ -219,7 +219,7 @@ const product11 = {
 };
 
 const product12 = {
-    id: " acc-006",
+    id: "acc-006",
     name: "Memoria USB Kingston DataTraveler Exodia 128GB",
     description: "Memoria USB 3.2 Gen 1 liviana con capuchón protector y argolla grande para llavero. Ideal para transferencia rápida de datos.",
     categoriaPadre: "laptops-equipos-armados",
@@ -238,7 +238,7 @@ const product12 = {
 };
 
 const product13 = {
-    id: " acc-007",
+    id: "acc-007",
     name: "Router ASUS RT-AX55 WiFi 6",
     description: "Router WiFi 6 doble banda AX1800 con tecnologías OFDMA y MU-MIMO, protección AiProtection de Trend Micro y soporte ASUS AiMesh.",
     categoriaPadre: "laptops-equipos-armados",

@@ -1,18 +1,114 @@
 body {
-  font-family: 'Lexend Deca', sans-serif !important;
+  font-family: 'Lexend Deca', sans-serif;
   font-size: 14pt;
 }
 
 /* Colores para cosas. Luego ver como para modo oscuro */
 .bg-apex {
-  background-color: var(--apex-background);
+  background-color: var(--apex-background) !important;
+}
+
+.bg-apex-secondary {
+  background-color: var(--apex-primary) !important;
 }
 
 .text-apex {
-  color: var(--apex-dark);
+  color: var(--apex-dark) !important;
+}
+
+.text-apex-secondary {
+ color: var(--apex-light) !important;
+}
+
+.text-apex-accent {
+ color: var(--apex-accent) !important;
 }
 
 .header-apex {
   color: var(--apex-primary) !important;
   font-family: 'Lexend Deca', sans-serif;
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+/* === Contenedores === */
+.vidrio {
+  background: rgba(10, 15, 40, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(137, 202, 217, 0.25);
+  border-radius: 16px;
+  padding: 2.5rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* === Botones ==== */
+/* Botón Principal */
+.btn-apex-primary {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0c024e, #2515cc);
+  color: #fff;
+  padding: 8px 27px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(54, 53, 53, .5);
+  transition: transform .2s;
+
+  &:hover {
+    background: #89cad9;
+    color: #131111;
+    transform: translateY(-2px);
+  }
+}
+
+/* Botón Secundario */
+.btn-apex-secondary {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  padding: 8px 27px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .35);
+  backdrop-filter: blur(6px);
+  transition: transform .2s, background-color .2s, border-color .2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, .16);
+    border-color: rgba(255, 255, 255, .7);
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-apex-primary, .btn-apex-secondary {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 300px) {
+  .btn-apex-primary, .btn-apex-secondary {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}
+
+
+/* === Galería === */
+.galeria .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+}
+
+.galeria .carousel-indicators .active {
+  width: 28px;
+  border-radius: 10px;
 }

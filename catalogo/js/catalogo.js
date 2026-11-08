@@ -31,26 +31,45 @@ function inyectarProductos() {
     const ESPACIO_PRODUCTOS = document.getElementById('productos');
     
     for(const PRODUCTO of productos) {
+        // <img class="rounded img-fluid align-content-center" src="${PRODUCTO.imagenes[0]}" alt="${PRODUCTO.name}" loading="lazy"></img>
         let tarjetaProducto = 
         `
-        <div class="producto-card container-fluid d-flex justify-content-evenly col-6 col-md-4 card g-4 p-2 border border-0" data-categoria="${PRODUCTO.categoriaPadre}">
-            <div class="card-img img-fluid border border-light d-flex align-items-center justify-content-center overflow-hidden">
-                <img src="${PRODUCTO.imagenes[0]}" alt="Accecibilidad de producto 1" loading="lazy" class="img-fluid rounded" />
-            </div>
+        <div class="producto-card col-12 col-md-6 col-lg-4" data-categoria="${PRODUCTO.categoriaPadre}">
+            <div class="card h-100 p-2 border-0">
+                <div class="card-img d-flex ratio ratio-4x3">
 
-            <div class="nombre">
-                <h3 class="card-title text-center"> ${PRODUCTO.name} </h3>
-                <h4 class="card-subtitle mb-2 text-center text-muted">Algo sobre el producto</h4>
-            </div>
+                    <div id="galeria-${PRODUCTO.id}" class="carousel slide galeria" data-bs-interval="false">
+                        <!-- Puntitos -->
+                        <div class="carousel-indicators">
+                            ${PRODUCTO.imagenes.map((_, i) => `
+                            <button type="button" data-bs-target="#galeria-${PRODUCTO.id}" data-bs-slide-to="${i}"
+                                class="bg-apex-secondary ${i === 0 ? "active" : ""}" ${i === 0 ? 'aria-current="true"' : ""}
+                                aria-label="Imagen ${i + 1}"></button>`).join("")}
+                        </div>
 
-            <ul class="list-group list-group-flush">
-                <li class="descripcion list-group-item"> ${PRODUCTO.description} </li>
-                <li class="list-group-item"> \$${PRODUCTO.precio} </li>
-            </ul>
+                        <!-- Imágenes -->
+                        <div class="carousel-inner h-100">
+                        ${PRODUCTO.imagenes.map((src, i) => `
+                            <div class="carousel-item h-100 ${i === 0 ? "active" : ""}">
+                            <img class="rounded img-fluid" src="${src}" alt="${PRODUCTO.name} ${i + 1}" loading="lazy">
+                            </div>`).join("")}
+                        </div>
+                    </div>
 
-            <div class="card-body">
-                <a href="#" class="card-link btn btn-success">Más información</a>
-                <a href="#" class="card-link">Comprar</a>
+                </div>
+                
+                <!-- Texto -->
+                <div class="card-body rounded-bottom-3 vidrio d-flex flex-column px-0">
+                    <h3 class="card-title text-apex-secondary h5 text-center align-content-end titulo-2l">${PRODUCTO.name}</h3>
+                    <h4 class="card-subtitle text-apex-accent h6 mb-2 text-center text-muted">Algo sobre el producto</h4>
+                    <p class="card-text text-apex-secondary descripcion-3l">${PRODUCTO.description}</p>
+                    <p class="text-apex-secondary fw-bold mb-3">\$${PRODUCTO.precio}</p>
+
+                    <div class="card-btns mt-auto d-flex gap-3 align-items-center justify-content-center">
+                        <a href="/catalogo/producto.html?id=${PRODUCTO.id}" class="btn btn-apex-secondary text-apex-secondary text-decoration-underline">Más información</a>
+                        <a href="#" class="btn btn-apex-primary">Comprar</a>
+                    </div>
+                </div>
             </div>
         </div>
         `
