@@ -1,7 +1,8 @@
 # Apex-Iron
 
 > Tienda en línea de componentes y equipos de cómputo que acompaña al usuario en el armado de su computadora.
-
+🔗 **Sitio en línea:** [jesusperalta0.github.io/Apex-Iron](https://jesusperalta0.github.io/Apex-Iron/)
+> El sitio publicado se actualiza conforme se integran los avances a la rama `master`.
 Proyecto desarrollado por el equipo **BinaryMinds** para el bootcamp **Java Full Stack de Generation México (CH73)**.
 
 ---
@@ -39,7 +40,7 @@ Elegimos este giro porque nos apasiona la tecnología. Sabemos que cuando alguie
 | Página | Qué incluye |
 |---|---|
 | **Inicio** (`/`) | Hero con carrusel de equipos, guía "¿Cómo armar mi equipo?" en ventana modal, categorías, carrusel de marcas, sección "¿Por qué elegirnos?" y presentación de Aironcito |
-| **Catálogo** (`/catalogo/`) | Productos con descripción técnica y precio, y **filtrado por categoría** (Componentes, Laptops y Equipos Armados, Periféricos y Accesorios) |
+| **Catálogo** (`/catalogo/`) | Hero promocional ("¡Solo este Buen Fin!") con imágenes adaptadas a móvil, tablet y escritorio; productos con descripción técnica y precio; y **filtrado por categoría** (Componentes, Laptops y Equipos Armados, Periféricos y Accesorios) |
 | **Acerca de nosotros** (`/nosotros/`) | Quiénes somos, misión y perfiles del equipo |
 | **Contacto** (`/contacto/`) | Formulario de contacto (nombre, correo, teléfono y mensaje) |
 
@@ -49,11 +50,11 @@ Todas las páginas comparten la misma barra de navegación y el mismo footer, y 
 
 🚧 Proyecto en desarrollo por sprints.
 
-**En desarrollo:**
+**Terminado:**
 
-- Botones **Comprar** y **Más información** en las tarjetas del catálogo, que llevarán a la página de compra.
+- Funcionalidad de los botones **Comprar** y **Más información** en las tarjetas del catálogo.
+- Página de detalle de producto.
 - Estilos de botones reutilizables en los estilos generales: **principal** (azul) y **secundario** (gris), para usarlos en cualquier página.
-- Mejoras en la sección hero del Inicio.
 
 ## Tecnologías
 
@@ -107,6 +108,7 @@ Antes de empezar, necesitas tener instalado:
 Apex-Iron/
 ├── index.html              → Página de Inicio
 ├── README.md
+├── .gitignore              → Archivos que Git no debe subir
 ├── .github/workflows/
 │   └── deploy.yml          → Publicación automática del sitio
 ├── css/                    → Estilos compartidos por todas las páginas
