@@ -21,7 +21,7 @@ function renderProducto(producto) {
   document.title = PRODUCTO.name;
 
   document.getElementById('p-name').textContent        = producto.name;
-  document.getElementById('p-precio').textContent      = `Adquiere este producto por ${Number(producto.precio).toLocaleString('es-MX')} MXN`;
+  document.getElementById('p-precio').textContent      = `Adquiere este producto por $${Number(producto.precio).toLocaleString('es-MX')} MXN`;
   document.getElementById('p-marca').textContent       = `MARCA: ${producto.marca}`;
   document.getElementById('p-modelo').textContent      = `MODELO: ${producto.modelo}`;
   document.getElementById('p-descripcion').textContent = descripcion;
