@@ -1,0 +1,5 @@
+#producto {
+    .sticky {
+        top: 20vh !important;
+    }
+}
