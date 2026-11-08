@@ -1,0 +1,46 @@
+# Dependencias de Node.js
+node_modules/
+
+# Variables de entorno y archivos sensibles
+.env
+.env.*
+!.env.example
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configuraciones locales del editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos generados por compilacion
+dist/
+build/
+coverage/
+
+# Archivos de cache
+.cache/
+.parcel-cache/
+.vite/
+
+# Archivos de respaldo
+*.bak
+*.old
+*~
+
+# Archivos comprimidos
+*.zip
+*.rar
+*.7z
