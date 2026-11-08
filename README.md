@@ -1,10 +1,11 @@
 # Apex-Iron
 
-> Tienda en línea de componentes y equipos de cómputo que acompaña al usuario en el armado de su computadora.
-🔗 **Sitio en línea:** [jesusperalta0.github.io/Apex-Iron](https://jesusperalta0.github.io/Apex-Iron/)
-> El sitio publicado se actualiza conforme se integran los avances a la rama `master`.
+> Lleva tu rendimiento al siguiente nivel. Encuentra el hardware que necesitas y arma tu equipo ideal con nuestro acompañamiento, aunque sea tu primera vez.
 Proyecto desarrollado por el equipo **BinaryMinds** para el bootcamp **Java Full Stack de Generation México (CH73)**.
 
+🔗 **Sitio en línea:** [jesusperalta0.github.io/Apex-Iron](https://jesusperalta0.github.io/Apex-Iron/)
+
+> El sitio publicado se actualiza conforme se integran los avances a la rama `master`.
 ---
 
 ## Tabla de contenidos
@@ -50,7 +51,7 @@ Todas las páginas comparten la misma barra de navegación y el mismo footer, y 
 
 🚧 Proyecto en desarrollo por sprints.
 
-**Terminado:**
+**En desarrollo:**
 
 - Funcionalidad de los botones **Comprar** y **Más información** en las tarjetas del catálogo.
 - Página de detalle de producto.
