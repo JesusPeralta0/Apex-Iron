@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apex-Iron</title>
-    <!-- favico -->
+
+    <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="/res/favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="/res/logos/apex-simple.png">
 
@@ -33,7 +34,7 @@
     <header>
         <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-dark px-4 py-1"
-            style="background-color: #1e1e1e; font-family: 'Lexend Deca', sans-serif;">
+            style="background-color: #000000; font-family: 'Lexend Deca', sans-serif;">
             <div class="container-fluid">
 
                 <a class="navbar-brand d-flex align-items-center" href="#">
@@ -110,20 +111,25 @@
     </header>
 
     <main>
-        <!-- Hero Carrusel Lau-->
-        <section class="hero py-5">
+        <!-- Hero Carrusel -->
+        <section class="hero py-4 d-flex align-items-center">
             <div class="container">
-                <div class="hero-caja p-4 p-lg-5">
-                    <div class="row aling-items-center g-4">
+                <div class="hero-caja p-4 p-lg-2">
+                    <div class="row align-items-center">
                         <!--columna izquierda:titulo y cuerpo-->
-                        <div class="col-lg-5">
-                            <h2 class="hero-titulo">Lleva tu rendimineto al siguiente nivel</h2>
+                        <div class="col-lg-6">
+                            <h2 class="hero-titulo">Lleva tu rendimiento al siguiente nivel</h2>
                             <p class="hero-texto">Encuentra el hardware que necesitas o arma tu setup ideal desde cero
                             </p>
-                            <a href="#" class="btn btn-hero">Ver equipos</a>
+                            <!--botones hero-->
+                            <div class="hero-botones">
+                                <a href="catalogo/index.html" class="btn btn-hero">Ver equipos</a>
+                                <button type="button" id="btnGuia" class="btn btn-hero-sec">¿Cómo armar mi
+                                    equipo?</button>
+                            </div>
                         </div>
                         <!--columna derecha:carrusel-->
-                        <div class="col-lg-7">
+                        <div class="col-lg-6">
                             <div id="carruselEquipos" class="carousel slide" data-bs-ride="carousel">
                                 <!-- Puntitos de abajo -->
                                 <div class="carousel-indicators">
@@ -343,7 +349,7 @@
                         <li><a href="#">Soporte</a></li>
                         <li><a href="#">Envíos</a></li>
                         <li><a href="#">Garantías</a></li>
-                        <li><a href="#">Trabaja con nosotros</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -368,14 +374,28 @@
                 </div>
 
                 <!-- Redes sociales -->
+                
                 <div class="social-icons">
-                    <a href="#" class="social-btn facebook" aria-label="Facebook"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="social-btn instagram" aria-label="Instagram"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-btn whatsapp" aria-label="WhatsApp"><i
-                            class="fa-brands fa-whatsapp"></i></a>
+
+                    <!-- FACEBOOK -->
+                    <a class="social-btn facebook" href="https://www.facebook.com/share/19gBpjhR2a/" target="_blank"
+                        rel="noopener">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <!-- INSTAGRAM -->
+                    <a class="social-btn instagram" href="https://www.instagram.com/apexiron23/" target="_blank"
+                        rel="noopener">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <!-- WHATSAPP -->
+                    <a class="social-btn whatsapp" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
                 </div>
+               
 
                 <!-- Datos de contacto -->
                 <div class="contact-info">
@@ -392,12 +412,28 @@
             <p>Todos los Derechos Reservados</p>
         </div>
     </footer>
-
+    <!--Modal para botón secundario sección hero-->
+    <div class="modal fade" id="modalGuia" tabindex="-1" aria-labelledby="tituloGuia" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content guia-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="tituloGuia">Guía para armar tu PC</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="res/infografias/info_armatupc.png" class="img-fluid rounded-3"
+                        alt="Infografía con los pasos básicos para armar una PC">
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- scripts externos -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- scripts nuestros -->
     <script src="/js/nosotros.js"></script>
+    <script src="/index_js/hero.js"></script>
     </main>
 </body>
 

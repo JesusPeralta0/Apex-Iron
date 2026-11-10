@@ -1,7 +1,8 @@
 :root {
   --apex-dark: #1e1e1e;
+  --apex-light: #ffffff;
   --apex-primary: #093c99;
   --apex-secondary: #89cad9;
   --apex-accent: #bfc3c8;
-  --apex-background: #ffffff
+  --apex-background: #ffffff;
 }
