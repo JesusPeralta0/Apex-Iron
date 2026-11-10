@@ -8,8 +8,7 @@ function addProduct(item) {
 //componentes de alto rendimiento
 const product1 = {
     id: "com-001",
-    name: "Procesador AMD Ryzen 5 7600",
-    description: "Procesador de 6 núcleos y 12 hilos con arquitectura Zen 4 (3.8 GHz a 5.1 GHz), TDP de 65 W, caché L3 de 32 MB y gráficos Radeon integrados.",
+    nombre: "Procesador AMD Ryzen 5 7600",
     categoriaPadre: "componentes-alto-rendimiento",
     categoria: "componentes",
     titulo: "Procesador AMD Ryzen 5 7600",
@@ -28,8 +27,7 @@ const product1 = {
 
 const product2 = {
     id: "com-002",
-    name: "Tarjeta de video ASUS Dual GeForce RTX 4060 8GB",
-    description: "Tarjeta gráfica con 8 GB GDDR6, 3,072 núcleos CUDA y compatibilidad con DLSS 3. Sistema de ventilación Axial-tech y modo 0dB.",
+    nombre: "Tarjeta de video ASUS Dual GeForce RTX 4060 8GB",
     categoriaPadre: "componentes-alto-rendimiento",
     categoria: "componentes",
     titulo: "Tarjeta de video ASUS Dual GeForce RTX 4060 8GB",
@@ -47,8 +45,7 @@ const product2 = {
 
 const product3 = {
     id: "com-003",
-    name: "Memoria RAM Kingston FURY Beast 16GB DDR5",
-    description: "Módulo DDR5 a 5,200 MT/s con disipador térmico de perfil bajo. Soporta perfiles de overclocking Intel XMP 3.0 y AMD EXPO.",
+    nombre: "Memoria RAM Kingston FURY Beast 16GB DDR5",
     categoriaPadre: "componentes-alto-rendimiento",
     categoria: "componentes",
     titulo: "Memoria RAM Kingston FURY Beast 16GB DDR5",
@@ -66,8 +63,7 @@ const product3 = {
 
 const product4 = {
     id: "com-004",
-    name: "Ventilador Corsair AF120 RGB Elite",
-    description: "Ventilador PWM de 120 mm con velocidad de 550 a 2,100 rpm, iluminación RGB de 8 LEDs y modo Zero RPM para operación silenciosa.",
+    nombre: "Ventilador Corsair AF120 RGB Elite",
     categoriaPadre: "componentes-alto-rendimiento",
     categoria: "componentes",
     titulo: "Ventilador Corsair AF120 RGB Elite",
@@ -86,8 +82,7 @@ const product4 = {
 
 const product5 = {
     id: "com-005",
-    name: "SSD ADATA LEGEND 800 1TB",
-    description: "Unidad NVMe PCIe Gen4 x4 con velocidades de hasta 3,500 MB/s de lectura y 2,200 MB/s de escritura. Incluye disipador de calor.",
+    nombre: "SSD ADATA LEGEND 800 1TB",
     categoriaPadre:"componentes-alto-rendimiento",
     categoria: "componentes",
     titulo:"SSD ADATA LEGEND 800 1TB",
@@ -105,8 +100,7 @@ const product5 = {
 
 const product6 = {
     id: "com-006",
-    name: "Tarjeta inalámbrica Intel Wi-Fi 6E AX210",
-    description: "Módulo interno M.2 2230 con Wi-Fi 6E (banda de 6 GHz), velocidad de hasta 2.4 Gbps y Bluetooth integrado.",
+    nombre: "Tarjeta inalámbrica Intel Wi-Fi 6E AX210",
     categoriaPadre: "componentes-alto-rendimiento",
     categoria: "componentes",
     titulo: "Tarjeta inalámbrica Intel Wi-Fi 6E AX210",
@@ -125,8 +119,7 @@ const product6 = {
 //laptops y equipos armados
 const product7 = {
     id: "acc-001",
-    name: "Mouse Logitech Pebble Mouse 2 M350s",
-    description: "Mouse Bluetooth ambidiestro ultra delgado con clics silenciosos, switch para 3 dispositivos y batería de hasta 24 meses de duración.",
+    nombre: "Mouse Logitech Pebble Mouse 2 M350s",
     categoriaPadre: "laptops-equipos-armados",
     categoria: "accesorios-laptop",
     titulo: "Mouse Logitech Pebble Mouse 2 M350s",
@@ -144,15 +137,14 @@ const product7 = {
 
 const product8= {
     id: "acc-002",
-    name: "Teclado Logitech MX Keys Mini",
-    description: "Teclado compacto inalámbrico con retroiluminación inteligente de proximidad, teclas esféricas PerfectStroke y carga por USB-C.",
+    nombre: "Teclado Logitech MX Keys Mini",
     categoriaPadre: "laptops-equipos-armados",
     categoria: "accesorios-laptop",
     titulo: "Teclado Logitech MX Keys Mini",
     descripcion: "Teclado compacto inalámbrico con retroiluminación inteligente de proximidad, teclas esféricas PerfectStroke y carga por USB-C.",
     imagenes: [
         "/res/productos/Compact Spanish Layout Keyboard.png",
-         "/res/productos/",
+        "/res/productos/",
         "/res/productos/"
     ],
     marca: "Logitech",
@@ -163,8 +155,7 @@ const product8= {
 
 const product9= {
     id: "acc-003",
-    name: "Monitor portátil ASUS ZenScreen MB16ACV 15.6\"",
-    description: "Pantalla secundaria portátil Full HD IPS con tratamiento antibacterial, filtro de luz azul y conexión híbrida USB-C/USB-A.",
+    nombre: "Monitor portátil ASUS ZenScreen MB16ACV 15.6\"",
     categoriaPadre: "laptops-equipos-armados",
     categoria: "accesorios-laptop",
     titulo: "Monitor portátil ASUS ZenScreen MB16ACV 15.6\"",
@@ -182,8 +173,7 @@ const product9= {
 
 const product10 = {
     id: "acc-004",
-    name: "Adaptador WiFi ASUS USB-AX56",
-    description: "Adaptador USB dual band WiFi 6 que ofrece hasta 1,800 Mbps de velocidad general con soporte para Beamforming y cifrado WPA3.",
+    nombre: "Adaptador WiFi ASUS USB-AX56",
     categoriaPadre: "laptops-equipos-armados",
     categoria: "accesorios-laptop",
     titulo: "Adaptador WiFi ASUS USB-AX56",
@@ -201,8 +191,7 @@ const product10 = {
 
 const product11 = {
     id: "acc-005",
-    name: "Disco duro externo ADATA HD710 Pro 2TB",
-    description: "Disco portátil ultra resistente con protección contra agua y polvo IP68, carcasa de triple capa a prueba de golpes y sensor de impacto.",
+    nombre: "Disco duro externo ADATA HD710 Pro 2TB",
     categoriaPadre: "laptops-equipos-armados",
     categoria: "accesorios-laptop",
     titulo: "Disco duro externo ADATA HD710 Pro 2TB",
@@ -220,8 +209,7 @@ const product11 = {
 
 const product12 = {
     id: "acc-006",
-    name: "Memoria USB Kingston DataTraveler Exodia 128GB",
-    description: "Memoria USB 3.2 Gen 1 liviana con capuchón protector y argolla grande para llavero. Ideal para transferencia rápida de datos.",
+    nombre: "Memoria USB Kingston DataTraveler Exodia 128GB",
     categoriaPadre: "laptops-equipos-armados",
     categoria: "accesorios-laptop",
     titulo: "Memoria USB Kingston DataTraveler Exodia 128GB",
@@ -239,15 +227,14 @@ const product12 = {
 
 const product13 = {
     id: "acc-007",
-    name: "Router ASUS RT-AX55 WiFi 6",
-    description: "Router WiFi 6 doble banda AX1800 con tecnologías OFDMA y MU-MIMO, protección AiProtection de Trend Micro y soporte ASUS AiMesh.",
+    nombre: "Router ASUS RT-AX55 WiFi 6",
     categoriaPadre: "laptops-equipos-armados",
     categoria: "accesorios-laptop",
     titulo: "Router ASUS RT-AX55 WiFi 6",
     descripcion: "Router WiFi 6 doble banda AX1800 con tecnologías OFDMA y MU-MIMO, protección AiProtection de Trend Micro y soporte ASUS AiMesh.",
     imagenes: [
         "/res/productos/ASUS Black Router with Four Antennas (1).png",
-         "/res/productos/",
+        "/res/productos/",
         "/res/productos/"
     ],
     marca: "ASUS",
@@ -259,8 +246,7 @@ const product13 = {
 //periféricos y accesorios
 const product14 = {
     id: "per-001",
-    name: "Teclado mecánico Logitech G413 SE",
-    description: "Teclado de tamaño completo con interruptores mecánicos táctiles, teclas de PBT y prevención de efecto fantasma en 6 teclas.",
+    nombre: "Teclado mecánico Logitech G413 SE",
     categoriaPadre: "perifericos-accesorios",
     categoria: "perifericos",
     titulo: "Teclado mecánico Logitech G413 SE",
@@ -278,8 +264,7 @@ const product14 = {
 
 const product15 = {
     id: "per-002",
-    name: "Mouse gamer Logitech G502 HERO",
-    description: "Mouse gamer con sensor HERO 25K (200-25,600 DPI), iluminación RGB y 11 botones programables. Incluye 5 pesas ajustables de 3.6 g.",
+    nombre: "Mouse gamer Logitech G502 HERO",
     categoriaPadre: "perifericos-accesorios",
     categoria: "perifericos",
     titulo: "Mouse gamer Logitech G502 HERO",
@@ -297,8 +282,7 @@ const product15 = {
 
 const product16 = {
     id: "per-003",
-    name: "Monitor ASUS TUF Gaming VG249Q1A 23.8\"",
-    description: "Monitor gamer Full HD con frecuencia de 165 Hz (overclock), Extreme Low Motion Blur, FreeSync Premium y 1 ms de respuesta.",
+    nombre: "Monitor ASUS TUF Gaming VG249Q1A 23.8\"",
     categoriaPadre: "perifericos-accesorios",
     categoria: "perifericos",
     titulo: "Monitor ASUS TUF Gaming VG249Q1A 23.8\"",
@@ -316,8 +300,7 @@ const product16 = {
 
 const product17 = {
     id: "per-004",
-    name: "Webcam Logitech C920 HD Pro",
-    description: "Cámara Full HD 1080p a 30 fps con lente de vidrio de 5 elementos, campo de visión de 78°, enfoque automático y sonido estéreo.",
+    nombre: "Webcam Logitech C920 HD Pro",
     categoriaPadre: "perifericos-accesorios",
     categoria: "perifericos",
     titulo: "Webcam Logitech C920 HD Pro",
@@ -335,8 +318,7 @@ const product17 = {
 
 const product18 = {
     id: "per-005",
-    name: "Audífonos gamer Corsair HS55 Stereo",
-    description: "Audífonos livianos (273 g) con transductores de 50 mm, almohadillas de memoria y micrófono abatible omnidireccional certificado por Discord.",
+    nombre: "Audífonos gamer Corsair HS55 Stereo",
     categoriaPadre: "perifericos-accesorios",
     categoria: "perifericos",
     titulo: "Audífonos gamer Corsair HS55 Stereo",
@@ -354,14 +336,13 @@ const product18 = {
 
 const product19 = {
     id: "per-006",
-    name: "Bocinas Logitech Z313 2.1",
-    description: "Sistema de altavoces 2.1 de 25 W RMS con subwoofer compacto y sección de control cableada para ajustar el volumen y conectar audífonos.",
+    nombre: "Bocinas Logitech Z313 2.1",
     categoriaPadre: "perifericos-accesorios",
     categoria: "perifericos",
     titulo: "Bocinas Logitech Z313 2.1",
     descripcion: "Sistema de altavoces 2.1 de 25 W RMS con subwoofer compacto y sección de control cableada para ajustar el volumen y conectar audífonos.",
     imagenes: [
-         "/res/productos/Logitech Speaker System Product Shot.png",
+        "/res/productos/Logitech Speaker System Product Shot.png",
         "/res/productos/",
         "/res/productos/"
     ],
@@ -373,8 +354,7 @@ const product19 = {
 
 const product20 = {
     id: "aud-007",
-    name: "Micrófono Logitech G Yeti GX",
-    description: "Micrófono dinámico USB con patrón supercardioide, tecnología Smart Audio Lock contra saturaciones e iluminación RGB LIGHTSYNC.",
+    nombre: "Micrófono Logitech G Yeti GX",
     categoriaPadre: "perifericos-accesorios",
     categoria: "perifericos",
     titulo: "Micrófono Logitech G Yeti GX",
