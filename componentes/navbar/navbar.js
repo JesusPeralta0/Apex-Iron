@@ -5,8 +5,8 @@ const navbarHTML = `
 <header>
      <nav class="navbar navbar-expand-lg navbar-dark px-4 py-1" id="navbarPrincipal">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="res/logos/apexiron.png" alt="Apex Iron Logo" class="logo-navbar">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="/res/logos/apexiron.png" alt="Apex Iron Logo" class="logo-navbar">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarApexIron">
@@ -15,45 +15,45 @@ const navbarHTML = `
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarApexIron">
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-4">
-                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="nosotros/index.html">Acerca de Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="catalogo/index.html">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacto/index.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/nosotros/">Acerca de Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/catalogo/">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contacto/">Contacto</a></li>
                 </ul>
             </div>
 
             <div class="d-flex align-items-center gap-3 visual-icons">
                 <a href="#" class="icon-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBuscador">
-                    <img src="res/iconos/lupa.svg" alt="Buscar" width="24" height="24">
+                    <img src="/res/iconos/lupa.svg" alt="Buscar" width="24" height="24">
                 </a>
                 <a href="#" class="icon-btn position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito">
-                    <img src="res/iconos/carrito.svg" alt="Carrito" width="24" height="24">
+                    <img src="/res/iconos/carrito.svg" alt="Carrito" width="24" height="24">
                     <span id="cart-count" class="cart-badge">0</span>
                 </a>
                 <div class="dropdown">
                     <a href="#" class="icon-btn dropdown-toggle no-arrow" id="dropdownPerfil" data-bs-toggle="dropdown">
-                        <img src="res/iconos/usuario.svg" alt="Usuario" width="24" height="24">
+                        <img src="/res/iconos/usuario.svg" alt="Usuario" width="24" height="24">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" id="menuUsuario" aria-labelledby="dropdownPerfil">
                     <!-- Vista Administrador siempre visible -->
                     <li>
-                        <a class="dropdown-item" href="/admin/index.html" id="nav-admin">
-                          <img src="res/iconos/usuario.svg" width="16"> Vista Administrador
+                        <a class="dropdown-item" href="/panel_admin/" id="nav-admin">
+                          <img src="/res/iconos/usuario.svg" width="16"> Vista Administrador
                         </a>
                     </li>
                     <li><hr class="dropdown-divider"></li>
     
                    <!-- Opciones cuando NO hay sesión iniciada -->
                   <li id="opcion-login">
-                    <a class="dropdown-item" href="/login/index.html">Iniciar Sesión</a>
+                    <a class="dropdown-item" href="/login/">Iniciar Sesión</a>
                   </li>
                     <li id="opcion-registro">
-                    <a class="dropdown-item" href="/registro/index.html">Crear Cuenta</a>
+                    <a class="dropdown-item" href="/registro/">Crear Cuenta</a>
                   </li>
 
                   <!-- Opciones cuando SÍ hay sesión iniciada -->
                   <li id="opcion-perfil" class="d-none">
-                    <a class="dropdown-item" href="/perfil/index.html">Mi Perfil</a>
+                    <a class="dropdown-item" href="/perfil/">Mi Perfil</a>
                   </li>
                   <li id="opcion-logout" class="d-none">
                   <a class="dropdown-item text-danger" href="#" id="btn-cerrar-sesion">Cerrar Sesión</a>
@@ -112,12 +112,6 @@ if (contenedorNavbar) {
 } else {
     console.error("No se encontró el contenedor-navbar");
 }
-
-// Inyectar la hoja de estilos vinculada
-const linkCSS = document.createElement("link");
-linkCSS.rel = "stylesheet";
-linkCSS.href = "Componentes/navbar.css";
-document.head.appendChild(linkCSS);
 
 
 // 2. BUSCADOR INTELIGENTE APEX-IRON
@@ -249,7 +243,7 @@ function renderizarMenuUsuario() {
     // Vista Administrador visible para conectar el formulario de productos
     const adminItem = `
         <li>
-            <a class="dropdown-item text-white d-flex align-items-center gap-2" href="/admin.html" style="font-size:14px;">
+            <a class="dropdown-item text-white d-flex align-items-center gap-2" href="/panel_adm/" style="font-size:14px;">
                 <i class="bi bi-person-gear"></i> Vista Administrador
             </a>
         </li>
