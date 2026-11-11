@@ -3,7 +3,7 @@
 > Lleva tu rendimiento al siguiente nivel. Encuentra el hardware que necesitas y arma tu equipo ideal con nuestro acompañamiento, aunque sea tu primera vez.
 Proyecto desarrollado por el equipo **BinaryMinds** para el bootcamp **Java Full Stack de Generation México (CH73)**.
 
-🔗 **Sitio en línea:** [jesusperalta0.github.io/Apex-Iron](https://jesusperalta0.github.io/Apex-Iron/)
+**Sitio en línea:** [apex-iron.carlosestrchz.me](https://apex-iron.carlosestrchz.me/)
 
 > El sitio publicado se actualiza conforme se integran los avances a la rama `master`.
 ---
