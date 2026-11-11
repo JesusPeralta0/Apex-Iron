@@ -43,14 +43,8 @@
     <main class="contacto py-5">
         <div class="container" style="max-width: 1100px;">
             <h1 class="mb-4">Formulario Panel de Administrador</h1>
+
             <form class="row g-3 needs-validation justify-content-center d-flex" novalidate>
-                <div class="col-md-4">
-                    <label for="id" class="form-label">ID:</label>
-                    <input type="text" class="form-control" id="id" placeholder="Ej. com-002" required>
-                    <div class="valid-feedback">
-                        ¡Información válida!
-                    </div>
-                </div>
                 <div class="col-md-4">
                     <label for="nombre" class="form-label">Título:</label>
                     <input type="text" class="form-control" id="nombre" placeholder="Nombre de producto" required>
@@ -63,9 +57,12 @@
                     <label for="categoria" class="form-label">Categoría</label>
                     <select class="form-select" id="categoria" required>
                         <option selected disabled value="">Selecciona una categoría</option>
-                        <option value="1">Componentes de alto rendimiento</option>
-                        <option value="2">Laptops y equipos armados</option>
-                        <option value="3">Periféricos y accesorios</option>
+                        <option value="1">Componentes</option>
+                        <option value="2">Almacenamiento</option>
+                        <option value="3">Conectividad</option>
+                        <option value="4">Accesorios para laptop</option>
+                        <option value="5">Periféricos</option>
+                        <option value="6">Audio y video</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid state.
