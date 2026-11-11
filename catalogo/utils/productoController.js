@@ -1,4 +1,4 @@
-import { productos, addProduct } from "./productos";
+import { productos, addProduct } from "./productos.js";
 
 
 //funcion generadora de ids
@@ -16,7 +16,7 @@ function generarIdProducto(categoria){
     const prefijo = mapaPrefijos[categoria];
 
     //variable para asignar numero de objeto en lista incremental
-    const numero = String((productos.length +1).padStart(3, '0'));
+    const numero = String(productos.length + 1).padStart(3, '0');
     return `${prefijo}-${numero}`;
 }
 
@@ -43,7 +43,7 @@ export function validarProductoJSON(datos = {}){
         {error: !datos.categoria?.trim(), msg: 'La subcategoria es obligatoria.'},
         {error: !datos.marca?.trim(), msg: 'La marca es obligatoria.'},
         {error: !datos.modelo?.trim(), msg: 'El modelo es obligatorio.'},
-        {error: !datos.descripcion?.trim || datos.descripcion.trim().length < 10, msg: 'La descripcion debe contener al menos 10 caracteres.'},
+        {error: !datos.descripcion?.trim() || datos.descripcion.trim().length < 10, msg: 'La descripcion debe contener al menos 10 caracteres.'},
         {error: isNaN(precio) || precio <= 0, msg: 'El precio debe ser un numero mayor a 0.'},
         {error: listaImagenes.length === 0 || !listaImagenes[0]?.trim(), msg: 'Se requiere al menos una imagen valida.'}
     ];
