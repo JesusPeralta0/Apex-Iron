@@ -43,6 +43,23 @@ body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 }
 
+.velo-tb {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.45) 65%,
+    rgba(0, 0, 0, 0.0) 100%
+  );
+}
+.velo-bt {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    rgba(0, 0, 0, 0.0) 20%
+  ) !important;
+}
+
 /* === Botones ==== */
 /* Botón Principal */
 .btn-apex-primary {
