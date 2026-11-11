@@ -1,6 +1,4 @@
-/* =========================================
-   AIRONCITO
-   ========================================= */
+/*aironcito*/
 .aironcito {
   background: linear-gradient(180deg, #003fa5 0%, #e6f0ff 100%);
   padding: 3rem 1.5rem;
@@ -87,9 +85,15 @@
 
   .aironcito .aironcito-speech-bubble::after {
     right: 50%;
-    top: 100%;
+    
+    /*posiciona abajo al centro */
+    bottom: -16px;
+    top: auto;
+    
+    /*para centrar la cola respecto al globo */
     transform: translateX(50%);
-    border-width: 18px 12px 0 12px;
-    border-color: #1e3a8a transparent transparent transparent;
+
+    /*el poligono de la cola debe apuntar hacia abajo cuando se ve desde un movil */
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
   }
 }
