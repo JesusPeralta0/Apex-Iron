@@ -1,7 +1,7 @@
 export const productos = [];
 
 // Función para agregar elementos al listado segun como pide el canvas y hacen en el ejemplo
-function addProduct(item) {
+export function addProduct(item) {
     productos.push(item);
 }
 
