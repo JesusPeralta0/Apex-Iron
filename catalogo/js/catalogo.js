@@ -66,8 +66,8 @@ function inyectarProductos() {
                     <p class="text-apex-secondary fw-bold mb-3">\$${Number(PRODUCTO.precio).toLocaleString('es-MX')} MXN</p>
 
                     <div class="card-btns mt-auto d-flex gap-3 align-items-center justify-content-center">
-                        <a href="/catalogo/producto.html?id=${PRODUCTO.id}" class="btn btn-apex-secondary text-apex-secondary text-decoration-underline">Más información</a>
-                        <a href="#" class="btn btn-apex-primary">Comprar</a>
+                        <a href="/catalogo/producto.html?id=${PRODUCTO.id}" class="btn-apex-secondary text-apex-secondary text-decoration-underline">Más información</a>
+                        <a href="#" class="btn-apex-primary text-decoration-none">Comprar</a>
                     </div>
                 </div>
             </div>
