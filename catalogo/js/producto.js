@@ -16,11 +16,11 @@ function renderProducto(producto) {
   }
 
   const descripcion = producto.descripcion ?? producto.descripcion ?? "";
-  const imagenes = producto.imagenes ?? [];
+  const imagenes = (producto.imagenes) ?? [];
 
   document.title = PRODUCTO.nombre;
 
-  document.getElementById('p-nombre').textContent        = producto.nombre;
+  document.getElementById('p-nombre').textContent      = producto.nombre;
   document.getElementById('p-precio').textContent      = `Adquiere este producto por $${Number(producto.precio).toLocaleString('es-MX')} MXN`;
   document.getElementById('p-marca').textContent       = `MARCA: ${producto.marca}`;
   document.getElementById('p-modelo').textContent      = `MODELO: ${producto.modelo}`;
