@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //la unica manera coherente que tenemos para que nos deje subir imagenes sin backend
+    //codificamos loos objetos a base64 para guardarlos como string en el array inicial que teniamos (de strings)
+    //filelist es lo que retorna el formulario cuando subes archivos
     function convertirArchivosABase64(fileList) {
         const archivos = Array.from(fileList);
 
@@ -61,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lector = new FileReader();
                 lector.onload = () => resolve(lector.result);
                 lector.onerror = (error) => reject(error);
+                //aqui se convierte el objeto a base64
+                //al final todos los objetos son archivos binarios por debajo
                 lector.readAsDataURL(archivo);
             });
         });
@@ -71,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //se crea el evento del formulario
     formulario.addEventListener('submit', async (event) => {
         event.preventDefault();
+        //fix temporal para que no afecte la ejecución de otros eventos
         event.stopPropagation();
 
         try {
@@ -79,6 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
             //se opta por condificarlas a base64 y se guardan en localstorage, porque sin backend tampoco se pueden guardar mas objetos en la lista de productos
             const imagenesCodificadas = await convertirArchivosABase64(inputImagenes.files);
 
+            //el json formateado o como lo llamo yo, payload
+            //equivalente a "modelo de datos en formato json" del punto 5 de las instrucciones
             const payload = {
                 nombre: document.querySelector('#nombre').value,
                 categoria: selectCategoria.value,
