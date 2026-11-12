@@ -5,6 +5,7 @@
 
 
 /* estilos improvisados para probar las alertas*/
+/*se hacen uso de las alertas de bootstrap pero con estilos personalizados */
 
 .apex-toast-container {
     position: fixed;
@@ -15,24 +16,27 @@
     width: calc(100% - 48px);
 }
 
-.apex-alert {
+/*se combina .alert de bootstrap con .apex-alert para ganar especificidad */
+.alert.apex-alert {
     background: rgba(10, 15, 40, 0.88);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     color: var(--apex-light);
     border-radius: 12px;
+    /*sobrescribo el padding-right. 3rem de alert-dismissible */
     padding: 1.1rem 1.25rem;
+    margin-bottom: 0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
     font-family: 'Lexend Deca', sans-serif;
     animation: apexSlideIn 0.3s ease-out;
 }
 
-.apex-alert-success {
+.alert-success.apex-alert-success {
     border: 1px solid rgba(137, 202, 217, 0.55);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(137, 202, 217, 0.2);
 }
 
-.apex-alert-error {
+.alert-danger.apex-alert-error {
     border: 1px solid rgba(220, 53, 69, 0.65);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(220, 53, 69, 0.2);
 }
@@ -72,19 +76,25 @@
     border-radius: 8px;
 }
 
-.apex-alert-close {
-    background: none;
-    border: none;
-    color: var(--apex-accent);
-    font-size: 1.25rem;
-    cursor: pointer;
+/*adaptación de .btn-close de Bootstrap para que funcione dentro del flex header y se vea claro */
+.apex-alert-header .btn-close.apex-alert-close {
+    position: static;
     padding: 0;
-    line-height: 1;
-    transition: color 0.2s ease;
+    margin-left: 0.75rem;
+    width: 0.85em;
+    height: 0.85em;
+    /*convierte la 'x' negra de Bootstrap a blanca segun la documentación */
+    filter: invert(1) grayscale(100%) brightness(200%); 
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
 }
 
-.apex-alert-close:hover {
-    color: var(--apex-secondary);
+.apex-alert-header .btn-close.apex-alert-close:hover {
+    opacity: 1;
+}
+
+.apex-alert-header .btn-close.apex-alert-close:focus {
+    box-shadow: none;
 }
 
 @keyframes apexSlideIn {
