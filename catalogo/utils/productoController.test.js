@@ -1,19 +1,18 @@
 import test, { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { crearProductoController, validarProductoJSON } from './productoController.js';
+import { crearProductoController } from './productoController.js';
 
 describe('pruebas de test runner para productoController', () => {
 
     it('debe crear el producto porque se le pasan datos validos', () => {
         const payloadValido = {
             nombre: 'Procesador Intel i7',
-            categoriaPadre: 'Componentes',
             categoria: 'componentes',
             marca: 'Intel',
             modelo: '13700K',
             descripcion: 'Procesador de 16 núcleos y 24 hilos',
             precio: 7500,
-            imagenes: ['https://example.com/cpu.jpg']
+            imagenes: ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==']
         };
 
         const resultado = crearProductoController(payloadValido);
@@ -21,6 +20,7 @@ describe('pruebas de test runner para productoController', () => {
         assert.equal(resultado.exito, true);
         assert.equal(resultado.errores.length, 0);
         assert.equal(resultado.producto.nombre, 'Procesador Intel i7');
+        assert.equal(resultado.producto.categoriaPadre, 'componentes-alto-rendimiento');
         assert.equal(resultado.producto.precio, 7500);
     });
 
