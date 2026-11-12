@@ -1,3 +1,22 @@
 @import url("/css/variables.css");
 @import url("/css/generales.css");
 @import url("/componentes/navbar/navbar.css");
+
+main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  /* background-image:
+    radial-gradient(circle at 15% 10%, rgba(0, 209, 255, .12), transparent 45%),
+    radial-gradient(circle at 85% 60%, rgba(124, 92, 255, .12), transparent 45%),
+    linear-gradient(rgba(5, 8, 20, .80), rgba(5, 8, 20, .70)),
+    url("/res/fondos/fondo_acercanosotros.jpg"); */
+  background-image:
+    linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
+    url("/res/fondos/fondo_acercanosotros.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}

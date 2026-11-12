@@ -16,7 +16,7 @@
     <!-- Estilos del Navbar y del Formulario de Contacto -->
     <link rel="stylesheet" href="./css/styles.css">
     <!-- Este es un parche cambiar a futuro en general -->
-    <link rel="stylesheet" href="/contacto/css/contacto2.css">
+    <!-- <link rel="stylesheet" href="/contacto/css/contacto2.css"> -->
 </head>
 <body>
 
@@ -25,38 +25,41 @@
 
     <!-- Contenedor principal centrado -->
     <main class="login container d-flex justify-content-center align-items-center py-5" style="min-height: 85vh;">
-        <div class="card p-4 card-apex" style="width: 100%; max-width: 450px;">
-            <h3 class="text-white text-center mb-4">Crear Cuenta</h3>
-            
+        <div class="vidrio card p-4" style="width: 100%; max-width: 450px;">
             <form id="formRegistro" novalidate>
+                <h3 class="form-title text-white text-center mb-4">Crear Cuenta</h3>
+
                 <div class="row g-2 mb-3">
                     <div class="col-6">
-                        <label class="lbl">Nombre</label>
-                        <input id="nombre" class="form-control bg-dark border-secondary text-white" placeholder="Ej: Juan">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input id="nombre" name="nombre" class="form-control" placeholder="Ej: Juan" required>
+                        <div class="invalid-feedback">
+                            Requerido
+                        </div>
                         <small class="text-danger d-none" id="e-nombre">Requerido</small>
                     </div>
                     <div class="col-6">
-                        <label class="lbl">Apellido</label>
-                        <input id="apellido" class="form-control bg-dark border-secondary text-white" placeholder="Ej: Pérez">
+                        <label class="form-label">Apellido</label>
+                        <input id="apellido" class="form-control" placeholder="Ej: Pérez">
                         <small class="text-danger d-none" id="e-apellido">Requerido</small>
                     </div>
                 </div>
                 
                 <div class="mb-3">
-                    <label class="lbl">Correo electrónico</label>
-                    <input id="email" type="email" class="form-control bg-dark border-secondary text-white" placeholder="tu@correo.com">
+                    <label class="form-label">Correo electrónico</label>
+                    <input id="email" type="email" class="form-control" placeholder="tu@correo.com">
                     <small class="text-danger d-none" id="e-email"></small>
                 </div>
                 
                 <div class="mb-3">
-                    <label class="lbl">Contraseña</label>
-                    <input id="pass" type="password" class="form-control bg-dark border-secondary text-white" placeholder="Mínimo 8, con letra y número">
+                    <label class="form-label">Contraseña</label>
+                    <input id="pass" type="password" class="form-control" placeholder="Mínimo 8, con letra y número">
                     <small class="text-danger d-none" id="e-pass">Mínimo 8 caracteres, con letra y número</small>
                 </div>
                 
                 <div class="mb-3">
-                    <label class="lbl">Confirmar contraseña</label>
-                    <input id="pass2" type="password" class="form-control bg-dark border-secondary text-white" placeholder="Repite tu contraseña">
+                    <label class="form-label">Confirmar contraseña</label>
+                    <input id="pass2" type="password" class="form-control" placeholder="Repite tu contraseña">
                     <small class="text-danger d-none" id="e-pass2">No coincide</small>
                 </div>
                 
