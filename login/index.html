@@ -17,7 +17,7 @@
     <!-- Estilos del Navbar y del Formulario de Contacto -->
     <link rel="stylesheet" href="./css/styles.css">
     <!-- Este es un parche cambiar a futuro en general -->
-    <link rel="stylesheet" href="/contacto/css/contacto2.css">
+    <!-- <link rel="stylesheet" href="/contacto/css/contacto2.css"> -->
 </head>
 
 <body>
@@ -27,32 +27,32 @@
 
     <!-- Contenedor principal centrado -->
     <main class="login container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
-        <div class="card p-4 card-apex" style="width: 100%; max-width: 400px;">
-            <h3 class="text-white text-center mb-1">Iniciar Sesión</h3>
-            <p class="text-secondary small text-center mb-4">Bienvenido de vuelta</p>
-
+        <div class="vidrio card p-4" style="width: 100%; max-width: 400px;">
             <form id="formLogin" novalidate>
+                <h3 class="form-title text-white mb-1">Iniciar Sesión</h3>
+                <p class="form-label small text-center mb-4">Bienvenido de vuelta</p>
+
                 <div class="mb-3">
-                    <label class="lbl">Correo electrónico</label>
-                    <input id="email" type="email" class="form-control bg-dark border-secondary text-white"
+                    <label class="form-label">Correo electrónico</label>
+                    <input id="email" type="email" class="form-control"
                         placeholder="tu@correo.com">
                 </div>
                 <div class="mb-2">
-                    <label class="lbl">Contraseña</label>
-                    <input id="pass" type="password" class="form-control bg-dark border-secondary text-white"
-                        placeholder="Tu contraseña">
+                    <label for="pass" class="form-label">Contraseña</label>
+                    <input id="pass" type="password" class="form-control"
+                        placeholder="Tu contraseña" required>
                 </div>
                 <small id="e-login" class="text-danger d-none mb-3 d-block" style="font-size: 11px;"></small>
 
-                <button type="submit" class="btn btn-light w-100 fw-bold mt-2">Entrar</button>
+                <button type="submit" class="btn-apex-primary w-100 fw-bold mt-2">Entrar</button>
             </form>
 
             <div class="d-flex justify-content-between mt-3">
-                <a href="/recuperar.html" class="small text-secondary text-decoration-none">¿Olvidaste tu
+                <a href="/recuperar.html" class="small text-white text-decoration-none">¿Olvidaste tu
                     contraseña?</a>
                 <a href="/registro/index.html" class="small text-white text-decoration-none">Crear cuenta</a>
             </div>
-            <a href="/index.html" class="small text-center text-secondary d-block mt-4 text-decoration-none">← Volver al
+            <a href="/index.html" class="small text-center text-white d-block mt-4 text-decoration-none">← Volver al
                 inicio</a>
         </div>
     </main>
