@@ -1,3 +1,99 @@
 @import url("/css/variables.css");
 @import url("/css/generales.css");
-@import url("/componentes/navbar/navbar.css")
+@import url("/componentes/navbar/navbar.css");
+
+
+
+/* estilos improvisados para probar las alertas*/
+
+.apex-toast-container {
+    position: fixed;
+    top: 105px;
+    right: 24px;
+    z-index: 1080;
+    max-width: 400px;
+    width: calc(100% - 48px);
+}
+
+.apex-alert {
+    background: rgba(10, 15, 40, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--apex-light);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    font-family: 'Lexend Deca', sans-serif;
+    animation: apexSlideIn 0.3s ease-out;
+}
+
+.apex-alert-success {
+    border: 1px solid rgba(137, 202, 217, 0.55);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(137, 202, 217, 0.2);
+}
+
+.apex-alert-error {
+    border: 1px solid rgba(220, 53, 69, 0.65);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(220, 53, 69, 0.2);
+}
+
+.apex-alert-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--apex-light);
+}
+
+.apex-alert-icon-success {
+    color: var(--apex-secondary);
+}
+
+.apex-alert-body {
+    font-size: 0.9rem;
+    color: var(--apex-accent);
+    line-height: 1.45;
+}
+
+.apex-alert-body strong {
+    color: var(--apex-light);
+}
+
+.apex-id-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #0c024e, #2515cc);
+    border: 1px solid rgba(137, 202, 217, 0.4);
+    color: var(--apex-light);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 2px 10px;
+    border-radius: 8px;
+}
+
+.apex-alert-close {
+    background: none;
+    border: none;
+    color: var(--apex-accent);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.apex-alert-close:hover {
+    color: var(--apex-secondary);
+}
+
+@keyframes apexSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
