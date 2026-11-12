@@ -52,7 +52,7 @@ export function validarProductoJSON(datos = {}) {
     const reglas = [
         { error: !datos.nombre?.trim() || datos.nombre.trim().length < 3, msg: 'El nombre debe tener al menos 3 caracteres.' },
         { error: !categoriaLimpia, msg: 'La categoría es obligatoria.' },
-        { error: !catPadreCalculada, msg: 'La categoría seleccionada no es válida.' },
+        { error: Boolean(categoriaLimpia) && !catPadreCalculada, msg: 'La categoría seleccionada no es válida.' },
         { error: !datos.marca?.trim(), msg: 'La marca es obligatoria.' },
         { error: !datos.modelo?.trim(), msg: 'El modelo es obligatorio.' },
         { error: !datos.descripcion?.trim() || datos.descripcion.trim().length < 10, msg: 'La descripción debe contener al menos 10 caracteres.' },
