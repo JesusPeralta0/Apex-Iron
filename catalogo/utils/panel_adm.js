@@ -27,18 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const icono = tipo === 'exito'
             ? '<i class="bi bi-check-circle-fill apex-alert-icon-success me-2"></i>'
             : '<i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>';
+        
+            const claseBootstrap = tipo === 'exito' ? 'alert-success' : 'alert-danger';
 
-        contenedorNotificaciones.innerHTML = `
-            <div class="apex-alert ${claseTipo}" role="alert">
-                <div class="apex-alert-header">
-                    <span>${icono}${titulo}</span>
-                    <button type="button" class="apex-alert-close" aria-label="Cerrar">&times;</button>
-                </div>
-                <div class="apex-alert-body">
-                    ${contenidoHTML}
-                </div>
-            </div>
-        `;
+           contenedorNotificaciones.innerHTML = `
+           <div class="alert ${claseBootstrap} apex-alert ${claseTipo}" role="alert">
+           <div class="apex-alert-header">
+           <span>${icono}${titulo}</span>
+           <button type="button" class="btn-close apex-alert-close" aria-label="Cerrar"></button>
+           </div>
+           <div class="apex-alert-body">
+            ${contenidoHTML}
+        </div>
+    </div>
+`;
+   
 
         const btnCerrar = contenedorNotificaciones.querySelector('.apex-alert-close');
         btnCerrar.addEventListener('click', () => {
