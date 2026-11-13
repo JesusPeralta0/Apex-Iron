@@ -84,7 +84,8 @@
 }
 
 /* Botón 1 */
-.hero .btn-hero {
+.hero .btn-hero,
+.guia-modal .btn-hero {
   font-family: inherit !important;
   font-size: 17px !important;
   font-weight: 600 !important;
@@ -96,8 +97,8 @@
   box-shadow: 0 4px 12px rgba(54, 53, 53, .5) !important;
   transition: transform .2s !important;
 }
-
-.hero .btn-hero:hover {
+.hero .btn-hero:hover,
+.guia-modal .btn-hero:hover {
   background: #89cad9 !important;
   color: #131111 !important;
   transform: translateY(-2px) !important;
