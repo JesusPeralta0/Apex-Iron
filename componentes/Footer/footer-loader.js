@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 2. Cargar el contenido HTML del footer y colocarlo en el contenedor
-    fetch("componentes/Footer/index.html")
+    fetch("/componentes/Footer/index.html")
         .then(response => {
             if (!response.ok) throw new Error("Error al cargar el componente del footer");
             return response.text();
