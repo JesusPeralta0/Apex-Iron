@@ -30,6 +30,45 @@
         background-color: transparent;
       }
 
+      .card-body {
+        padding: 1.5rem 1.75rem !important;
+      }
+
+      .card-title {
+        font-weight: 600;
+        margin-bottom: .9rem !important;
+      }
+
+      .card-subtitle {
+        padding-bottom: .9rem;
+        border-bottom: 1px solid rgba(137, 202, 217, .2);
+        margin-bottom: 1rem !important;
+        font-weight: 500;
+        font-size: .8rem !important;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #89cad9 !important;
+      }
+
+      .card-text {
+        font-weight: 400;
+        font-size: .9rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, .75) !important;
+      }
+
+      .card-body .fw-bold {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-top: .75rem;
+        margin-bottom: 1rem !important;
+      }
+
+      .card-btns {
+        gap: 1rem !important;
+      }
+
       .card-img {
         background-color: inherit;
 
