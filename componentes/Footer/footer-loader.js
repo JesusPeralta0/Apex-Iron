@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Inyectar automáticamente la hoja de estilos del footer en el <head>
-    if (!document.querySelector('link[href="css/footer.css"]')) {
+    if (!document.querySelector('link[href="/css/footer.css"]')) {
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = "css/footer.css";
+        link.href = "/css/footer.css";
         document.head.appendChild(link);
     }
 
