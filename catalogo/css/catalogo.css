@@ -11,7 +11,7 @@
   }
 
   .categoria {
-    
+
     z-index: 2;
     cursor: pointer;
     transition: color .3s;
@@ -24,14 +24,15 @@
 
   #productos {
     .producto-card {
-      min-width:min-content;
+      min-width: min-content;
 
       .card {
         background-color: transparent;
       }
-      
+
       .card-img {
         background-color: inherit;
+
         img {
           transition: transform .3s ease;
         }
@@ -52,6 +53,35 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
+      }
+
+      /*estilo de boton de comprar, se ajusta para que destaque en esta página*/
+      .card-btns .btn-apex-primary {
+        font-size: 1.15rem;
+        font-weight: 700;
+        padding: .75rem 2.75rem;
+        border: none !important;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #685abe, #2515cc) !important;
+        color: #fff;
+        box-shadow: 0 6px 18px rgba(37, 21, 204, .45);
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+
+      .card-btns .btn-apex-primary:hover {
+        background: #89cad9 !important;
+        color: #131111 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(137, 202, 217, .5);
+      }
+
+      .card-btns {
+        gap: .60rem !important;
+        flex-wrap: wrap;
+      }
+
+      .card-btns a {
+        white-space: nowrap;
       }
 
       .titulo-2l {
