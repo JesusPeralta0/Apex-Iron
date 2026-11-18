@@ -4,7 +4,7 @@
   .indicador {
     position: absolute;
     z-index: 1;
-    background: black;
+    background: linear-gradient(135deg, #32296b, #2515cc) !important;
     transition:
       left .3s ease,
       top .3s ease,
@@ -20,7 +20,7 @@
 
   .categoria.activa {
     cursor: default;
-    color: white;
+    color: #ffffff !important;
   }
 
   #productos {
@@ -35,6 +35,7 @@
 
       .card-body {
         padding: 1.5rem 1.75rem !important;
+        border-radius: 1.75rem !important;
       }
 
       .card-title {
