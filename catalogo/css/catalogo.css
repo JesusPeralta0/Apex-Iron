@@ -5,6 +5,9 @@
     position: absolute;
     z-index: 1;
     background: linear-gradient(135deg, #32296b, #2515cc) !important;
+    box-shadow:
+      0 0 12px rgba(137, 202, 217, .7),
+      0 0 28px rgba(137, 202, 217, .4);
     transition:
       left .3s ease,
       top .3s ease,
