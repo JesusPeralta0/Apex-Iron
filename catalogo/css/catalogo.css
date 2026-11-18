@@ -1,4 +1,6 @@
 .categorias {
+  padding-bottom: 5rem !important;
+
   .indicador {
     position: absolute;
     z-index: 1;
@@ -11,7 +13,6 @@
   }
 
   .categoria {
-
     z-index: 2;
     cursor: pointer;
     transition: color .3s;
@@ -23,6 +24,8 @@
   }
 
   #productos {
+    row-gap: 3.5rem !important;
+
     .producto-card {
       min-width: min-content;
 
@@ -65,81 +68,107 @@
         margin-bottom: 1rem !important;
       }
 
-      .card-btns {
-        gap: 1rem !important;
-      }
-
       .card-img {
         background-color: inherit;
-
-        img {
-          transition: transform .3s ease;
-        }
-
-        &:hover img {
-          transform: scale(1.02);
-        }
-
-        .img-fluid {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
+        margin-bottom: 3.25rem;
       }
 
-      .titulo-2l,
-      .descripcion-3l {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+      .card-img .carousel {
+        overflow: visible;
       }
 
-      /*estilo de boton de comprar, se ajusta para que destaque en esta página*/
-      .card-btns .btn-apex-primary {
-        font-size: 1.15rem;
-        font-weight: 700;
-        padding: .75rem 2.75rem;
-        border: none !important;
-        border-radius: 10px;
-        background: linear-gradient(135deg, #685abe, #2515cc) !important;
-        color: #fff;
-        box-shadow: 0 6px 18px rgba(37, 21, 204, .45);
-        transition: transform .2s ease, box-shadow .2s ease;
+      .card-img .carousel-indicators {
+        bottom: -1.75rem;
+        margin-bottom: 0;
       }
 
-      .card-btns .btn-apex-primary:hover {
-        background: #89cad9 !important;
-        color: #131111 !important;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(137, 202, 217, .5);
+      .card-img .carousel-indicators [data-bs-target] {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        margin: 0 5px;
       }
 
-      .card-btns {
-        gap: .60rem !important;
-        flex-wrap: wrap;
+      img {
+        transition: transform .3s ease;
       }
 
-      .card-btns a {
-        white-space: nowrap;
+      &:hover img {
+        transform: scale(1.02);
       }
 
-      .titulo-2l {
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        min-height: calc(2 * 1.2em);
+      .img-fluid {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
+    }
 
-      .descripcion-3l {
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
-        min-height: calc(3 * 1.5em);
-      }
+    .titulo-2l,
+    .descripcion-3l {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .titulo-2l {
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      min-height: calc(2 * 1.2em);
+    }
+
+    .descripcion-3l {
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      min-height: calc(3 * 1.5em);
+    }
+
+    .card-btns {
+      gap: 1rem !important;
+      flex-wrap: wrap;
+    }
+
+    .card-btns a {
+      white-space: nowrap;
+    }
+
+    /* Botón de comprar: se ajusta para que destaque en esta página */
+    .card-btns .btn-apex-primary {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: .75rem 2.75rem;
+      border: none !important;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #685abe, #2515cc) !important;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(37, 21, 204, .45);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card-btns .btn-apex-primary:hover {
+      background: #89cad9 !important;
+      color: #131111 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(137, 202, 217, .5);
+    }
+
+    .card-btns .btn-apex-secondary {
+      font-weight: 600;
+      padding: .6rem 1.5rem;
+      border-radius: 10px;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .card-btns .btn-apex-secondary:hover {
+      background-color: rgba(137, 202, 217, .15);
+      transform: translateY(-2px);
     }
   }
+}
 
-  @media (max-width: 450px) {
-    .card-btns {
-      flex-direction: column;
-    }
+@media (max-width: 450px) {
+  .card-btns {
+    flex-direction: column;
   }
 }
