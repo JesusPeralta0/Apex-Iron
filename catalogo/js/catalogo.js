@@ -17,9 +17,9 @@ window.addEventListener('resize', () => {
     moverIndicador(categoriaSeleccionada);
 });
 
-CATEGORIAS_SELECCIONABLES.forEach(categoria => 
+CATEGORIAS_SELECCIONABLES.forEach(categoria =>
     categoria.addEventListener('click', () => {
-        if(categoriaSeleccionada === categoria) return;
+        if (categoriaSeleccionada === categoria) return;
         categoriaSeleccionada.classList.remove('activa');
         categoria.classList.add('activa');
         moverIndicador(categoria);
@@ -29,11 +29,12 @@ CATEGORIAS_SELECCIONABLES.forEach(categoria =>
 
 function inyectarProductos() {
     const ESPACIO_PRODUCTOS = document.getElementById('productos');
-    
-    for(const PRODUCTO of productos) {
+    let htmlProductos = '';
+
+    for (const PRODUCTO of productos) {
         // <img class="rounded img-fluid align-content-center" src="${PRODUCTO.imagenes[0]}" alt="${PRODUCTO.nombre}" loading="lazy"></img>
-        let tarjetaProducto = 
-        `
+        let tarjetaProducto =
+            `
         <div class="producto-card col-12 col-md-6 col-lg-4" data-categoria="${PRODUCTO.categoriaPadre}">
             <div class="card h-100 p-2 border-0">
                 <div class="card-img d-flex ratio ratio-4x3">
@@ -73,9 +74,11 @@ function inyectarProductos() {
             </div>
         </div>
         `
-        ESPACIO_PRODUCTOS.innerHTML += tarjetaProducto;
+        htmlProductos += tarjetaProducto;
     }
+    ESPACIO_PRODUCTOS.innerHTML = htmlProductos;
 }
+
 
 inyectarProductos();
 
