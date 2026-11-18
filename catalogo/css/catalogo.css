@@ -1,13 +1,15 @@
 .categorias {
   padding-bottom: 5rem !important;
 
+  .titulo-seccion {
+    font-size: 50px;
+  }
+
   .indicador {
     position: absolute;
     z-index: 1;
-    background: linear-gradient(135deg, #32296b, #2515cc) !important;
-    box-shadow:
-      0 0 12px rgba(137, 202, 217, .7),
-      0 0 28px rgba(137, 202, 217, .4);
+    background: linear-gradient(135deg, #352f5f, #2515cc) !important;
+    box-shadow: 0 6px 18px rgba(154, 232, 250, 0.5);
     transition:
       left .3s ease,
       top .3s ease,
@@ -26,6 +28,11 @@
     color: #ffffff !important;
   }
 
+  .vidrio.rounded-pill {
+    box-shadow: 0 8px 24px rgba(137, 202, 217, .2) !important;
+    border: 1px solid rgba(137, 202, 217, .25) !important;
+  }
+
   #productos {
     row-gap: 3.5rem !important;
 
@@ -39,6 +46,7 @@
       .card-body {
         padding: 1.5rem 1.75rem !important;
         border-radius: 1.75rem !important;
+        box-shadow: 0 8px 28px rgba(137, 202, 217, .18) !important;
       }
 
       .card-title {
