@@ -15,6 +15,7 @@ document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
     const nombre = document.getElementById('nombre').value.trim();
     const apellido = document.getElementById('apellido').value.trim();
     const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
     const pass = document.getElementById('pass').value;
     const pass2 = document.getElementById('pass2').value;
 
@@ -37,6 +38,13 @@ document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
         const el = document.getElementById('e-email');
         el.textContent = 'Correo no válido';
         el.classList.remove('d-none');
+        ok = false;
+    }
+
+    // Validar teléfono
+    const telefonoRegex = /^\d{10}$/;
+    if (!telefonoRegex.test(telefono)) {
+        document.getElementById('e-telefono').classList.remove('d-none');
         ok = false;
     }
 
@@ -65,7 +73,7 @@ document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
     }
 
     // Guardar el nuevo usuario como cliente
-    usuarios.push({ nombre, apellido, email, pass, rol: 'cliente' });
+    usuarios.push({ nombre, apellido, telefono, email, pass, rol: 'cliente' });
     localStorage.setItem('apex_usuarios', JSON.stringify(usuarios));
 
     // Mostrar alerta de éxito (usando SweetAlert2 que ya tienes) y redirigir al Login
