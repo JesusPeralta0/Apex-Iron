@@ -61,7 +61,7 @@ function inyectarProductos() {
                 <!-- Texto -->
                 <div class="card-body rounded-bottom-3 vidrio rounded-3 p-3 d-flex flex-column">
                     <h3 class="card-title text-apex-secondary h5 text-center align-content-end titulo-2l">${PRODUCTO.nombre}</h3>
-                    <h4 class="card-subtitle text-apex-accent h6 mb-2 text-center text-muted">Algo sobre el producto</h4>
+                    <h4 class="card-subtitle text-apex-accent h6 mb-2 text-center text-muted">${PRODUCTO.marca ?? ''}</h4>
                     <p class="card-text text-apex-secondary descripcion-3l">${PRODUCTO.descripcion}</p>
                     <p class="text-apex-secondary fw-bold mb-3">\$${Number(PRODUCTO.precio).toLocaleString('es-MX')} MXN</p>
 
