@@ -1,0 +1,186 @@
+.categorias {
+  padding-bottom: 5rem !important;
+
+  .titulo-seccion {
+    font-size: 50px;
+  }
+
+  .indicador {
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(135deg, #352f5f, #2515cc) !important;
+    box-shadow: 0 6px 18px rgba(154, 232, 250, 0.5);
+    transition:
+      left .3s ease,
+      top .3s ease,
+      width .3s ease,
+      height .3s ease;
+  }
+
+  .categoria {
+    z-index: 2;
+    cursor: pointer;
+    transition: color .3s;
+  }
+
+  .categoria.activa {
+    cursor: default;
+    color: #ffffff !important;
+  }
+
+  .vidrio.rounded-pill {
+    box-shadow: 0 8px 24px rgba(137, 202, 217, .2) !important;
+    border: 1px solid rgba(137, 202, 217, .25) !important;
+  }
+
+  #productos {
+    row-gap: 3.5rem !important;
+
+    .producto-card {
+      min-width: min-content;
+
+      .card {
+        background-color: transparent;
+      }
+
+      .card-body {
+        padding: 1.5rem 1.75rem !important;
+        border-radius: 1.75rem !important;
+        box-shadow: 0 8px 28px rgba(137, 202, 217, .18) !important;
+      }
+
+      .card-title {
+        font-weight: 600;
+        margin-bottom: .9rem !important;
+      }
+
+      .card-subtitle {
+        padding-bottom: .9rem;
+        border-bottom: 1px solid rgba(137, 202, 217, .2);
+        margin-bottom: 1rem !important;
+        font-weight: 500;
+        font-size: .8rem !important;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #89cad9 !important;
+      }
+
+      .card-text {
+        font-weight: 400;
+        font-size: .9rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, .75) !important;
+      }
+
+      .card-body .fw-bold {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-top: .75rem;
+        margin-bottom: 1rem !important;
+      }
+
+      .card-img {
+        background-color: inherit;
+        margin-bottom: 3.25rem;
+      }
+
+      .card-img .carousel {
+        overflow: visible;
+      }
+
+      .card-img .carousel-indicators {
+        bottom: -1.75rem;
+        margin-bottom: 0;
+      }
+
+      .card-img .carousel-indicators [data-bs-target] {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        margin: 0 5px;
+      }
+
+      img {
+        transition: transform .3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.02);
+      }
+
+      .img-fluid {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .titulo-2l,
+    .descripcion-3l {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .titulo-2l {
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      min-height: calc(2 * 1.2em);
+    }
+
+    .descripcion-3l {
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      min-height: calc(3 * 1.5em);
+    }
+
+    .card-btns {
+      gap: 1rem !important;
+      flex-wrap: wrap;
+    }
+
+    .card-btns a {
+      white-space: nowrap;
+    }
+
+    /* Botón de comprar: se ajusta para que destaque en esta página */
+    .card-btns .btn-apex-primary {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: .75rem 2.75rem;
+      border: none !important;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #685abe, #2515cc) !important;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(37, 21, 204, .45);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card-btns .btn-apex-primary:hover {
+      background: #89cad9 !important;
+      color: #131111 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(137, 202, 217, .5);
+    }
+
+    .card-btns .btn-apex-secondary {
+      font-weight: 600;
+      padding: .6rem 1.5rem;
+      border-radius: 10px;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .card-btns .btn-apex-secondary:hover {
+      background-color: rgba(137, 202, 217, .15);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .card-btns {
+    flex-direction: column;
+  }
+}
