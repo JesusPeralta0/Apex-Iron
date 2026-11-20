@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <link rel="stylesheet" href="/componentes/navbar/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/perfil/css/styles.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Apex-Iron</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/res/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/res/logos/apex-simple.png">
+
+    <!-- Estilos externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://googleapis.com" rel="stylesheet">
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/perfil/css/styles.css">
+</head>
+<body>
+
+    <!-- Navbar dinámico -->
+    <div id="contenedor-navbar"></div>
+
+    <main class="perfil-main py-5">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Columna Izquierda: Datos del Usuario -->
+                <div class="col-lg-4">
+                    <div class="tarjeta-glass p-4 text-center h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="avatar-circulo mx-auto mb-3" id="perfil-iniciales">US</div>
+                            <h3 class="fw-bold mb-1" id="perfil-nombre">Cargando usuario...</h3>
+                            <p class="texto-secundario small mb-4" id="perfil-rol">Cliente Apex-Iron</p>
+
+                            <div class="text-start info-lista p-3 rounded-3 mb-4">
+                                <div class="mb-3">
+                                    <span class="etiqueta-dato d-block">Correo electrónico</span>
+                                    <span class="valor-dato" id="perfil-correo">usuario@correo.com</span>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="etiqueta-dato d-block">Teléfono</span>
+                                    <span class="valor-dato" id="perfil-telefono">No registrado</span>
+                                </div>
+                                <div>
+                                    <span class="etiqueta-dato d-block">Dirección de envío</span>
+                                    <span class="valor-dato" id="perfil-direccion">Sin dirección guardada</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-apex-gradiente" data-bs-toggle="modal" data-bs-target="#modalEditarPerfil">
+                                <i class="bi bi-pencil-square me-2"></i>Editar mis datos
+                            </button>
+                            <button type="button" class="btn btn-outline-danger rounded-3" id="btn-cerrar-sesion">
+                                <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Mis Compras y Pedidos -->
+                <div class="col-lg-8">
+                    <div class="tarjeta-glass p-4 h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <div>
+                                <h3 class="fw-bold mb-0">Mis Compras y Pedidos</h3>
+                                <p class="texto-secundario small mb-0">Historial de hardware y componentes adquiridos</p>
+                            </div>
+                            <span class="badge badge-total-pedidos px-3 py-2" id="contador-pedidos">0 pedidos</span>
+                        </div>
+
+                        <!-- Contenedor dinámico de pedidos -->
+                        <div id="contenedor-pedidos" class="d-flex flex-column gap-3">
+                            <!-- Aquí perfil.js inyectará las tarjetas de pedidos -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para editar datos del usuario -->
+    <div class="modal fade" id="modalEditarPerfil" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content tarjeta-glass text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold">Actualizar datos de perfil</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <form id="form-editar-perfil">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="edit-nombre" class="form-label small">Nombre completo</label>
+                            <input type="text" class="form-control input-apex" id="edit-nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-telefono" class="form-label small">Teléfono</label>
+                            <input type="tel" class="form-control input-apex" id="edit-telefono" placeholder="Ej. 55 1234 5678">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-direccion" class="form-label small">Dirección de envío</label>
+                            <textarea class="form-control input-apex" id="edit-direccion" rows="2" placeholder="Calle, número, colonia, alcaldía/municipio"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-apex-gradiente">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://jsdelivr.net"></script>
+    <script src="https://jsdelivr.net"></script>
+    <script src="/componentes/navbar/navbar.js"></script>
+    <script src="/perfil/js/perfil.js"></script>
+</body>
+</html>

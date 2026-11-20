@@ -1,0 +1,109 @@
+body {
+    background-color: #050816;
+    background-image: radial-gradient(circle at top right, #161f4d 0%, #050816 60%);
+    color: #ffffff;
+    font-family: 'Lexend Deca', 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+.tarjeta-glass {
+    background: rgba(13, 19, 51, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(99, 115, 255, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.avatar-circulo {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+}
+
+.texto-secundario {
+    color: #94a3b8;
+}
+
+.info-lista {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.etiqueta-dato {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.valor-dato {
+    font-size: 0.95rem;
+    color: #f8fafc;
+    font-weight: 500;
+}
+
+.btn-apex-gradiente {
+    background: linear-gradient(90deg, #1d4ed8 0%, #4338ca 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.65rem 1.2rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-apex-gradiente:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(67, 56, 202, 0.45);
+}
+
+.badge-total-pedidos {
+    background: rgba(67, 56, 202, 0.3);
+    border: 1px solid #4f46e5;
+    color: #c7d2fe;
+    font-weight: 500;
+}
+
+/* Tarjetas individuales de cada pedido */
+.pedido-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: border-color 0.2s ease;
+}
+
+.pedido-card:hover {
+    border-color: rgba(99, 115, 255, 0.5);
+}
+
+.producto-mini-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.5rem 0;
+}
+
+.producto-mini-item:last-child {
+    border-bottom: none;
+}
+
+.input-apex {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.input-apex:focus {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: #4f46e5;
+    color: #ffffff;
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
