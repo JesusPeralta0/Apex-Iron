@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex-Iron</title>
+
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/res/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/res/logos/apex-simple.png">
+
+    <!-- Estilos externos -->
+
+    <!-- Estilos nuestros -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <h1 class="visually-hidden">Panel de Administrador</h1>
+
+    <!-- Inyección automática de tu Navbar -->
+    <div id="contenedor-navbar"></div>
+
+    <!--FORMULARIO DE PANEL DE ADMINISTRADOR-->
+    <main class="contacto py-5">
+        <div class="container vidrio card" style="max-width: 1100px;">
+            <form id="formCrearProducto" class="row g-3 needs-validation p-4" novalidate>
+
+                <h2 class="form-title text-white text-center mb-4 col-12">Formulario Panel de Administrador</h2>
+
+                <!-- Fila 1: Título + Categoría -->
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label">Título:</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre de producto" required>
+                    <div class="invalid-feedback">Ingresa el título del producto.</div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="categoria" class="form-label">Categoría:</label>
+                    <select class="form-select" id="categoria" required>
+                        <option selected disabled value="">Selecciona una categoría</option>
+                        <option value="Componentes">Componentes</option>
+                        <option value="Almacenamiento">Almacenamiento</option>
+                        <option value="Conectividad">Conectividad</option>
+                        <option value="Accesorios para laptop">Accesorios para laptop</option>
+                        <option value="Laptops">Laptops</option>
+                        <option value="PCs">PCs</option>
+                        <option value="Perifericos">Periféricos</option>
+                        <option value="Audio y video">Audio y video</option>
+                    </select>
+                    <div class="invalid-feedback">Selecciona una categoría válida.</div>
+                </div>
+
+                <!-- Fila 2: Marca + Modelo -->
+                <div class="col-md-6">
+                    <label for="marca" class="form-label">Marca:</label>
+                    <input type="text" class="form-control" id="marca" required>
+                    <div class="invalid-feedback">Ingresa la marca.</div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="modelo" class="form-label">Modelo:</label>
+                    <input type="text" class="form-control" id="modelo" required>
+                    <div class="invalid-feedback">Ingresa el modelo.</div>
+                </div>
+
+                <!-- Fila 3: Descripción + Precio -->
+                <div class="col-md-6">
+                    <label for="descripcion" class="form-label">Descripción:</label>
+                    <textarea class="form-control" id="descripcion" name="mensaje" rows="3"
+                        placeholder="Descripción del producto"></textarea>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="precio" class="form-label">Precio:</label>
+                    <input type="text" class="form-control" id="precio" required>
+                    <div class="invalid-feedback">Ingresa el precio.</div>
+                </div>
+
+                <!-- Imágenes -->
+                <div class="col-12">
+                    <label for="formFileMultiple" class="form-label">Ingresar imágenes:</label>
+                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                </div>
+
+                <!-- Botón -->
+                <div class="col-12 text-center mt-4">
+                    <button class="btn btn-primary px-5" type="submit">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <!--Footer-->
+    <div id="footer-container"></div>
+    
+    <script src="./js/scripts.js" type="module"></script>
+</body>
+
+
+</html>

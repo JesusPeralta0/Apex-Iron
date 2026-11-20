@@ -1,0 +1,11 @@
+@import url("/css/vendor.css");
+@import url("/css/variables.css");
+@import url("/css/generales.css");
+@import url("/componentes/navbar/navbar.css");
+@import url("/componentes/Footer/footer.css");
+
+@import url("./hero.css");
+@import url("./categorias.css");
+@import url("./patrocinadores.css");
+@import url("./elegirnos.css");
+@import url("./aironcito.css");
