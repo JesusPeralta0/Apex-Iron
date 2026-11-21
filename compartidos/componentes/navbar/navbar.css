@@ -1,4 +1,8 @@
 /* css/navbar.css - APEX IRON */
+#contenedor-navbar {
+    min-height: 88px;
+    background: #000;
+}
 
 #navbarPrincipal {
     background-color: #000000;
@@ -19,8 +23,9 @@
 }
 
 #navbarPrincipal .nav-link.active {
-    font-weight: 600;
     color: var(--apex-secondary);
+    /*font-weight: 600;
+    color: var(--apex-secondary);*/
 }
 
 /* HOVER CELESTE - tu color */
@@ -86,14 +91,15 @@
 }
 
 
-/* =========================================
-   BUSCADOR (panel centrado tipo spotlight)
-   ========================================= */
+
 
 /* El offcanvas es transparente: solo se ve la tarjeta */
 #offcanvasBuscador {
+    width: 100%;
+    max-width: 100%;
     height: auto;
     max-height: 100vh;
+    max-height: 100dvh;
     background: transparent !important;
     border: 0;
     box-shadow: none;
@@ -111,6 +117,7 @@
 }
 
 .search-panel {
+    box-sizing: border-box;
     pointer-events: auto;
     width: min(680px, calc(100% - 24px));
     margin: 12vh auto 0;
@@ -127,6 +134,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
     padding: 0 12px 0 16px;
     background: #1f1f1f;
     border: 1px solid #333;
@@ -140,6 +148,7 @@
 }
 
 .search-box-icon {
+    flex-shrink: 0;
     filter: brightness(0) invert(1);
     opacity: 0.6;
 }
@@ -219,6 +228,7 @@
 /* Lista de resultados */
 .search-list {
     max-height: 50vh;
+    max-height: 50dvh;
     overflow-y: auto;
     padding-right: 2px;
 }
@@ -252,10 +262,12 @@
     font-size: 15px;
     font-weight: 500;
     line-height: 1.3;
+    overflow-wrap: anywhere;
 }
 
 .search-meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 8px;
     color: #9aa0a6;
@@ -311,8 +323,17 @@
 /* Móvil */
 @media (max-width: 576px) {
     .search-panel {
-        margin-top: 80px;
+        margin-top: 24px; /* deja lugar al teclado */
         padding: 12px;
+    }
+
+    .search-list {
+        max-height: 35vh;
+        max-height: 35dvh;
+    }
+
+    .search-chip {
+        padding: 9px 16px;
     }
 
     .search-close {
@@ -321,5 +342,17 @@
 
     .search-precio {
         font-size: 14px;
+    }
+}
+
+/* Celular en horizontal (poca altura) */
+@media (max-height: 500px) {
+    .search-panel {
+        margin-top: 8px;
+    }
+
+    .search-list {
+        max-height: 40vh;
+        max-height: 40dvh;
     }
 }
