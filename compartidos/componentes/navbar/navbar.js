@@ -1,18 +1,29 @@
 // 1. INYECCIÓN DEL COMPONENTE NAVBAR EN EL DOM
 
+// 1. INYECCIÓN DEL COMPONENTE NAVBAR EN EL DOM
+
+const contenedorNavbar = document.getElementById('contenedor-navbar');
+const navbarGuardado = sessionStorage.getItem('apex_navbar_html');
+
+function montarNavbar(html) {
+    if (contenedorNavbar) contenedorNavbar.innerHTML = html;
+    initNavbar();
+    retirarLinksCirculares();
+}
+
+// Si ya lo tenemos guardado, se muestra de inmediato
+if (navbarGuardado) montarNavbar(navbarGuardado);
+
 fetch('/componentes/navbar/navbar.html')
     .then(response => {
         if (!response.ok) throw new Error('La ruta a este componente no existe');
         return response.text();
     })
     .then(html => {
-        const contenedorNavbar = document.getElementById('contenedor-navbar');
-        if (contenedorNavbar) contenedorNavbar.innerHTML = html;
-        initNavbar();
-        retirarLinksCirculares();
+        sessionStorage.setItem('apex_navbar_html', html);
+        if (!navbarGuardado) montarNavbar(html);
     })
     .catch(error => console.error('Hubo un problema al inyectar el navbar:', error));
-
 
 // 2. BUSCADOR APEX-IRON
 
@@ -133,7 +144,18 @@ function initNavbar() {
 
     // Listeners
     searchInput?.addEventListener('input', hacerBusqueda);
+// Placeholder corto en celular para que no se corte
+const mqMovil = window.matchMedia('(max-width: 576px)');
 
+function ajustarPlaceholder() {
+    if (!searchInput) return;
+    searchInput.placeholder = mqMovil.matches
+        ? 'Buscar producto o marca...'
+        : 'Busca un producto, marca o categoría...';
+}
+
+ajustarPlaceholder();
+mqMovil.addEventListener('change', ajustarPlaceholder);
     // Enter abre el primer resultado
     searchInput?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
