@@ -80,6 +80,7 @@ function inyectarProductos() {
 }
 
 inyectarProductos();
+
 // Conectar botones "Comprar" del catálogo con el carrito global del navbar
 document.getElementById('productos')?.addEventListener('click', (e) => {
     const botonComprar = e.target.closest('.btn-comprar');

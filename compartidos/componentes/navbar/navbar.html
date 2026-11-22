@@ -20,16 +20,13 @@
                         <img src="/res/iconos/usuario.svg" alt="Usuario" width="24" height="24">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" id="menuUsuario" aria-labelledby="dropdownPerfil">
-
                         <!-- Vista Administrador siempre visible -->
                         <li>
                             <a class="dropdown-item" href="/panel_admin/" id="nav-admin">
                                 <img src="/res/iconos/usuario.svg" width="16"> Vista Administrador
                             </a>
                         </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li><hr class="dropdown-divider"></li>
 
                         <!-- Opciones cuando NO hay sesión iniciada -->
                         <li id="opcion-login">
@@ -66,21 +63,15 @@
     </nav>
 
     <!-- BUSCADOR - VA FUERA DEL NAV -->
-    <div class="offcanvas offcanvas-top offcanvas-apex" tabindex="-1" id="offcanvasBuscador"
-        style="background-color: #1a1a1a; color: white;">
-        <div class="offcanvas-body">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5 class="text-white mb-0">¿Qué estás buscando?</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasBuscador" aria-label="Buscador de productos">
+        <div class="offcanvas-body p-0">
+            <div class="search-panel">
+                <div class="search-box">
+                    <img src="/res/iconos/lupa.svg" alt="" width="20" height="20" class="search-box-icon">
+            <input type="text" id="searchInput" enterkeyhint="search" autocapitalize="off" placeholder="Busca un producto, marca o categoría..." autocomplete="off">
+                    <button type="button" class="search-close" data-bs-dismiss="offcanvas" aria-label="Cerrar">Esc</button>
                 </div>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input type="text" id="searchInput" class="form-control"
-                        placeholder="Ej: cpu, laptop, teclado, nvidia...">
-                    <button class="btn btn-light" id="btnBuscar">Buscar</button>
-                </div>
-                <div id="searchResults" class="mt-3 small"></div>
+                <div id="searchResults"></div>
             </div>
         </div>
     </div>
