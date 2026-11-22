@@ -22,8 +22,8 @@
 }
 
 .footer-col {
-  flex: 1;
-  min-width: 280px;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 /* --- primera columna --- */
@@ -158,12 +158,10 @@
 
 /* Botones de redes sociales */
 .social-icons {
-  
   display: flex;
   gap: 12px;
   margin-bottom: 18px;
 }
-
 
 .social-btn {
   width: 38px;
@@ -173,7 +171,7 @@
   align-items: center;
   justify-content: center;
   font-size: 2.00rem;
-  color:#ffffff;
+  color: #ffffff;
   text-decoration: none;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
@@ -246,16 +244,18 @@
   color: #ffffff;
 }
 
-/* --- diseño responsivo --- */
-@media (max-width: 900px) {
+/* --- diseño responsivo CORREGIDO --- */
+@media (max-width: 1024px) {
   .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 35px;
   }
 
   .footer-col {
     width: 100%;
+    max-width: 420px;
     min-width: 0;
   }
 
@@ -266,15 +266,51 @@
   }
 
   .school-banner {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .robot-img {
+    width: 85px;
   }
 
   .speech-bubble::before {
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 8px 10px 8px;
-    border-color: transparent transparent #0099ff transparent;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    border-width: 8px 10px 8px 0;
+    border-color: transparent #0099ff transparent transparent;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .promo-img {
+    width: 150px;
+  }
+
+  .promo-title {
+    font-size: 18pt;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-footer {
+    padding: 25px 16px 14px;
+  }
+
+  .robot-img {
+    width: 70px;
+  }
+
+  .promo-title {
+    font-size: 16pt;
+  }
+
+  .footer-logo img {
+    width: 170px;
   }
 }
 
