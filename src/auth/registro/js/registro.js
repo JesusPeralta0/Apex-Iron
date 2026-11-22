@@ -7,6 +7,8 @@
 //     this.classList.add('was-validated');
 // });
 
+import { Swal } from '/js/vendor.js';
+
 
 document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
     e.preventDefault();

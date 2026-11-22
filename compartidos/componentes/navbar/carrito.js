@@ -1,3 +1,5 @@
+import { Swal } from '/js/vendor.js';
+
 // =========================================================
 // LÓGICA DEL CARRITO DE COMPRAS (OFFCANVAS NAVBAR)
 // =========================================================
@@ -41,6 +43,19 @@ export function initCarrito() {
         pedidosGuardados.push(nuevoPedido);
         localStorage.setItem('apex_pedidos', JSON.stringify(pedidosGuardados));
 
+        if (typeof Swal !== 'undefined') {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                icon: 'success',
+                title: `Se han comprado los productos guardados en el carrito`,
+                showConfirmButton: false,
+                timer: 7200,
+                background: '#0d1333',
+                color: '#ffffff'
+            });
+        }
+        
         carrito = [];
         guardarCarrito();
 
@@ -118,7 +133,10 @@ window.agregarAlCarrito = function (producto) {
 
     guardarCarrito();
 
+    console.log("A punto de sweet");
+    console.log(typeof Swal !== 'undefined')
     if (typeof Swal !== 'undefined') {
+        console.log("Hay sweet");
         Swal.fire({
             toast: true,
             position: 'bottom-end',
