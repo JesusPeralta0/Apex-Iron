@@ -1,0 +1,21 @@
+@import url("/css/vendor.css");
+@import url("/css/variables.css");
+@import url("/css/generales.css");
+@import url("/componentes/navbar/navbar.css");
+@import url("/componentes/Footer/footer.css");
+
+main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
+    url("/res/fondos/fondo_acercanosotros.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
