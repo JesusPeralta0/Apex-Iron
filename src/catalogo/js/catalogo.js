@@ -52,7 +52,7 @@ function inyectarProductos() {
                         <div class="carousel-inner h-100">
                         ${PRODUCTO.imagenes.map((src, i) => `
                             <div class="carousel-item h-100 ${i === 0 ? "active" : ""}">
-                            <img class="rounded img-fluid" src="${src}" alt="${PRODUCTO.nombre} ${i + 1}" loading="lazy">
+                            <img class="rounded img-fluid mx-auto d-block" src="${src}" alt="${PRODUCTO.nombre} ${i + 1}" loading="lazy">
                             </div>`).join('')}
                         </div>
                     </div>
