@@ -79,7 +79,8 @@ document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
     localStorage.setItem('apex_usuarios', JSON.stringify(usuarios));
 
     // Mostrar alerta de éxito (usando SweetAlert2 que ya tienes) y redirigir al Login
-    if (window.Swal) {
+    if (typeof Swal !== 'undefined') {
+        console.log("swal")
         Swal.fire({
             icon: 'success',
             title: '¡Cuenta creada!',
