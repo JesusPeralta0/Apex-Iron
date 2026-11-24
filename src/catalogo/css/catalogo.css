@@ -31,10 +31,14 @@
   .vidrio.rounded-pill {
     box-shadow: 0 8px 24px rgba(137, 202, 217, .2) !important;
     border: 1px solid rgba(137, 202, 217, .25) !important;
+    margin-bottom: 0 !important;
   }
 
   #productos {
     row-gap: 3.5rem !important;
+    /* ===== AQUÍ ESTÁ EL ARREGLO DE LA 1ERA FILA ===== */
+    /* padding sí se respeta, margin a veces se lo come el navegador */
+    padding-top: 3.5rem !important;
 
     .producto-card {
       min-width: min-content;
@@ -80,18 +84,42 @@
         margin-bottom: 1rem !important;
       }
 
+      /* ===== IMÁGENES CENTRADAS, SIN ENCIMARSE Y CON CARRUSEL ===== */
       .card-img {
         background-color: inherit;
         margin-bottom: 3.25rem;
+        height: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
       }
 
       .card-img .carousel {
+        width: 100%;
+        height: 100%;
         overflow: visible;
+      }
+
+      .card-img .carousel-inner {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .card-img .carousel-item {
+        height: 100%;
+      }
+
+      .card-img .carousel-item.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .card-img .carousel-indicators {
         bottom: -1.75rem;
         margin-bottom: 0;
+        z-index: 5;
       }
 
       .card-img .carousel-indicators [data-bs-target] {
@@ -111,9 +139,13 @@
       }
 
       .img-fluid {
-        width: 100%;
-        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
         object-fit: contain;
+        display: block;
+        margin: 0 auto;
       }
     }
 
@@ -182,5 +214,13 @@
 @media (max-width: 450px) {
   .card-btns {
     flex-direction: column;
+  }
+
+  .categorias #productos .producto-card .card-img {
+    height: 210px;
+  }
+
+  .categorias #productos {
+    padding-top: 2.5rem !important;
   }
 }

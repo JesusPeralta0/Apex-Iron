@@ -52,23 +52,23 @@ function inyectarProductos() {
                         <div class="carousel-inner h-100">
                         ${PRODUCTO.imagenes.map((src, i) => `
                             <div class="carousel-item h-100 ${i === 0 ? "active" : ""}">
-                            <img class="rounded img-fluid" src="${src}" alt="${PRODUCTO.nombre} ${i + 1}" loading="lazy">
+                            <img class="rounded img-fluid mx-auto d-block" src="${src}" alt="${PRODUCTO.nombre} ${i + 1}" loading="lazy">
                             </div>`).join('')}
                         </div>
                     </div>
 
                 </div>
                 
-                <!-- Texto -->
+                               <!-- Texto -->
                 <div class="card-body rounded-bottom-3 vidrio rounded-3 p-3 d-flex flex-column">
                     <h3 class="card-title text-apex-secondary h5 text-center align-content-end titulo-2l">${PRODUCTO.nombre}</h3>
                     <h4 class="card-subtitle text-apex-accent h6 mb-2 text-center text-muted">${PRODUCTO.marca ?? ''}</h4>
                     <p class="card-text text-apex-secondary descripcion-3l">${PRODUCTO.descripcion}</p>
-                    <p class="text-apex-secondary fw-bold mb-3">\$${Number(PRODUCTO.precio).toLocaleString('es-MX')} MXN</p>
+                    <p class="text-apex-secondary fw-bold text-center mb-3">\$${Number(PRODUCTO.precio).toLocaleString('es-MX')} MXN</p>
 
-                    <div class="card-btns mt-auto d-flex gap-3 align-items-center justify-content-center">
-                        <a href="/catalogo/producto/?id=${PRODUCTO.id}" class="btn-apex-secondary text-apex-secondary text-decoration-none">Más información</a>
-                        <a href="#" class="btn-apex-primary text-decoration-none">Comprar</a>
+                    <div class="card-btns mt-auto d-flex flex-column gap-2 align-items-center justify-content-center w-100">
+                        <a href="/catalogo/producto/?id=${PRODUCTO.id}" class="btn-apex-secondary text-apex-secondary text-decoration-none text-center w-75">Más información</a>
+                        <a href="#" class="btn-apex-primary text-decoration-none text-center w-75 btn-comprar" data-id="${PRODUCTO.id}">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -80,3 +80,23 @@ function inyectarProductos() {
 }
 
 inyectarProductos();
+
+// Conectar botones "Comprar" del catálogo con el carrito global del navbar
+document.getElementById('productos')?.addEventListener('click', (e) => {
+    const botonComprar = e.target.closest('.btn-comprar');
+    if (!botonComprar) return;
+
+    e.preventDefault(); // Evita que el href="#" brinque la página hacia arriba
+
+    const idProducto = botonComprar.getAttribute('data-id');
+    const productoEncontrado = productos.find(p => String(p.id) === String(idProducto));
+
+    if (productoEncontrado && typeof window.agregarAlCarrito === 'function') {
+        window.agregarAlCarrito({
+            id: productoEncontrado.id,
+            nombre: productoEncontrado.nombre,
+            precio: productoEncontrado.precio,
+            imagen: productoEncontrado.imagenes?.[0] || '/res/logos/apex-simple.png'
+        });
+    }
+});

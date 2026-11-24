@@ -6,31 +6,45 @@ const ID = params.get('id');
 const PRODUCTO = productos.find(p => p.id === ID);
 
 function renderProducto(producto) {
-  if(!producto) {
-    document.getElementById('producto').innerHTML = `
-      <div class="container text-center">
-        <h1 class="text-apex-secondary">Producto no encontrado</h1>
-        <a href="../" class="btn btn-apex-primary">Volver al catálogo</a>
-      </div>`;
-    return;
-  }
+    if (!producto) {
+        document.getElementById('producto').innerHTML = `
+        <div class="container text-center">
+            <h1 class="text-apex-secondary">Producto no encontrado</h1>
+            <a href="./../" class="btn btn-apex-primary">Volver al catálogo</a>
+        </div>`;
+        return;
+    }
 
-  const descripcion = producto.descripcion ?? producto.descripcion ?? "";
-  const imagenes = (producto.imagenes) ?? [];
+    const descripcion = producto.descripcion ?? producto.descripcion ?? "";
+    const imagenes = (producto.imagenes) ?? [];
 
-  document.title = PRODUCTO.nombre;
+    document.title = PRODUCTO.nombre;
 
-  document.getElementById('p-nombre').textContent      = producto.nombre;
-  document.getElementById('p-precio').textContent      = `Adquiere este producto por $${Number(producto.precio).toLocaleString('es-MX')} MXN`;
-  document.getElementById('p-marca').textContent       = `MARCA: ${producto.marca}`;
-  document.getElementById('p-modelo').textContent      = `MODELO: ${producto.modelo}`;
-  document.getElementById('p-descripcion').textContent = descripcion;
+    document.getElementById('p-nombre').textContent = producto.nombre;
+    document.getElementById('p-precio').textContent = `Adquiere este producto por $${Number(producto.precio).toLocaleString('es-MX')} MXN`;
+    document.getElementById('p-marca').textContent = `MARCA: ${producto.marca}`;
+    document.getElementById('p-modelo').textContent = `MODELO: ${producto.modelo}`;
+    document.getElementById('p-descripcion').textContent = descripcion;
 
-  // Galería: slides
-  document.getElementById('p-galeria').innerHTML = imagenes.map((src, i) => `
+    // Galería: slides
+    document.getElementById('p-galeria').innerHTML = imagenes.map((src, i) => `
     <div class="carousel-item h-100 ${i === 0 ? "active" : ""}">
-      <img class="rounded img-fluid h-100" src="${src}" alt="${producto.nombre} ${i + 1}" loading="lazy">
+      <img class="rounded img-fluid h-100 mx-auto d-block" src="${src}" alt="${producto.nombre} ${i + 1}" loading="lazy">
     </div>`).join('');
 }
 
 renderProducto(PRODUCTO);
+
+
+document.getElementById('btn-comprar').addEventListener('click', (e) => {
+    e.preventDefault(); // Evita que el href="#" brinque la página hacia arriba
+
+    if (typeof window.agregarAlCarrito === 'function') {
+        window.agregarAlCarrito({
+            id: PRODUCTO.id,
+            nombre: PRODUCTO.nombre,
+            precio: PRODUCTO.precio,
+            imagen: PRODUCTO.imagenes?.[0] || '/res/logos/apex-simple.png'
+        });
+    }
+});

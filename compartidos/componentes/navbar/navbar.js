@@ -1,4 +1,4 @@
-// 1. INYECCIÓN DEL COMPONENTE NAVBAR EN EL DOM
+import { initCarrito, renderizarCarrito } from './carrito.js';
 
 // 1. INYECCIÓN DEL COMPONENTE NAVBAR EN EL DOM
 
@@ -144,18 +144,18 @@ function initNavbar() {
 
     // Listeners
     searchInput?.addEventListener('input', hacerBusqueda);
-// Placeholder corto en celular para que no se corte
-const mqMovil = window.matchMedia('(max-width: 576px)');
+    // Placeholder corto en celular para que no se corte
+    const mqMovil = window.matchMedia('(max-width: 576px)');
 
-function ajustarPlaceholder() {
-    if (!searchInput) return;
-    searchInput.placeholder = mqMovil.matches
-        ? 'Buscar producto o marca...'
-        : 'Busca un producto, marca o categoría...';
-}
+    function ajustarPlaceholder() {
+        if (!searchInput) return;
+        searchInput.placeholder = mqMovil.matches
+            ? 'Buscar producto o marca...'
+            : 'Busca un producto, marca o categoría...';
+    }
 
-ajustarPlaceholder();
-mqMovil.addEventListener('change', ajustarPlaceholder);
+    ajustarPlaceholder();
+    mqMovil.addEventListener('change', ajustarPlaceholder);
     // Enter abre el primer resultado
     searchInput?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -231,6 +231,9 @@ mqMovil.addEventListener('change', ajustarPlaceholder);
 
     // Ejecutar al cargar el navbar
     renderizarMenuUsuario();
+
+    initCarrito();
+    renderizarCarrito();
 }
 
 function retirarLinksCirculares() {

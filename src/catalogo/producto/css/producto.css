@@ -2,4 +2,37 @@
     .sticky {
         top: 20vh !important;
     }
+
+    /* Botón de comprar: igual al de producto. */
+    /* Discutir con el equipo si podríamos considerar una hoja de estilos para únicamente botones */
+    .btn-apex-primary {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: .75rem 2.75rem;
+      border: none !important;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #685abe, #2515cc) !important;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(37, 21, 204, .45);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn-apex-primary:hover {
+      background: #89cad9 !important;
+      color: #131111 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(137, 202, 217, .5);
+    }
+
+    .btn-apex-secondary {
+      font-weight: 600;
+      padding: .6rem 1.5rem;
+      border-radius: 10px;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .btn-apex-secondary:hover {
+      background-color: rgba(137, 202, 217, .15);
+      transform: translateY(-2px);
+    }
 }
