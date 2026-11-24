@@ -346,14 +346,49 @@ function inicializarProductos() {
 
 export const productos = inicializarProductos();
 
-//añadimos producto a la lista y añadimos validaciones
-export function addProduct(item) {
-    productos.push(item);
+// guardo los cambios de la lista en localstorage mientras conecto el backend con mysql
+function guardarProductosEnStorage(lista) {
     if (typeof localStorage !== 'undefined') {
         try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(productos));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
         } catch (error) {
             console.error('Error al guardar en localStorage (posible límite de almacenamiento excedido):', error);
         }
     }
+}
+
+// devuelvo los productos actuales cargados desde localstorage o el arreglo base
+export function getProducts() {
+    return productos;
+}
+
+// añado un producto nuevo a la lista y lo persisto en localstorage
+export function addProduct(item) {
+    productos.push(item);
+    guardarProductosEnStorage(productos);
+}
+
+// actualizo un producto existente en localstorage sin tocar el arreglo base
+export function updateProduct(id, datosActualizados) {
+    const indice = productos.findIndex(item => item.id === id);
+    if (indice === -1) return null;
+
+    productos[indice] = {
+        ...productos[indice],
+        ...datosActualizados,
+        id: productos[indice].id
+    };
+
+    guardarProductosEnStorage(productos);
+    return productos[indice];
+}
+
+// elimino un producto del localstorage sin modificar el arreglo base
+export function deleteProduct(id) {
+    const indice = productos.findIndex(item => item.id === id);
+    if (indice === -1) return null;
+
+    const [eliminado] = productos.splice(indice, 1);
+    guardarProductosEnStorage(productos);
+    return eliminado;
 }
