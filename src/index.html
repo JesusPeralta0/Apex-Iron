@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex-Iron</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/res/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/res/logos/apex-simple.png">
+
+    <!-- Estilos externos -->
+    <!--agrego las google fonts para cumplir 1 a 1 con lo propuesto en el wireframe que enviamos-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Tipografía Lexend Deca -->
+
+    <!-- Estilos nuestros -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <!--Componente Navbar-->
+    <div id="contenedor-navbar"></div>
+
+    <main>
+        <!-- Hero Carrusel -->
+        <section class="hero py-4 d-flex align-items-center">
+            <div class="container">
+                <div class="hero-caja p-4 p-lg-2">
+                    <div class="row align-items-center">
+                        <!--columna izquierda:titulo y cuerpo-->
+                        <div class="col-lg-6">
+                            <h2 class="hero-titulo">Lleva tu rendimiento al siguiente nivel</h2>
+                            <p class="hero-texto">Encuentra el hardware que necesitas o arma tu setup ideal desde cero
+                            </p>
+                            <!--botones hero-->
+                            <div class="hero-botones">
+                                <a href="/catalogo/" class="btn btn-hero">Ver equipos</a>
+                                <button type="button" id="btnGuia" class="btn btn-hero-sec">¿Cómo armar mi
+                                    equipo?</button>
+                            </div>
+                        </div>
+                        <!--columna derecha:carrusel-->
+                        <div class="col-lg-6">
+                            <div id="carruselEquipos" class="carousel slide" data-bs-ride="carousel">
+                                <!-- Puntitos de abajo -->
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carruselEquipos" data-bs-slide-to="0"
+                                        class="active" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carruselEquipos" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carruselEquipos" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <!-- Imágenes -->
+                                <div class="carousel-inner rounded-4">
+                                    <div class="carousel-item active">
+                                        <img src="/res/productos/pc.png" class="d-block w-100" alt="PC ">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="/res/productos/monitor.png" class="d-block w-100" alt="monitor">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="/res/productos/ventilador.png" class="d-block w-100" alt="ventilador">
+                                    </div>
+                                </div>
+                                <!-- Flechas -->
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carruselEquipos"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carruselEquipos"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="categorias container my-5">
+                <div class="text-center mb-4 header-apex">
+                    <h4 class="fs-1 header-apex">Categorías</h4>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-md-4">
+                        <div class="card card-category h-100">
+                            <img src="/res/productos/cpu.jpg" class="card-img-top"
+                                alt="Un CPU de gran calidad instalado" loading="lazy">
+
+                            <div class="card-body">
+                                <h5 class="card-title header-apex">Componentes de alto rendimiento</h5>
+                                <p class="card-text">
+                                    Procesadores, Tarjetas de Video y Memorias RAM para máxima velocidad
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card card-category h-100">
+                            <img src="/res/productos/laptop.jpg" class="card-img-top"
+                                alt="Una laptop de alta gama abriéndose" loading="lazy">
+
+                            <div class="card-body">
+                                <h5 class="card-title header-apex">Laptops y Equipos Armados</h5>
+                                <p class="card-text">
+                                    Poder portátil y computadoras listas para trabajar o jugar
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card card-category h-100">
+                            <img src="/res/productos/teclado.jpg" class="card-img-top" alt="Un teclado con luces led"
+                                loading="lazy">
+
+                            <div class="card-body">
+                                <h5 class="card-title header-apex">Periféricos y Accesorios</h5>
+                                <p class="card-text">
+                                    Teclados mecánicos, mouses de alta precisión y monitores de alta definición
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patrocinadores  -->
+        <section id="patrocinadores" class="patrocinadores py-4">
+            <div class="container-fluid">
+                <div class="marcas-track">
+                    <!-- Primera vuelta -->
+                    <img src="/res/patrocinadores/nvidia.png" alt="Logo NVIDIA" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/adata.png" alt="Logo ADATA" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/asus.png" alt="Logo ASUS" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/intel.png" alt="Logo Intel" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/kingston.png" alt="Logo Kingston" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/amd.png" alt="Logo AMD" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/corsair.png" alt="Logo CORSAIR" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/logitech.png" alt="Logo Logitech" class="logo-patrocinador">
+
+                    <!-- Segunda vuelta -->
+                    <img src="/res/patrocinadores/nvidia.png" alt="Logo NVIDIA" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/adata.png" alt="Logo ADATA" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/asus.png" alt="Logo ASUS" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/intel.png" alt="Logo Intel" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/kingston.png" alt="Logo Kingston" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/amd.png" alt="Logo AMD" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/corsair.png" alt="Logo CORSAIR" class="logo-patrocinador">
+                    <img src="/res/patrocinadores/logitech.png" alt="Logo Logitech" class="logo-patrocinador">
+                </div>
+            </div>
+        </section>
+
+        <section class="elegirnos" id="elegirnos">
+
+            <div class="elegirnos-contenedor">
+
+                <h2 class="elegirnos-titulo">
+                    ¿Por qué elegirnos?
+                </h2>
+
+                <div class="elegirnos-beneficios">
+
+                    <article class="beneficio-card">
+
+                        <div class="beneficio-icono">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+
+                        <h3>Garantía Local Inmediata</h3>
+
+                        <p>
+                            Todos nuestros componentes son
+                            100% originales, con respaldo
+                            directo del fabricante.
+                        </p>
+
+                    </article>
+
+                    <!-- BENEFICIO 2 -->
+                    <article class="beneficio-card">
+
+                        <div class="beneficio-icono">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
+
+                        <h3>Envíos Asegurados</h3>
+
+                        <p>
+                            Tu hardware viaja protegido
+                            y asegurado contra cualquier
+                            incidente de transporte.
+                        </p>
+
+                    </article>
+
+                    <!-- BENEFICIO 3 -->
+                    <article class="beneficio-card">
+
+                        <div class="beneficio-icono">
+                            <i class="bi bi-headset"></i>
+                        </div>
+
+                        <h3>Soporte Experto</h3>
+
+                        <p>
+                            ¿Dudas con la compatibilidad?
+                            Nuestro equipo de especialistas
+                            te asesora en tiempo real.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="aironcito">
+            <div class="aironcito-container">
+                <div class="aironcito-speech-bubble">
+                    <h2>¡Hola! ¡Soy Aironcito!</h2>
+                    <p>¿Tienes dudas sobre cómo armar tu computadora?</p>
+                    <p>¡Estoy para ayudarte!</p>
+                </div>
+
+                <div class="aironcito-image-wrapper">
+                    <img src="/res/miscelaneo/ironcito-waving.webp" alt="Aironcito Robot" class="aironcito-img" />
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer-->
+    <div id="footer-container"></div>
+
+    <!--Modal para botón secundario sección hero-->
+    <div class="modal fade" id="modalGuia" tabindex="-1" aria-labelledby="tituloGuia" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content guia-modal">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="tituloGuia">Guía para armar tu PC</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="res/infografias/info_armatupc.png" class="img-fluid rounded-3"
+                        alt="Infografía con los pasos básicos para armar una PC">
+                    <a href="/catalogo/" class="btn btn-hero mt-3">Ver Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scripts externos -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- scripts nuestros -->
+    <script src="./js/scripts.js" type="module"></script>
+    </main>
+</body>
+
+</html>
