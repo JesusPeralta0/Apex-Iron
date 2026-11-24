@@ -1,6 +1,12 @@
 import test, { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { crearProductoController } from './productoController.js';
+import {
+    crearProductoController,
+    actualizarProductoController,
+    eliminarProductoController,
+    obtenerProductosController,
+    normalizarCategoria
+} from './productoController.js';
 
 describe('pruebas de test runner para productoController', () => {
 
@@ -35,6 +41,52 @@ describe('pruebas de test runner para productoController', () => {
         assert.equal(resultado.exito, false);
         assert.equal(resultado.producto, null);
         assert.ok(resultado.errores.length > 0);
+    });
+
+    it('normalizo categorias del catalogo para que coincidan con el select del formulario', () => {
+        assert.equal(normalizarCategoria('componentes'), 'Componentes');
+        assert.equal(normalizarCategoria('accesorios-laptop'), 'Accesorios para laptop');
+        assert.equal(normalizarCategoria('perifericos'), 'Perifericos');
+        assert.equal(normalizarCategoria('Audio y video'), 'Audio y video');
+    });
+
+    it('actualizo un producto existente con datos validos', () => {
+        const primero = obtenerProductosController()[0];
+        const resultado = actualizarProductoController(primero.id, {
+            nombre: 'Procesador AMD Ryzen 5 7600 Editado',
+            categoria: 'Componentes',
+            marca: 'AMD',
+            modelo: 'Ryzen 5 7600',
+            descripcion: 'Descripcion actualizada con mas de diez caracteres',
+            precio: 4299,
+            imagenes: primero.imagenes
+        });
+
+        assert.equal(resultado.exito, true);
+        assert.equal(resultado.producto.id, primero.id);
+        assert.equal(resultado.producto.nombre, 'Procesador AMD Ryzen 5 7600 Editado');
+        assert.equal(resultado.producto.precio, 4299);
+    });
+
+    it('elimino un producto existente y dejo de encontrarlo en la lista actual', () => {
+        const creado = crearProductoController({
+            nombre: 'Mouse de prueba para eliminar',
+            categoria: 'Perifericos',
+            marca: 'Logitech',
+            modelo: 'Test-01',
+            descripcion: 'Producto temporal creado para validar la eliminacion',
+            precio: 599,
+            imagenes: ['/res/productos/teclado.jpg']
+        });
+
+        const resultado = eliminarProductoController(creado.producto.id);
+
+        assert.equal(resultado.exito, true);
+        assert.equal(resultado.producto.id, creado.producto.id);
+        assert.equal(
+            obtenerProductosController().some(item => item.id === creado.producto.id),
+            false
+        );
     });
 
 });
