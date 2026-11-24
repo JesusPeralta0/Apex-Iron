@@ -35,15 +35,18 @@
                 <p class="form-label small text-center mb-4">Bienvenido de vuelta</p>
 
                 <div class="mb-3">
-                    <label class="form-label">Correo electrónico</label>
-                    <input id="email" type="email" class="form-control"
-                        placeholder="tu@correo.com">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input id="email" type="email" class="form-control" placeholder="tu@correo.com" required>
+                    <div class="invalid-feedback" id="err-email"></div>
                 </div>
+
                 <div class="mb-2">
                     <label for="pass" class="form-label">Contraseña</label>
-                    <input id="pass" type="password" class="form-control"
-                        placeholder="Tu contraseña" required>
+                    <input id="pass" type="password" class="form-control" placeholder="Tu contraseña" required>
+                    <div class="invalid-feedback" id="err-pass"></div>
                 </div>
+
+                <!-- Error general de login (ej. credenciales incorrectas o red) -->
                 <small id="e-login" class="text-danger d-none mb-3 d-block" style="font-size: 11px;"></small>
 
                 <button type="submit" class="btn-apex-primary w-100 fw-bold mt-2">Entrar</button>
@@ -59,7 +62,7 @@
         </div>
     </main>
 
-      <!-- Footer-->
+    <!-- Footer-->
     <div id="footer-container"></div>
     <script src="/componentes/Footer/footer-loader.js"></script>
 
