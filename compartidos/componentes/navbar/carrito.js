@@ -46,7 +46,7 @@ export function initCarrito() {
         if (typeof Swal !== 'undefined') {
             Swal.fire({
                 toast: true,
-                position: 'bottom-end',
+                position: 'bottom',
                 icon: 'success',
                 title: `Se han comprado los productos guardados en el carrito`,
                 showConfirmButton: false,
@@ -133,13 +133,10 @@ window.agregarAlCarrito = function (producto) {
 
     guardarCarrito();
 
-    console.log("A punto de sweet");
-    console.log(typeof Swal !== 'undefined')
     if (typeof Swal !== 'undefined') {
-        console.log("Hay sweet");
         Swal.fire({
             toast: true,
-            position: 'bottom-end',
+            position: 'bottom',
             icon: 'success',
             title: `${producto.nombre} agregado al carrito`,
             showConfirmButton: false,
