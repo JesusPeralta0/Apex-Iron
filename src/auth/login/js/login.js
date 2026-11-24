@@ -35,8 +35,7 @@ document.getElementById('formLogin')?.addEventListener('submit', (e) => {
 });
 
 
-
-//validacion-login
+// validacion froms 
 const formLogin = document.getElementById("formLogin");
 const emailInput = document.getElementById("email");
 const passInput = document.getElementById("pass");

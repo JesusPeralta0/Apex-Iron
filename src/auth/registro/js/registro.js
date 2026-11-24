@@ -93,7 +93,7 @@ document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
 });
 
 
-// validacion registro
+//validacion forms
 const formRegistro = document.getElementById("formRegistro");
 const camposRegistro = Array.from(formRegistro.querySelectorAll("input"));
 const passEl = document.getElementById("pass");
