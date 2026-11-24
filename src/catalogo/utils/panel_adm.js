@@ -157,6 +157,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (productoSeleccionadoInfo) {
             productoSeleccionadoInfo.classList.add('d-none');
         }
+        if (productoSeleccionadoId) {
+            productoSeleccionadoId.textContent = '';
+        }
+        if (productoSeleccionadoNombre) {
+            productoSeleccionadoNombre.textContent = '';
+        }
         if (avisoSeleccionar) {
             avisoSeleccionar.classList.toggle('d-none', modoActual !== 'modificar');
         }
@@ -490,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarNotificacion({
                 tipo: 'exito',
                 titulo: 'Producto eliminado',
-                contenidoHTML: `<strong>${escaparHTML(respuesta.producto.nombre)}</strong> (<span class="apex-id-badge">${escaparHTML(respuesta.producto.id)}</span>) se eliminó del almacenamiento local.`,
+                contenidoHTML: `<strong>${escaparHTML(respuesta.producto.nombre)}</strong> (<span class="apex-id-badge">${escaparHTML(respuesta.producto.id)}</span>) se eliminó del catálogo.`,
                 autoCerrar: true
             });
             if (buscadorProducto) {
@@ -548,23 +554,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const respuesta = actualizarProductoController(idProductoSeleccionado, payloadEdicion);
 
                 if (respuesta.exito) {
-                    imagenesActuales = [...respuesta.producto.imagenes];
-                    inputImagenes.value = '';
-                    if (productoSeleccionadoNombre) {
-                        productoSeleccionadoNombre.textContent = respuesta.producto.nombre;
-                    }
-                    if (buscadorProducto) {
-                        buscadorProducto.value = respuesta.producto.nombre;
-                        actualizarBotonLimpiarBusqueda();
-                    }
-                    renderizarImagenesActuales();
-
                     mostrarNotificacion({
                         tipo: 'exito',
                         titulo: 'Producto actualizado',
                         contenidoHTML: `<strong>${escaparHTML(respuesta.producto.nombre)}</strong> (<span class="apex-id-badge">${escaparHTML(respuesta.producto.id)}</span>) se actualizó correctamente.`,
                         autoCerrar: true
                     });
+                    if (buscadorProducto) {
+                        buscadorProducto.value = '';
+                        actualizarBotonLimpiarBusqueda();
+                    }
+                    cerrarDropdownBuscador();
+                    limpiarSeleccionProducto();
                 } else {
                     mostrarNotificacion({
                         tipo: 'error',
