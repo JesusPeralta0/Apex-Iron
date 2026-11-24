@@ -1,5 +1,18 @@
+// 1. INYECCIÓN DEL COMPONENTE NAVBAR EN EL DOM
 
 // 1. INYECCIÓN DEL COMPONENTE NAVBAR EN EL DOM
+
+const contenedorNavbar = document.getElementById('contenedor-navbar');
+const navbarGuardado = sessionStorage.getItem('apex_navbar_html');
+
+function montarNavbar(html) {
+    if (contenedorNavbar) contenedorNavbar.innerHTML = html;
+    initNavbar();
+    retirarLinksCirculares();
+}
+
+// Si ya lo tenemos guardado, se muestra de inmediato
+if (navbarGuardado) montarNavbar(navbarGuardado);
 
 fetch('/componentes/navbar/navbar.html')
     .then(response => {
@@ -7,134 +20,175 @@ fetch('/componentes/navbar/navbar.html')
         return response.text();
     })
     .then(html => {
-        const contenedorNavbar = document.getElementById('contenedor-navbar');
-        if (contenedorNavbar) contenedorNavbar.innerHTML = html;
-        initNavbar();
-        retirarLinksCirculares();
+        sessionStorage.setItem('apex_navbar_html', html);
+        if (!navbarGuardado) montarNavbar(html);
     })
     .catch(error => console.error('Hubo un problema al inyectar el navbar:', error));
 
-
-// 2. BUSCADOR INTELIGENTE APEX-IRON
+// 2. BUSCADOR APEX-IRON
 
 function initNavbar() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    const btnBuscar = document.getElementById('btnBuscar');
     const offcanvasBuscador = document.getElementById('offcanvasBuscador');
 
-    const productosIndex = [
-        { nombre: 'Componentes de alto rendimiento', keywords: 'cpu procesador tarjeta video ram nvidia intel amd', el: '.card-category:nth-child(1)' },
-        { nombre: 'Laptops y Equipos Armados', keywords: 'laptop pc equipo armado computadora', el: '.categorias .col-md-4:nth-child(2)' },
-        { nombre: 'Periféricos y Accesorios', keywords: 'perifericos teclado mouse monitor accesorios', el: '.categorias .col-md-4:nth-child(3)' },
-        { nombre: 'Garantía Local', keywords: 'garantia', el: '#elegirnos' },
-        { nombre: 'Envíos Asegurados', keywords: 'envios', el: '#elegirnos' },
-    ];
+    const SUGERENCIAS = ['Procesador', 'Tarjeta de video', 'Memoria RAM', 'Teclado', 'Mouse', 'Monitor'];
 
-    function hacerBusqueda() {
+    const CATEGORIAS = {
+        'componentes': 'Componentes',
+        'accesorios-laptop': 'Laptops y accesorios',
+        'perifericos': 'Periféricos'
+    };
+
+    // Cache de productos
+    let productosCache = null;
+
+    async function obtenerProductos() {
+        if (productosCache) return productosCache;
+        try {
+            const modulo = await import('/catalogo/utils/productos.js');
+            productosCache = modulo.productos;
+        } catch (err) {
+            console.error('No se pudieron cargar los productos:', err);
+            productosCache = [];
+        }
+        return productosCache;
+    }
+
+    // Quita acentos y mayúsculas: "Audífonos" coincide con "audifonos"
+    function normalizar(str) {
+        return (str ?? '')
+            .toString()
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function escaparHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str ?? '';
+        return div.innerHTML;
+    }
+
+    // Texto donde se busca (sin la descripción, para evitar resultados irrelevantes)
+    // y alias para que "nvidia", "cpu" o "ram" funcionen
+    function textoBuscable(p) {
+        let texto = normalizar(`${p.nombre} ${p.marca} ${p.modelo} ${CATEGORIAS[p.categoria] ?? p.categoria}`);
+        if (texto.includes('geforce') || texto.includes('rtx')) texto += ' nvidia gpu grafica';
+        if (texto.includes('ryzen') || texto.includes('procesador')) texto += ' cpu';
+        if (texto.includes('tarjeta de video')) texto += ' gpu grafica';
+        if (texto.includes('memoria ram')) texto += ' ram';
+        if (texto.includes('audifonos')) texto += ' headset auriculares';
+        if (texto.includes('bocinas')) texto += ' altavoces speakers';
+        return texto;
+    }
+
+    function mostrarSugerencias() {
+        searchResults.innerHTML = `
+            <p class="search-label">Sugerencias</p>
+            <div class="search-chips">
+                ${SUGERENCIAS.map(s => `<button type="button" class="search-chip" data-q="${escaparHTML(s)}">${escaparHTML(s)}</button>`).join('')}
+            </div>
+        `;
+    }
+
+    async function hacerBusqueda() {
         if (!searchInput || !searchResults) return;
 
-        const q = searchInput.value.toLowerCase().trim();
+        const valor = searchInput.value.trim();
 
-        if (!q) {
-            document.querySelectorAll('.card-category').forEach(c => {
-                c.style.opacity = '1';
-                c.style.border = 'none';
-            });
-            searchResults.textContent = '';
+        if (!valor) {
+            mostrarSugerencias();
             return;
         }
 
-        const esInicio = document.querySelector('.card-category') !== null;
-        if (!esInicio) {
-            const destino = window.location.pathname.includes('catalogo')
-                ? `${window.location.pathname}?q=${encodeURIComponent(q)}`
-                : `/?q=${encodeURIComponent(q)}#categorias`;
+        const palabras = normalizar(valor).split(/\s+/).filter(Boolean);
+        const productos = await obtenerProductos();
 
-            if (window.location.pathname.includes('catalogo')) {
-                filtrarCatalogo(q);
-            } else {
-                window.location.href = destino;
-            }
+        // Todas las palabras deben coincidir
+        const coincidencias = productos.filter(p => {
+            const texto = textoBuscable(p);
+            return palabras.every(w => texto.includes(w));
+        });
+
+        if (coincidencias.length === 0) {
+            searchResults.innerHTML = `
+                <div class="search-empty">
+                    <p class="mb-1">No encontramos resultados para "<b>${escaparHTML(valor)}</b>"</p>
+                    <p class="mb-0">Prueba con otra palabra o una marca.</p>
+                </div>
+            `;
             return;
         }
 
-        let encontrados = 0;
-        const cards = document.querySelectorAll('.card-category');
-
-        cards.forEach((card, index) => {
-            const productoData = productosIndex[index];
-            const keywords = productoData ? productoData.keywords : '';
-            const texto = (card.innerText + ' ' + keywords).toLowerCase();
-
-            if (texto.includes(q)) {
-                card.style.opacity = '1';
-                card.style.border = '2px solid #00d1ff';
-                encontrados++;
-            } else {
-                card.style.opacity = '0.3';
-                card.style.border = 'none';
-            }
-        });
-
-        if (q.includes('garantia') || q.includes('envios')) {
-            const elegirnos = document.querySelector('#elegirnos');
-            if (elegirnos) {
-                encontrados++;
-                elegirnos.style.border = '2px solid #00d1ff';
-                setTimeout(() => elegirnos.style.border = 'none', 2000);
-            }
-        }
-
-        if (encontrados > 0) {
-            searchResults.innerHTML = `Se encontraron <b class="text-white">${encontrados}</b> resultados para "${q}"`;
-            document.querySelector('.categorias')?.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            searchResults.innerHTML = `No hay resultados para "${q}". Prueba con: cpu, laptop, teclado...`;
-        }
+        searchResults.innerHTML = `
+            <p class="search-label">${coincidencias.length} resultado${coincidencias.length > 1 ? 's' : ''}</p>
+            <ul class="list-unstyled search-list mb-0">
+                ${coincidencias.slice(0, 8).map(p => `
+                    <li>
+                        <a href="/catalogo/producto/?id=${encodeURIComponent(p.id)}" class="search-item">
+                            <span class="search-info">
+                                <span class="search-nombre">${escaparHTML(p.nombre)}</span>
+                                <span class="search-meta">
+                                    ${escaparHTML(p.marca)}
+                                    <span class="search-tag">${escaparHTML(CATEGORIAS[p.categoria] ?? p.categoria)}</span>
+                                </span>
+                            </span>
+                            <span class="search-precio">$${Number(p.precio).toLocaleString('es-MX')}</span>
+                        </a>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
     }
 
-    function filtrarCatalogo(q) {
-        let encontrados = 0;
-        document.querySelectorAll('.card, .producto-card, [data-producto]').forEach(card => {
-            if (card.closest('#navbarPrincipal') || card.closest('footer') || card.classList.contains('card-category')) return;
-            const coincide = card.innerText.toLowerCase().includes(q);
-            card.style.display = coincide ? '' : 'none';
-            if (coincide) encontrados++;
-        });
-        if (searchResults) {
-            searchResults.innerHTML = encontrados > 0
-                ? `Se encontraron <b class="text-white">${encontrados}</b> productos para "${q}"`
-                : `No hay resultados para "${q}". Prueba con: cpu, laptop, teclado...`;
-        }
-    }
-
-    // Configurar los listeners
+    // Listeners
     searchInput?.addEventListener('input', hacerBusqueda);
-    btnBuscar?.addEventListener('click', hacerBusqueda);
-    searchInput?.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') hacerBusqueda();
+// Placeholder corto en celular para que no se corte
+const mqMovil = window.matchMedia('(max-width: 576px)');
+
+function ajustarPlaceholder() {
+    if (!searchInput) return;
+    searchInput.placeholder = mqMovil.matches
+        ? 'Buscar producto o marca...'
+        : 'Busca un producto, marca o categoría...';
+}
+
+ajustarPlaceholder();
+mqMovil.addEventListener('change', ajustarPlaceholder);
+    // Enter abre el primer resultado
+    searchInput?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const primero = searchResults?.querySelector('.search-item');
+            if (primero) primero.click();
+        }
     });
 
+    // Clic en una sugerencia
+    searchResults?.addEventListener('click', (e) => {
+        const chip = e.target.closest('.search-chip');
+        if (!chip) return;
+        searchInput.value = chip.dataset.q;
+        hacerBusqueda();
+        searchInput.focus();
+    });
+
+    // Al abrir: enfocar y mostrar sugerencias
+    offcanvasBuscador?.addEventListener('shown.bs.offcanvas', () => {
+        searchInput?.focus();
+    });
+    offcanvasBuscador?.addEventListener('show.bs.offcanvas', () => {
+        if (searchResults) mostrarSugerencias();
+    });
+
+    // Limpiar al cerrar
     offcanvasBuscador?.addEventListener('hidden.bs.offcanvas', () => {
         if (searchInput) searchInput.value = '';
-        document.querySelectorAll('.card-category').forEach(c => {
-            c.style.opacity = '1';
-            c.style.border = 'none';
-        });
-        if (searchResults) searchResults.textContent = '';
+        if (searchResults) searchResults.innerHTML = '';
     });
 
-    // Comprobar parámetros de URL al iniciar
-    function checkQueryURL() {
-        const params = new URLSearchParams(window.location.search);
-        const q = params.get('q');
-        if (q && searchInput) {
-            searchInput.value = q;
-        }
-    }
 
-    // CONTROL DINÁMICO DEL MENÚ DE USUARIO (APEX-IRON)
+    // 3. CONTROL DINÁMICO DEL MENÚ DE USUARIO (APEX-IRON)
 
     function renderizarMenuUsuario() {
         const menu = document.getElementById('menuUsuario');
@@ -153,14 +207,14 @@ function initNavbar() {
     `;
 
         if (!user) {
-            // NO LOGUEADO: Muestra Admin + Iniciar Sesión + Crear Cuenta
+            // NO LOGUEADO: Admin + Iniciar Sesión + Crear Cuenta
             menu.innerHTML = `
             ${adminItem}
             <li><a class="dropdown-item text-white" href="/auth/login/" style="font-size:14px;">Iniciar Sesión</a></li>
             <li><a class="dropdown-item text-white" href="/auth/registro/" style="font-size:14px;">Crear Cuenta</a></li>
         `;
         } else {
-            // LOGUEADO: Muestra Admin + Mi Perfil + Cerrar Sesión
+            // LOGUEADO: Admin + Mi Perfil + Cerrar Sesión
             menu.innerHTML = `
             ${adminItem}
             <li><a class="dropdown-item text-white" href="/perfil/" style="font-size:14px;">Mi Perfil</a></li>
@@ -183,7 +237,6 @@ function retirarLinksCirculares() {
     const currentPath = window.location.pathname;
 
     document.querySelectorAll("#navbarPrincipal a").forEach(link => {
-        console.log(currentPath)
         const href = new URL(link.href, location.origin).pathname;
 
         if (href === currentPath) {

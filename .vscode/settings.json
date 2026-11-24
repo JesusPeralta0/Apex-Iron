@@ -7,5 +7,6 @@
     ["/css", "./compartidos/css"],
     ["/js", "./compartidos/js"],
     ["/componentes", "./compartidos/componentes"],
+    ["/agente-ironcito", "./agente-ironcito"]
   ]
 }

@@ -91,3 +91,109 @@ document.getElementById('formRegistro')?.addEventListener('submit', (e) => {
         window.location.href = '../login/';
     }
 });
+
+
+//validacion forms
+const formRegistro = document.getElementById("formRegistro");
+const camposRegistro = Array.from(formRegistro.querySelectorAll("input"));
+const passEl = document.getElementById("pass");
+const pass2El = document.getElementById("pass2");
+const telEl = document.getElementById("telefono");
+
+function mostrarErrorCampo(input, mensaje) {
+    const errorEl = document.getElementById(`e-${input.id}`);
+    const tieneError = Boolean(mensaje);
+
+    input.classList.toggle("is-invalid", tieneError);
+    if (errorEl) {
+        if (mensaje) errorEl.textContent = mensaje;
+        errorEl.classList.toggle("d-none", !tieneError);
+    }
+}
+
+function validarCampoRegistro(input) {
+    const valor = input.value.trim();
+    let mensaje = "";
+
+    switch (input.id) {
+        case "nombre":
+        case "apellido":
+            if (!valor) mensaje = "Requerido";
+            break;
+
+        case "email":
+            if (!valor) {
+                mensaje = "Ingresa tu correo electrónico";
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
+                mensaje = "Ingresa un correo electrónico válido";
+            }
+            break;
+
+        case "telefono": {
+            const soloDigitos = input.value.replace(/\D/g, "");
+            if (!/^\d{10}$/.test(soloDigitos)) {
+                mensaje = "Ingresa un número de teléfono válido de 10 dígitos";
+            }
+            break;
+        }
+
+        case "pass": {
+            const cumpleLongitudYTipo = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(input.value);
+            if (!input.value) {
+                mensaje = "Ingresa una contraseña";
+            } else if (!cumpleLongitudYTipo) {
+                mensaje = "Mínimo 8 caracteres, con letra y número";
+            }
+            break;
+        }
+
+        case "pass2":
+            if (!input.value) {
+                mensaje = "Confirma tu contraseña";
+            } else if (input.value !== passEl.value) {
+                mensaje = "No coincide";
+            }
+            break;
+    }
+
+    mostrarErrorCampo(input, mensaje);
+    return !mensaje;
+}
+
+camposRegistro.forEach((input) => {
+    input.addEventListener("blur", () => {
+        input.dataset.touched = "true";
+        validarCampoRegistro(input);
+
+        // Si cambia "pass" y el usuario ya tocó "pass2", revalida coincidencia
+        if (input.id === "pass" && pass2El.dataset.touched === "true") {
+            validarCampoRegistro(pass2El);
+        }
+    });
+
+    input.addEventListener("input", () => {
+        if (input.dataset.touched === "true") {
+            validarCampoRegistro(input);
+
+            if (input.id === "pass" && pass2El.dataset.touched === "true") {
+                validarCampoRegistro(pass2El);
+            }
+        }
+    });
+});
+
+formRegistro.addEventListener("submit", (e) => {
+    let todoValido = true;
+
+    camposRegistro.forEach((input) => {
+        input.dataset.touched = "true";
+        const ok = validarCampoRegistro(input);
+        if (!ok) todoValido = false;
+    });
+
+    if (!todoValido) {
+        e.preventDefault();
+        const primerInvalido = formRegistro.querySelector(".is-invalid");
+        if (primerInvalido) primerInvalido.focus();
+    }
+});
