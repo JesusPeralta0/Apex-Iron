@@ -17,6 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
             const container = document.getElementById("footer-container");
             if (container) {
                 container.innerHTML = html;
+
+                const schoolBanner = container.querySelector(".school-banner");
+                if (schoolBanner && !schoolBanner.dataset.ironcitoBound) {
+                    schoolBanner.dataset.ironcitoBound = "true";
+                    schoolBanner.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        const prompt =
+                            schoolBanner.dataset.ironcitoPrompt || "Quiero aprender sobre computadoras";
+
+                        const openEvent = new CustomEvent("ironcito:open", {
+                            cancelable: true,
+                            detail: { prompt },
+                        });
+                        document.dispatchEvent(openEvent);
+
+                        // si ironcito aun no se habia montado lo importa y abre con la accion
+                        if (!openEvent.defaultPrevented) {
+                            import("/agente-ironcito/js/ironcito-agente.js")
+                                .then((mod) => mod.initIroncito?.()?.openWithPrompt(prompt))
+                                .catch(() => {});
+                        }
+                    });
+                }
             }
         })
         .catch(error => console.error("Hubo un problema al inyectar el footer:", error));
