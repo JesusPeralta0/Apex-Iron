@@ -22,3 +22,11 @@
   transform: scale(1.01);
   box-shadow: 0 15px 35px #093b9997, 0 -15px 35px #89cad9a0;
 }
+
+/* Enlaces de las tarjetas de categorías */
+.categorias .categoria-inicio-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none !important;
+}
