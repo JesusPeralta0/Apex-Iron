@@ -64,6 +64,23 @@ function injectStyles() {
   });
 }
 
+// espera a que la imagen del boton cargue y se decodifique antes de mostrarla
+function waitForImage(img) {
+  if (!img) return Promise.resolve();
+  const decodeSafe = () =>
+    typeof img.decode === 'function' ? img.decode().catch(() => {}) : Promise.resolve();
+
+  if (img.complete) {
+    return img.naturalWidth > 0 ? decodeSafe() : Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    const finish = () => decodeSafe().finally(resolve);
+    img.addEventListener('load', finish, { once: true });
+    img.addEventListener('error', resolve, { once: true });
+  });
+}
+
 // inicializa y monta el widget de ironcito una sola vez en el documento
 export function initIroncito() {
   if (widgetInstance || document.getElementById('ironcito-widget-root')) {
@@ -76,15 +93,10 @@ export function initIroncito() {
     sleepingAvatarUrl: CONFIG.sleepingAvatarUrl,
     flyingAvatarUrl: CONFIG.flyingAvatarUrl,
   });
-  // oculto mientras no hay estilos
-  root.style.display = 'none';
-  document.body.appendChild(root);
-  stylesReady.then(() => {
-    root.style.display = '';
-  });
 
   // referencias del dom encapsulado
   const fabBtn = root.querySelector('#ironcito-chat-btn');
+  const fabImg = root.querySelector('.ironcito-fab-img');
   const overlay = root.querySelector('#ironcito-overlay');
   const modalEl = root.querySelector('#ironcito-modal');
   const flyerEl = root.querySelector('#ironcito-flyer');
@@ -95,6 +107,25 @@ export function initIroncito() {
   const formEl = root.querySelector('#ironcito-form');
   const inputEl = root.querySelector('#ironcito-input');
   const sendBtn = root.querySelector('#ironcito-send-btn');
+
+  // oculta el widget hasta cargar estilos y el boton hasta decodificar su imagen
+  root.style.display = 'none';
+  fabBtn.classList.add('ironcito-fab--pending');
+  document.body.appendChild(root);
+
+  const fabImageReady = waitForImage(fabImg);
+
+  stylesReady.then(() => {
+    root.style.display = '';
+  });
+
+  Promise.all([stylesReady, fabImageReady]).then(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        fabBtn.classList.remove('ironcito-fab--pending');
+      });
+    });
+  });
 
   // estado interno del chat
   let sessionId = getSessionId();
