@@ -4,6 +4,15 @@
     background: #000;
 }
 
+/* mantiene el navbar y el carrito por encima del boton flotante */
+#contenedor-navbar.sticky-top {
+    z-index: 1020 !important;
+}
+
+#contenedor-navbar:has(.offcanvas.show, .offcanvas.showing) {
+    z-index: 1045 !important;
+}
+
 #navbarPrincipal {
     background-color: #000000;
     font-family: 'Lexend Deca', sans-serif;
@@ -33,10 +42,24 @@
     color: var(--apex-secondary);
 }
 
+/* alinea verticalmente los iconos y el contenedor del menu de perfil */
+.visual-icons .dropdown {
+    display: flex;
+    align-items: center;
+}
+
 .visual-icons .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
     filter: brightness(0) invert(1);
     text-decoration: none;
     transition: opacity 0.2s;
+}
+
+.visual-icons .icon-btn img {
+    display: block;
 }
 
 .visual-icons .icon-btn:hover {
@@ -320,8 +343,90 @@
     border-radius: 3px;
 }
 
+/* ajustes del navbar en tablet y movil */
+@media (max-width: 991.98px) {
+    #contenedor-navbar {
+        min-height: 68px;
+    }
+
+    #navbarPrincipal {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .logo-navbar {
+        height: 58px !important;
+    }
+
+    #navbarPrincipal .navbar-collapse {
+        margin-top: 0.5rem;
+        padding: 0.75rem 0 0.5rem;
+        border-top: 1px solid #222;
+    }
+
+    #navbarPrincipal .navbar-nav {
+        gap: 0.25rem !important;
+        align-items: center;
+    }
+
+    #navbarPrincipal .nav-link {
+        font-size: 17px;
+        padding: 0.45rem 0.75rem;
+    }
+}
+
 /* Móvil */
 @media (max-width: 576px) {
+    /* mantiene logo, iconos y menu en una sola fila en pantallas pequenas */
+    #contenedor-navbar {
+        min-height: 58px;
+    }
+
+    #navbarPrincipal {
+        padding: 0.35rem 0.75rem !important;
+    }
+
+    #navbarPrincipal > .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #navbarPrincipal .navbar-brand {
+        margin-right: 0.5rem;
+        padding: 0;
+    }
+
+    .logo-navbar {
+        height: 46px !important;
+        max-width: 125px;
+    }
+
+    #navbarPrincipal .visual-icons {
+        gap: 0.75rem !important;
+        flex-shrink: 0;
+    }
+
+    #navbarPrincipal .visual-icons .icon-btn img {
+        width: 22px;
+        height: 22px;
+    }
+
+    #navbarPrincipal .navbar-toggler {
+        margin-left: 0.65rem !important;
+        padding: 0.25rem 0.45rem;
+        font-size: 1rem;
+        flex-shrink: 0;
+        border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    #navbarPrincipal .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.15rem rgba(137, 202, 217, 0.35);
+    }
+
+    #navbarPrincipal .nav-link {
+        font-size: 16px;
+    }
+
     .search-panel {
         margin-top: 24px; /* deja lugar al teclado */
         padding: 12px;
@@ -347,6 +452,46 @@
 
 /* Celular en horizontal (poca altura) */
 @media (max-height: 500px) {
+    /* compacta el navbar y permite desplazar los menus en poca altura */
+    #contenedor-navbar {
+        min-height: 52px;
+    }
+
+    #navbarPrincipal {
+        padding: 0.25rem 0.75rem !important;
+    }
+
+    .logo-navbar {
+        height: 40px !important;
+    }
+
+    #navbarPrincipal .navbar-collapse {
+        max-height: calc(100vh - 56px);
+        max-height: calc(100dvh - 56px);
+        overflow-y: auto;
+        margin-top: 0.35rem;
+        padding: 0.4rem 0;
+    }
+
+    #navbarPrincipal .nav-link {
+        font-size: 15px;
+        padding: 0.3rem 0.65rem;
+    }
+
+    #menuUsuario {
+        max-height: calc(100vh - 60px);
+        max-height: calc(100dvh - 60px);
+        overflow-y: auto;
+    }
+
+    #offcanvasCarrito .offcanvas-header {
+        padding: 0.65rem 1rem;
+    }
+
+    #offcanvasCarrito .offcanvas-body {
+        padding: 0.75rem 1rem;
+    }
+
     .search-panel {
         margin-top: 8px;
     }
