@@ -47,13 +47,21 @@ function injectStyles() {
     document.head.appendChild(fontLink);
   }
 
-  if (!document.getElementById(WIDGET_STYLESHEET_ID)) {
-    const cssLink = document.createElement('link');
+  let cssLink = document.getElementById(WIDGET_STYLESHEET_ID);
+  if (!cssLink) {
+    cssLink = document.createElement('link');
     cssLink.id = WIDGET_STYLESHEET_ID;
     cssLink.rel = 'stylesheet';
     cssLink.href = CONFIG.stylesUrl;
     document.head.appendChild(cssLink);
   }
+
+  return new Promise((resolve) => {
+    if (cssLink.sheet) return resolve();
+    cssLink.addEventListener('load', resolve, { once: true });
+    // si falla la carga, igual se muestra para no dejarlo oculto para siempre
+    cssLink.addEventListener('error', resolve, { once: true });
+  });
 }
 
 // inicializa y monta el widget de ironcito una sola vez en el documento
@@ -62,13 +70,18 @@ export function initIroncito() {
     return widgetInstance;
   }
 
-  injectStyles();
+  const stylesReady = injectStyles();
 
   const root = createWidgetRoot({
     sleepingAvatarUrl: CONFIG.sleepingAvatarUrl,
     flyingAvatarUrl: CONFIG.flyingAvatarUrl,
   });
+  // oculto mientras no hay estilos
+  root.style.display = 'none';
   document.body.appendChild(root);
+  stylesReady.then(() => {
+    root.style.display = '';
+  });
 
   // referencias del dom encapsulado
   const fabBtn = root.querySelector('#ironcito-chat-btn');
@@ -602,7 +615,7 @@ export { CONFIG };
 
 // inicializacion automatica al importar el modulo en cualquier pagina
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => initIroncito(), { once: true });
+  document.addEventListener('DOMContentLoaded', initIroncito, { once: true });
 } else {
   initIroncito();
 }
