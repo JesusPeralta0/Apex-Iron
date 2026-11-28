@@ -64,6 +64,23 @@ function injectStyles() {
   });
 }
 
+// espera a que la imagen del boton cargue y se decodifique antes de mostrarla
+function waitForImage(img) {
+  if (!img) return Promise.resolve();
+  const decodeSafe = () =>
+    typeof img.decode === 'function' ? img.decode().catch(() => {}) : Promise.resolve();
+
+  if (img.complete) {
+    return img.naturalWidth > 0 ? decodeSafe() : Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    const finish = () => decodeSafe().finally(resolve);
+    img.addEventListener('load', finish, { once: true });
+    img.addEventListener('error', resolve, { once: true });
+  });
+}
+
 // inicializa y monta el widget de ironcito una sola vez en el documento
 export function initIroncito() {
   if (widgetInstance || document.getElementById('ironcito-widget-root')) {
@@ -76,15 +93,10 @@ export function initIroncito() {
     sleepingAvatarUrl: CONFIG.sleepingAvatarUrl,
     flyingAvatarUrl: CONFIG.flyingAvatarUrl,
   });
-  // oculto mientras no hay estilos
-  root.style.display = 'none';
-  document.body.appendChild(root);
-  stylesReady.then(() => {
-    root.style.display = '';
-  });
 
   // referencias del dom encapsulado
   const fabBtn = root.querySelector('#ironcito-chat-btn');
+  const fabImg = root.querySelector('.ironcito-fab-img');
   const overlay = root.querySelector('#ironcito-overlay');
   const modalEl = root.querySelector('#ironcito-modal');
   const flyerEl = root.querySelector('#ironcito-flyer');
@@ -96,9 +108,29 @@ export function initIroncito() {
   const inputEl = root.querySelector('#ironcito-input');
   const sendBtn = root.querySelector('#ironcito-send-btn');
 
+  // oculta el widget hasta cargar estilos y el boton hasta decodificar su imagen
+  root.style.display = 'none';
+  fabBtn.classList.add('ironcito-fab--pending');
+  document.body.appendChild(root);
+
+  const fabImageReady = waitForImage(fabImg);
+
+  stylesReady.then(() => {
+    root.style.display = '';
+  });
+
+  Promise.all([stylesReady, fabImageReady]).then(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        fabBtn.classList.remove('ironcito-fab--pending');
+      });
+    });
+  });
+
   // estado interno del chat
   let sessionId = getSessionId();
   let isOpen = false;
+  let isCartOpen = Boolean(document.querySelector('#offcanvasCarrito.show, #offcanvasCarrito.showing'));
   let isLoading = false;
   let hasGreeted = false;
   let previousBodyOverflow = '';
@@ -107,6 +139,25 @@ export function initIroncito() {
   let suggestionsNode = null;
   let pingTimerId = null;
   let closeCleanupTimerId = null;
+
+  // detecta si la vista actual corresponde a un dispositivo movil o con poca altura
+  function isMobileViewport() {
+    return window.matchMedia('(max-width: 640px), (max-height: 500px), (pointer: coarse)').matches;
+  }
+
+  // oculta o muestra el boton flotante cuando el carrito esta abierto
+  function syncFabVisibility() {
+    fabBtn.classList.toggle('ironcito-fab--obscured', isCartOpen);
+    if (isCartOpen) {
+      fabBtn.classList.remove('ironcito-fab--reappear');
+      fabBtn.setAttribute('aria-hidden', 'true');
+      fabBtn.setAttribute('tabindex', '-1');
+      fabBtn.blur();
+    } else if (!isOpen) {
+      fabBtn.removeAttribute('aria-hidden');
+      fabBtn.removeAttribute('tabindex');
+    }
+  }
 
   // actualiza el punto visual de estado de conexion
   function setConnectionStatus(status) {
@@ -159,6 +210,16 @@ export function initIroncito() {
     });
   }
 
+  // desplaza el historial al inicio del mensaje para facilitar su lectura
+  function scrollToMessageStart(messageEl) {
+    if (!messageEl) return;
+    requestAnimationFrame(() => {
+      const topPadding = parseFloat(getComputedStyle(messagesEl).paddingTop) || 16;
+      const targetTop = Math.max(0, messageEl.offsetTop - topPadding);
+      messagesEl.scrollTop = targetTop;
+    });
+  }
+
   // ajusta la altura del textarea entre una y tres lineas
   function autoResizeInput() {
     inputEl.style.height = 'auto';
@@ -200,7 +261,7 @@ export function initIroncito() {
   }
 
   // agrega las pildoras rapidas debajo del saludo de ironcito
-  function appendQuickSuggestions() {
+  function appendQuickSuggestions({ shouldScroll = true } = {}) {
     if (suggestionsNode) {
       suggestionsNode.remove();
     }
@@ -209,7 +270,9 @@ export function initIroncito() {
       handleSendMessage(suggestionText);
     });
     messagesEl.appendChild(suggestionsNode);
-    scrollToBottom();
+    if (shouldScroll) {
+      scrollToBottom();
+    }
   }
 
   // solicita el saludo inicial a n8n y luego muestra las opciones rapidas
@@ -240,7 +303,8 @@ export function initIroncito() {
 
       const welcomeMsg = createBotMessageElement(greeting);
       messagesEl.appendChild(welcomeMsg);
-      appendQuickSuggestions();
+      appendQuickSuggestions({ shouldScroll: false });
+      scrollToMessageStart(welcomeMsg);
     } catch (error) {
       if (error?.code === 'ABORTED') return;
 
@@ -274,7 +338,7 @@ export function initIroncito() {
         badgeText
       );
       messagesEl.appendChild(errorBubble);
-      scrollToBottom();
+      scrollToMessageStart(errorBubble);
     } finally {
       if (activeRequestController?.signal === requestSignal) {
         activeRequestController = null;
@@ -358,14 +422,17 @@ export function initIroncito() {
     }, 620);
 
     // inicia el aparecimiento suave del boton flotante dormido
-    fabBtn.classList.remove('ironcito-fab--reappear');
-    void fabBtn.offsetWidth;
-    fabBtn.classList.add('ironcito-fab--reappear');
-    fabBtn.addEventListener(
-      'animationend',
-      () => fabBtn.classList.remove('ironcito-fab--reappear'),
-      { once: true }
-    );
+    if (!isCartOpen) {
+      fabBtn.classList.remove('ironcito-fab--reappear');
+      void fabBtn.offsetWidth;
+      fabBtn.classList.add('ironcito-fab--reappear');
+      fabBtn.addEventListener(
+        'animationend',
+        () => fabBtn.classList.remove('ironcito-fab--reappear'),
+        { once: true }
+      );
+    }
+    syncFabVisibility();
   }
 
   // envia el mensaje al webhook de n8n y muestra la respuesta
@@ -392,7 +459,7 @@ export function initIroncito() {
       removeTypingIndicator();
       const botBubble = createBotMessageElement(reply);
       messagesEl.appendChild(botBubble);
-      scrollToBottom();
+      scrollToMessageStart(botBubble);
     } catch (error) {
       if (error?.code === 'ABORTED') return;
 
@@ -426,15 +493,16 @@ export function initIroncito() {
         badgeText
       );
       messagesEl.appendChild(errorBubble);
-      scrollToBottom();
+      scrollToMessageStart(errorBubble);
     } finally {
       if (activeRequestController?.signal === requestSignal) {
         activeRequestController = null;
       }
       isLoading = false;
       syncComposerState();
-      if (isOpen) {
-        inputEl.focus();
+      // evita enfocar el campo en movil para no desplazar la vista ni abrir el teclado
+      if (isOpen && !isMobileViewport()) {
+        inputEl.focus({ preventScroll: true });
       }
     }
   }
@@ -543,8 +611,25 @@ export function initIroncito() {
     }
   });
 
+  // oculta el boton de ironcito mientras la ventana del carrito esta abierta
+  document.addEventListener('show.bs.offcanvas', (event) => {
+    if (event.target?.id === 'offcanvasCarrito') {
+      isCartOpen = true;
+      syncFabVisibility();
+    }
+  });
+
+  document.addEventListener('hidden.bs.offcanvas', (event) => {
+    if (event.target?.id === 'offcanvasCarrito') {
+      isCartOpen = false;
+      syncFabVisibility();
+    }
+  });
+
   // sincroniza el estado inicial del campo de texto
   syncComposerState();
+  // aplica la visibilidad inicial del boton flotante
+  syncFabVisibility();
 
   widgetInstance = {
     open,

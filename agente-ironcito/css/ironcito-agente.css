@@ -66,7 +66,7 @@
   background: transparent;
   cursor: pointer;
   opacity: 0.85;
-  transition: opacity 0.3s ease, transform 0.2s ease;
+  transition: opacity 0.3s ease, transform 0.2s ease, visibility 0.3s ease;
 }
 
 .ironcito-root .ironcito-fab:hover {
@@ -78,9 +78,19 @@
   opacity: 1;
 }
 
-.ironcito-root .ironcito-fab.ironcito-fab--hidden {
+/* oculta el boton flotante al abrir el chat o el carrito */
+.ironcito-root .ironcito-fab.ironcito-fab--hidden,
+.ironcito-root .ironcito-fab.ironcito-fab--obscured {
   opacity: 0;
+  visibility: hidden;
   transform: scale(0.8);
+  pointer-events: none;
+}
+
+/* oculta el boton flotante hasta terminar de cargar estilos e imagen */
+.ironcito-root .ironcito-fab.ironcito-fab--pending {
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -1013,6 +1023,96 @@
     bottom: 18px;
     width: 72px;
     height: 72px;
+  }
+}
+
+/* adapta el chat y el boton flotante en pantallas horizontales con poca altura */
+@media (max-height: 500px) {
+  .ironcito-root .ironcito-fab {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: 62px;
+    height: 62px;
+  }
+
+  .ironcito-overlay {
+    align-items: center;
+    padding: 8px max(12px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  }
+
+  .ironcito-stage {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ironcito-flyer {
+    display: none;
+  }
+
+  .ironcito-modal {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    max-width: 100%;
+    height: calc(100vh - 16px);
+    height: calc(100dvh - 16px);
+    max-height: none;
+    min-height: 0;
+    border-radius: 14px;
+  }
+
+  .ironcito-header {
+    padding: 6px 12px;
+  }
+
+  .ironcito-header-title {
+    font-size: 0.92rem;
+  }
+
+  .ironcito-messages {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .ironcito-msg-body {
+    max-width: 92%;
+  }
+
+  .ironcito-bubble {
+    padding: 10px 14px;
+    font-size: 0.88rem;
+  }
+
+  .ironcito-root .ironcito-pill {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .ironcito-footer {
+    padding: 8px 12px;
+  }
+
+  .ironcito-composer {
+    padding: 5px 6px 5px 12px;
+  }
+
+  .ironcito-input {
+    margin: 4px 0;
+    max-height: 52px;
+    font-size: 0.88rem;
+  }
+
+  .ironcito-root .ironcito-send-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .ironcito-footer-hint {
+    display: none;
   }
 }
 
