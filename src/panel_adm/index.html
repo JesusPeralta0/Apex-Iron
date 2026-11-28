@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex-Iron</title>
+
+    <!-- configuro el favicon de la pagina -->
+    <link rel="icon" type="image/x-icon" href="/res/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/res/logos/apex-simple.png">
+
+    <!-- cargo los estilos del panel de administrador -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <h1 class="visually-hidden">Panel de Administrador</h1>
+
+    <!-- inyecto la barra de navegacion compartida -->
+    <div id="contenedor-navbar"></div>
+
+    <!-- muestro el formulario del panel de administrador con modo crear y modo modificar -->
+    <main class="contacto panel-adm-main py-4 py-md-5">
+        <div class="container vidrio card panel-adm-card">
+            <div class="panel-adm-header">
+                <h2 id="tituloFormulario" class="form-title text-white text-center mb-2">Panel de Administrador</h2>
+                <p id="subtituloFormulario" class="panel-adm-subtitle text-center mb-4">
+                    Añade un producto nuevo al catálogo de Apex-Iron.
+                </p>
+
+                <!-- agrego el selector para alternar entre añadir y modificar producto -->
+                <div class="panel-adm-tabs mb-4" role="tablist" aria-label="Acciones del panel de administrador">
+                    <button type="button" id="tabCrear" class="panel-adm-tab active" role="tab" aria-selected="true"
+                        data-modo="crear">
+                        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                        <span>Añadir producto nuevo</span>
+                    </button>
+                    <button type="button" id="tabModificar" class="panel-adm-tab" role="tab" aria-selected="false"
+                        data-modo="modificar">
+                        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                        <span>Modificar producto existente</span>
+                    </button>
+                </div>
+            </div>
+
+            <form id="formCrearProducto" class="row g-3 needs-validation panel-adm-form" novalidate>
+                <!-- muestro la barra de busqueda solo cuando elijo modificar un producto existente -->
+                <div id="seccionBuscador" class="col-12 d-none">
+                    <label for="buscadorProducto" class="form-label">Buscar producto existente:</label>
+                    <div class="admin-search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass admin-search-icon" aria-hidden="true"></i>
+                        <input type="text" class="form-control admin-search-input" id="buscadorProducto"
+                            placeholder="Busca por nombre, marca, modelo, categoría o ID..." autocomplete="off"
+                            aria-autocomplete="list" aria-controls="resultadosBuscador" aria-expanded="false">
+                        <button type="button" id="btnLimpiarBusqueda" class="admin-search-clear d-none"
+                            aria-label="Limpiar búsqueda">
+                            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                        </button>
+                        <div id="resultadosBuscador" class="admin-search-dropdown d-none" role="listbox"
+                            aria-label="Resultados de búsqueda de productos"></div>
+                    </div>
+
+                    <p id="avisoSeleccionar" class="admin-search-hint mt-2 mb-0">
+                        <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i>
+                        Busca y selecciona un producto para cargar sus campos y poder modificarlo o eliminarlo.
+                    </p>
+
+                    <div id="productoSeleccionadoInfo" class="admin-selected-bar d-none mt-3">
+                        <div class="admin-selected-info">
+                            <span class="admin-selected-label">Editando:</span>
+                            <span id="productoSeleccionadoId" class="apex-id-badge"></span>
+                            <span id="productoSeleccionadoNombre" class="admin-selected-name"></span>
+                        </div>
+                        <button type="button" id="btnDeseleccionar" class="btn btn-apex-secondary admin-selected-clear">
+                            Cambiar producto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- agrupo los campos del producto en un fieldset para bloquearlos hasta elegir uno en modo editar -->
+                <fieldset id="camposProducto" class="col-12 border-0 p-0 m-0">
+                    <div class="row g-3">
+                        <!-- fila de titulo y categoria -->
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Título:</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre de producto"
+                                required>
+                            <div class="invalid-feedback">Ingresa el título del producto.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="categoria" class="form-label">Categoría:</label>
+                            <select class="form-select" id="categoria" required>
+                                <option selected disabled value="">Selecciona una categoría</option>
+                                <option value="Componentes">Componentes</option>
+                                <option value="Almacenamiento">Almacenamiento</option>
+                                <option value="Conectividad">Conectividad</option>
+                                <option value="Accesorios para laptop">Accesorios para laptop</option>
+                                <option value="Laptops">Laptops</option>
+                                <option value="PCs">PCs</option>
+                                <option value="Perifericos">Periféricos</option>
+                                <option value="Audio y video">Audio y video</option>
+                            </select>
+                            <div class="invalid-feedback">Selecciona una categoría válida.</div>
+                        </div>
+
+                        <!-- fila de marca y modelo -->
+                        <div class="col-md-6">
+                            <label for="marca" class="form-label">Marca:</label>
+                            <input type="text" class="form-control" id="marca" placeholder="Marca del producto"
+                                required>
+                            <div class="invalid-feedback">Ingresa la marca.</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="modelo" class="form-label">Modelo:</label>
+                            <input type="text" class="form-control" id="modelo" placeholder="Modelo del producto"
+                                required>
+                            <div class="invalid-feedback">Ingresa el modelo.</div>
+                        </div>
+
+                        <!-- fila de descripcion y precio -->
+                        <div class="col-md-6">
+                            <label for="descripcion" class="form-label">Descripción:</label>
+                            <textarea class="form-control" id="descripcion" name="mensaje" rows="3"
+                                placeholder="Descripción del producto"></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="precio" class="form-label">Precio:</label>
+                            <input type="number" step="0.01" min="0" class="form-control" id="precio"
+                                placeholder="0.00" required>
+                            <div class="invalid-feedback">Ingresa el precio.</div>
+                        </div>
+
+                        <!-- campo de imagenes con vista previa para productos en edicion -->
+                        <div class="col-12">
+                            <label for="formFileMultiple" id="labelImagenes" class="form-label">Ingresar imágenes:</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+
+                            <div id="contenedorImagenesActuales" class="admin-images-preview d-none mt-3">
+                                <div class="admin-images-header">
+                                    <span class="admin-images-title">Imágenes actuales del producto</span>
+                                    <span class="admin-images-help">Si no subes archivos nuevos, se conservarán las
+                                        actuales.</span>
+                                </div>
+                                <div id="listaImagenesActuales" class="admin-images-grid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- botones de accion segun el modo activo -->
+                <div class="col-12 mt-4 panel-adm-actions">
+                    <button id="btnGuardarProducto" class="btn btn-apex-primary panel-adm-btn" type="submit">
+                        <i class="fa-solid fa-plus me-2" aria-hidden="true"></i>Añadir producto
+                    </button>
+                    <button id="btnEliminarProducto" class="btn panel-adm-btn panel-adm-btn-danger d-none" type="button"
+                        disabled>
+                        <i class="fa-solid fa-trash me-2" aria-hidden="true"></i>Eliminar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- ventana de confirmacion antes de eliminar un producto -->
+    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalEliminarTitulo"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content vidrio panel-adm-modal">
+                <div class="modal-header panel-adm-modal-header">
+                    <h3 class="modal-title h5 text-white d-flex align-items-center gap-2 mb-0"
+                        id="modalEliminarTitulo">
+                        <i class="fa-solid fa-triangle-exclamation text-danger" aria-hidden="true"></i>
+                        Confirmar eliminación
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body panel-adm-modal-body">
+                    <p class="mb-2">
+                        ¿Seguro que deseas eliminar el producto
+                        <strong id="modalEliminarNombre" class="text-white"></strong>
+                        <span id="modalEliminarId" class="apex-id-badge ms-1"></span>?
+                    </p>
+                    <p class="panel-adm-modal-note mb-0">
+                        Esta acción eliminará el producto y dejará de mostrarse en el catálogo.
+                    </p>
+                </div>
+                <div class="modal-footer panel-adm-modal-footer">
+                    <button type="button" class="btn btn-apex-secondary panel-adm-modal-btn"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnConfirmarEliminar"
+                        class="btn panel-adm-btn-danger panel-adm-modal-btn">
+                        <i class="fa-solid fa-trash me-2" aria-hidden="true"></i>Sí, eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- inyecto el footer compartido -->
+    <div id="footer-container"></div>
+
+    <script src="./js/scripts.js" type="module"></script>
+</body>
+
+</html>

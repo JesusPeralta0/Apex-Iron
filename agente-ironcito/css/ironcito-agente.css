@@ -1,0 +1,1048 @@
+/* estilos encapsulados de ironcito */
+
+.ironcito-root {
+  --ic-bg-top: #0e142d;
+  --ic-bg-bottom: #161f45;
+  --ic-surface: rgba(30, 41, 82, 0.65);
+  --ic-surface-deep: rgba(12, 18, 41, 0.78);
+  --ic-border: rgba(143, 168, 255, 0.16);
+  --ic-accent: #3b5bdb;
+  --ic-accent-hover: #4c6ef5;
+  --ic-accent-glow: rgba(59, 91, 219, 0.42);
+  --ic-text: #ffffff;
+  --ic-text-soft: #dce5ff;
+  --ic-text-secondary: #94a8e8;
+  --ic-online: #20c997;
+  --ic-recommended: #20c997;
+  --ic-alternative: #fcc419;
+  --ic-incompatible: #ff6b6b;
+  --ic-font: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ic-radius-bubble: 15px;
+
+  font-family: var(--ic-font);
+  color: var(--ic-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* reset defensivo con especificidad cero para aislar de bootstrap */
+:where(.ironcito-root, .ironcito-root *, .ironcito-root *::before, .ironcito-root *::after) {
+  box-sizing: border-box;
+}
+
+:where(.ironcito-root button, .ironcito-root textarea) {
+  font-family: var(--ic-font);
+}
+
+:where(.ironcito-root button) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ironcito-root button:focus-visible,
+.ironcito-root a:focus-visible {
+  outline: 2px solid var(--ic-accent-hover);
+  outline-offset: 2px;
+}
+
+/* boton flotante original con ironcito dormido */
+
+.ironcito-root .ironcito-fab {
+  position: fixed;
+  right: 56px;
+  bottom: 30px;
+  z-index: 900;
+  width: 100px;
+  height: 100px;
+  padding: 6px;
+  border: 3px solid #1e3a8a;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.ironcito-root .ironcito-fab:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.ironcito-root .ironcito-fab.activo {
+  opacity: 1;
+}
+
+.ironcito-root .ironcito-fab.ironcito-fab--hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.ironcito-root .ironcito-fab.ironcito-fab--reappear {
+  animation: ironcito-fab-appear 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
+}
+
+@keyframes ironcito-fab-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.76) translateY(14px);
+  }
+  100% {
+    opacity: 0.85;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.ironcito-root .ironcito-fab-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* overlay difuminado escenario de vuelo y ventana modal */
+
+.ironcito-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(3, 5, 14, 0.93);
+  backdrop-filter: blur(0px) brightness(1);
+  -webkit-backdrop-filter: blur(0px) brightness(1);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  /* salida suave y escalonada del fondo tras la tarjeta */
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.08s,
+    backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.08s,
+    -webkit-backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.08s,
+    visibility 0s linear 0.58s;
+}
+
+.ironcito-overlay.ironcito-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  backdrop-filter: blur(12px) brightness(0.45);
+  -webkit-backdrop-filter: blur(12px) brightness(0.45);
+  transition:
+    opacity 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    -webkit-backdrop-filter 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
+}
+
+/* contenedor de escritorio con la ventana y el espacio lateral de ironcito */
+.ironcito-stage {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: minmax(16px, 0.45fr) minmax(0, 1108px) minmax(220px, 1fr);
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.96) translateY(10px);
+  will-change: opacity, transform;
+  /* curva suave en salida para evitar caida brusca */
+  transition:
+    opacity 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ironcito-overlay.ironcito-open .ironcito-stage {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ironcito volando centrado entre la tarjeta y el margen derecho */
+.ironcito-flyer {
+  grid-column: 3;
+  grid-row: 1;
+  position: absolute;
+  top: 75%;
+  justify-self: center;
+  align-self: start;
+  z-index: 1;
+  width: 176px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  opacity: 0;
+  transform: translateY(calc(-50% + 48vh)) scale(0.92);
+  filter: drop-shadow(0 14px 26px rgba(56, 189, 248, 0.32));
+  will-change: transform, opacity;
+}
+
+.ironcito-flyer.ironcito-flyer--active {
+  /* ascenso inicial manteniendo luego el movimiento nativo del webp */
+  animation: ironcito-fly-in-side 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ironcito-fly-in-side {
+  0% {
+    transform: translateY(calc(-50% + 48vh)) scale(0.92);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  78% {
+    transform: translateY(calc(-50% - 6px)) scale(1.005);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ascenso vertical sobre la tarjeta en movil y tablet */
+@keyframes ironcito-fly-in {
+  0% {
+    transform: translate(-50%, 88vh) scale(0.94);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  78% {
+    transform: translate(-50%, -106%) scale(1.005);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -103%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ventana modal en vista de escritorio */
+.ironcito-modal {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  width: 100%;
+  max-width: 1108px;
+  height: min(86vh, 820px);
+  height: min(86dvh, 820px);
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--ic-bg-top) 0%, var(--ic-bg-bottom) 100%);
+  border: 1px solid rgba(143, 168, 255, 0.22);
+  box-shadow:
+    0 32px 80px rgba(4, 7, 18, 0.78),
+    0 0 0 1px rgba(143, 168, 255, 0.08) inset,
+    0 0 48px rgba(59, 91, 219, 0.14);
+}
+
+/* brillo ambiental superior sutil */
+.ironcito-modal::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  height: 220px;
+  background: radial-gradient(ellipse at center, rgba(59, 91, 219, 0.22) 0%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* cabecera del chat */
+
+.ironcito-header {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(12, 18, 41, 0.72);
+  border-bottom: 1px solid var(--ic-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ironcito-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ironcito-header-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ic-text);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.ironcito-status-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #64748b;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.ironcito-status-indicator[data-status='checking'] {
+  background: #64748b;
+  animation: ironcito-status-checking 1.2s ease-in-out infinite;
+}
+
+.ironcito-status-indicator[data-status='online'] {
+  background: var(--ic-online);
+  box-shadow: 0 0 8px rgba(32, 201, 151, 0.78);
+}
+
+.ironcito-status-indicator[data-status='offline'] {
+  background: #4b5563;
+  box-shadow: 0 0 0 1px rgba(148, 168, 232, 0.22);
+}
+
+@keyframes ironcito-status-checking {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.ironcito-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ironcito-root .ironcito-icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ic-text-secondary);
+  background: rgba(30, 41, 82, 0.55);
+  border: 1px solid var(--ic-border);
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.ironcito-root .ironcito-icon-btn:hover {
+  color: var(--ic-text);
+  background: rgba(59, 91, 219, 0.28);
+  border-color: rgba(143, 168, 255, 0.36);
+}
+
+.ironcito-root .ironcito-icon-btn:active {
+  transform: scale(0.94);
+}
+
+.ironcito-icon-btn svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.ironcito-icon-btn--spin svg {
+  animation: ironcito-spin-once 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes ironcito-spin-once {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* area de conversacion y burbujas */
+
+.ironcito-messages {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(143, 168, 255, 0.25) transparent;
+}
+
+.ironcito-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ironcito-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ironcito-messages::-webkit-scrollbar-thumb {
+  background: rgba(143, 168, 255, 0.24);
+  border-radius: 999px;
+}
+
+.ironcito-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(143, 168, 255, 0.4);
+}
+
+.ironcito-msg-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 100%;
+  animation: ironcito-msg-in 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ironcito-msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ironcito-msg-row--bot {
+  justify-content: flex-start;
+}
+
+.ironcito-msg-row--user {
+  justify-content: flex-end;
+}
+
+.ironcito-msg-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: min(82%, 780px);
+  min-width: 0;
+}
+
+.ironcito-msg-row--user .ironcito-msg-body {
+  align-items: flex-end;
+}
+
+.ironcito-bubble {
+  padding: 13px 17px;
+  border-radius: var(--ic-radius-bubble);
+  font-size: 0.93rem;
+  line-height: 1.56;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.ironcito-bubble--bot {
+  background: var(--ic-surface);
+  border: 1px solid var(--ic-border);
+  border-top-left-radius: 5px;
+  color: var(--ic-text);
+  box-shadow: 0 8px 24px rgba(6, 10, 26, 0.24);
+}
+
+.ironcito-bubble--user {
+  background: linear-gradient(135deg, var(--ic-accent) 0%, #3451c7 100%);
+  border: 1px solid rgba(143, 168, 255, 0.26);
+  border-top-right-radius: 5px;
+  color: var(--ic-text);
+  box-shadow: 0 8px 22px rgba(59, 91, 219, 0.34);
+}
+
+.ironcito-msg-meta {
+  font-size: 0.72rem;
+  color: rgba(148, 168, 232, 0.72);
+  padding: 0 4px;
+}
+
+/* botones rapidos tipo pildora */
+
+.ironcito-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: ironcito-msg-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ironcito-suggestions.ironcito-suggestions--hiding {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+}
+
+.ironcito-suggestions-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ic-text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.ironcito-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.ironcito-root .ironcito-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background-color: #090e22;
+  border: 1px solid rgba(143, 168, 255, 0.3);
+  color: var(--ic-text-soft);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: left;
+  box-shadow:
+    0 4px 12px rgba(3, 6, 16, 0.45),
+    inset 0 1px 0 rgba(143, 168, 255, 0.1);
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.16s ease,
+    box-shadow 0.18s ease;
+}
+
+.ironcito-root .ironcito-pill:hover {
+  background-color: #040712;
+  border-color: rgba(143, 168, 255, 0.52);
+  color: var(--ic-text);
+  transform: translateY(-1px);
+  box-shadow:
+    0 6px 18px rgba(2, 4, 12, 0.68),
+    inset 0 1px 0 rgba(143, 168, 255, 0.16);
+}
+
+.ironcito-root .ironcito-pill:active {
+  background-color: #02040a;
+  transform: translateY(0) scale(0.98);
+}
+
+/* estilos de markdown y bloques de veredicto */
+
+.ironcito-md > :first-child {
+  margin-top: 0;
+}
+
+.ironcito-md > :last-child {
+  margin-bottom: 0;
+}
+
+.ironcito-md p {
+  margin: 0 0 10px 0;
+}
+
+.ironcito-md h3,
+.ironcito-md h4 {
+  margin: 12px 0 6px 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ic-text);
+  line-height: 1.35;
+}
+
+.ironcito-md strong {
+  font-weight: 700;
+  color: var(--ic-text);
+}
+
+.ironcito-md em {
+  font-style: italic;
+  color: var(--ic-text-soft);
+}
+
+.ironcito-md ul,
+.ironcito-md ol {
+  margin: 6px 0 10px 0;
+  padding-left: 20px;
+}
+
+.ironcito-md li {
+  margin-bottom: 5px;
+}
+
+.ironcito-md li:last-child {
+  margin-bottom: 0;
+}
+
+.ironcito-md ul li::marker {
+  color: var(--ic-text-secondary);
+}
+
+.ironcito-md ol li::marker {
+  color: #748ffc;
+  font-weight: 600;
+}
+
+.ironcito-md code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.84em;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(11, 16, 38, 0.72);
+  border: 1px solid rgba(143, 168, 255, 0.24);
+  color: #a5d8ff;
+}
+
+.ironcito-md a {
+  color: #74c0fc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ironcito-md a:hover {
+  color: #a5d8ff;
+}
+
+/* tarjetas semanticas de veredicto */
+.ironcito-verdict {
+  margin: 10px 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(143, 168, 255, 0.16);
+  border-left-width: 4px;
+  background: rgba(15, 22, 50, 0.55);
+}
+
+.ironcito-verdict--recommended {
+  border-color: rgba(32, 201, 151, 0.28);
+  border-left-color: var(--ic-recommended);
+  background: linear-gradient(135deg, rgba(32, 201, 151, 0.13) 0%, rgba(20, 34, 68, 0.65) 100%);
+}
+
+.ironcito-verdict--alternative {
+  border-color: rgba(252, 196, 25, 0.26);
+  border-left-color: var(--ic-alternative);
+  background: linear-gradient(135deg, rgba(252, 196, 25, 0.11) 0%, rgba(20, 34, 68, 0.65) 100%);
+}
+
+.ironcito-verdict--incompatible {
+  border-color: rgba(255, 107, 107, 0.28);
+  border-left-color: var(--ic-incompatible);
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.12) 0%, rgba(20, 34, 68, 0.65) 100%);
+}
+
+.ironcito-verdict-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ic-text);
+  line-height: 1.45;
+}
+
+.ironcito-verdict-icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.ironcito-verdict-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.ironcito-verdict--recommended .ironcito-verdict-badge {
+  background: rgba(32, 201, 151, 0.18);
+  color: #63e6be;
+}
+
+.ironcito-verdict--alternative .ironcito-verdict-badge {
+  background: rgba(252, 196, 25, 0.18);
+  color: #ffe066;
+}
+
+.ironcito-verdict--incompatible .ironcito-verdict-badge {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ffa8a8;
+}
+
+.ironcito-verdict-body {
+  margin-top: 6px;
+  font-size: 0.89rem;
+  color: var(--ic-text-soft);
+}
+
+.ironcito-verdict-body > :first-child {
+  margin-top: 0;
+}
+
+.ironcito-verdict-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* mensaje de error con boton de reintentar */
+.ironcito-error-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ironcito-root .ironcito-retry-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: #090e22;
+  border: 1px solid rgba(143, 168, 255, 0.34);
+  color: var(--ic-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.ironcito-root .ironcito-retry-btn:hover {
+  background: #040712;
+  border-color: rgba(143, 168, 255, 0.56);
+}
+
+/* indicador animado de escritura */
+
+.ironcito-typing-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--ic-surface);
+  border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius-bubble);
+  border-top-left-radius: 5px;
+  color: var(--ic-text-secondary);
+  font-size: 0.88rem;
+}
+
+.ironcito-typing-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ironcito-typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #748ffc;
+  animation: ironcito-dot-pulse 1.3s ease-in-out infinite;
+}
+
+.ironcito-typing-dots span:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.ironcito-typing-dots span:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes ironcito-dot-pulse {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0) scale(0.85);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.1);
+  }
+}
+
+/* pie de chat y barra de entrada autoajustable */
+
+.ironcito-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  padding: 13px 20px 15px;
+  background: var(--ic-surface-deep);
+  border-top: 1px solid var(--ic-border);
+}
+
+.ironcito-composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 7px 8px 7px 16px;
+  border-radius: 16px;
+  background: rgba(30, 41, 82, 0.56);
+  border: 1px solid rgba(143, 168, 255, 0.2);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.ironcito-composer:focus-within {
+  background: rgba(30, 41, 82, 0.72);
+  border-color: var(--ic-accent-hover);
+  box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.24);
+}
+
+.ironcito-composer.ironcito-composer--disabled {
+  opacity: 0.65;
+}
+
+.ironcito-input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 24px;
+  max-height: 76px;
+  margin: 6px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ic-text);
+  font-size: 0.93rem;
+  line-height: 1.48;
+  resize: none;
+  overflow-y: auto;
+  outline: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(143, 168, 255, 0.25) transparent;
+}
+
+.ironcito-input:focus,
+.ironcito-input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.ironcito-input::placeholder {
+  color: rgba(148, 168, 232, 0.74);
+}
+
+.ironcito-input:disabled {
+  cursor: not-allowed;
+}
+
+.ironcito-root .ironcito-send-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ic-accent);
+  color: var(--ic-text);
+  box-shadow: 0 4px 14px var(--ic-accent-glow);
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.ironcito-root .ironcito-send-btn:hover:not(:disabled) {
+  background: var(--ic-accent-hover);
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 6px 18px rgba(76, 110, 245, 0.5);
+}
+
+.ironcito-root .ironcito-send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.ironcito-root .ironcito-send-btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.ironcito-send-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.ironcito-footer-hint {
+  margin: 7px 4px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: rgba(148, 168, 232, 0.65);
+}
+
+/* responsividad y preferencias de movimiento */
+
+/* en tablet y pantallas estrechas ironcito vuelve arriba de la tarjeta */
+@media (max-width: 900px) {
+  .ironcito-stage {
+    width: 100%;
+    max-width: 760px;
+    margin-top: 132px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .ironcito-flyer {
+    grid-column: auto;
+    grid-row: auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 68px;
+    transform: translate(-50%, 88vh) scale(0.94);
+    filter: drop-shadow(0 8px 18px rgba(56, 189, 248, 0.3));
+  }
+
+  .ironcito-flyer.ironcito-flyer--active {
+    animation: ironcito-fly-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .ironcito-modal {
+    grid-column: auto;
+    grid-row: auto;
+    max-width: 100%;
+    height: calc(100vh - 172px);
+    height: calc(100dvh - 172px);
+    max-height: 680px;
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ironcito-overlay {
+    align-items: flex-end;
+    padding: 12px 10px max(14px, env(safe-area-inset-bottom));
+  }
+
+  .ironcito-stage {
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .ironcito-flyer {
+    width: 56px;
+  }
+
+  .ironcito-modal {
+    height: calc(100vh - 134px);
+    height: calc(100dvh - 134px);
+    max-height: none;
+    min-height: 0;
+    border-radius: 16px;
+  }
+
+  .ironcito-header {
+    padding: 8px 13px;
+  }
+
+  .ironcito-header-title {
+    font-size: 0.94rem;
+  }
+
+  .ironcito-messages {
+    padding: 15px 14px 12px;
+    gap: 13px;
+  }
+
+  .ironcito-msg-body {
+    max-width: 90%;
+  }
+
+  .ironcito-root .ironcito-pill {
+    font-size: 0.82rem;
+    padding: 8px 14px;
+  }
+
+  .ironcito-footer {
+    padding: 11px 12px 13px;
+  }
+
+  .ironcito-footer-hint {
+    display: none;
+  }
+}
+
+/* posicion y tamano movil original del boton flotante */
+@media (max-width: 575.98px) {
+  .ironcito-root .ironcito-fab {
+    right: 16px;
+    bottom: 18px;
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ironcito-root .ironcito-fab,
+  .ironcito-overlay,
+  .ironcito-stage,
+  .ironcito-modal,
+  .ironcito-msg-row,
+  .ironcito-suggestions,
+  .ironcito-root .ironcito-pill,
+  .ironcito-root .ironcito-icon-btn,
+  .ironcito-root .ironcito-send-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .ironcito-flyer.ironcito-flyer--active {
+    animation: none !important;
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  @media (max-width: 900px) {
+    .ironcito-flyer.ironcito-flyer--active {
+      transform: translate(-50%, -103%) scale(1);
+    }
+  }
+
+  .ironcito-typing-dots span {
+    animation: none !important;
+  }
+}

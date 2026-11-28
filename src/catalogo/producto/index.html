@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Producto</title>
+    <!-- favico -->
+    <link rel="icon" type="image/x-icon" href="/res/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/res/logos/apex-simple.png">
+
+    <!-- Estilos externos -->
+
+    <!-- Estilos nuestros -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    
+    <!--Componente Navbar-->
+    <div id="contenedor-navbar" class="sticky-top z-3"></div>
+
+    <main class="d-flex flex-column flex-grow-1">
+        <section id="producto" class="velo-tb pt-0 pb-4 d-flex flex-column flex-grow-1 align-items-center">
+              <!-- Botón para regresar al catálogo -->
+              <div class="container pt-4">
+                 <a href="../" class="btn btn-outline-light">
+                     <i class="fa-solid fa-arrow-left me-2"></i>
+                     Regresar al catálogo
+                 </a>
+              </div>
+
+            <div class="w-100">
+                <h1 id="p-nombre" class="mt-5 text-center text-apex-secondary">${PRODUCTO.nombre}</h1>
+                <p id="p-precio" class="text-center text-apex-secondary fs-5">Adquiere este producto por $${PRODUCTO.precio} MXN</p>
+            </div>
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="sticky sticky-lg-top z-2">
+                            <div class="card-img d-flex ratio ratio-4x3">
+                                <!-- Galeria -->
+                                <div id="galeria-producto" class="carousel slide galeria" data-bs-interval="false">
+                                    <!-- Puntitos -->
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#galeria-producto" data-bs-slide-to="0"
+                                            class="bg-apex-primary active" aria-current="true" aria-label="Imagen 1">
+                                        </button>
+                                        <button type="button" data-bs-target="#galeria-producto" data-bs-slide-to="1"
+                                            class="bg-apex-primary" aria-label="Imagen 2">
+                                        </button>
+                                        <button type="button" data-bs-target="#galeria-producto" data-bs-slide-to="2"
+                                            class="bg-apex-primary" aria-label="Imagen 3">
+                                        </button>
+                                    </div>
+
+                                    <!-- Imágenes -->
+                                    <div id="p-galeria" class="carousel-inner h-100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="vidrio rounded-3 p-3 h-100 d-flex flex-column">
+                            <div class="m-5">
+                                <h2 id="p-marca" class="mb-2 h5 text-apex-secondary mb-1">MARCA: ${PRODUCTO.marca}</h2>
+                                <h2 id="p-modelo" class="h5 text-apex-secondary mb-0">MODELO: ${PRODUCTO.modelo}</h2>
+                            </div>
+
+                            <div class="flex-grow-1 d-flex align-items-center py-3">
+                                <p id="p-descripcion" class="mx-5 text-apex-secondary mb-0">${PRODUCTO.descripcion}</p>
+                            </div>
+
+                            <div class="m-5 text-center">
+                                <a href="#" id="btn-comprar" class="btn-apex-primary text-decoration-none text-center w-75">Comprar</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer-->
+    <div id="footer-container"></div>
+
+    <script src="./js/scripts.js" type="module"></script>
+</body>

@@ -1,0 +1,842 @@
+@import url("/css/vendor.css");
+@import url("/css/variables.css");
+@import url("/css/generales.css");
+@import url("/componentes/navbar/navbar.css");
+@import url("/componentes/Footer/footer.css");
+
+body {
+    background-color: #050814;
+}
+
+/* aplico el fondo directamente al main para cubrir toda la altura sin huecos blancos */
+.panel-adm-main {
+    position: relative;
+    min-height: calc(100vh - 88px);
+    padding-inline: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #050814;
+    background-image:
+        linear-gradient(rgba(5, 8, 20, .65), rgba(5, 8, 20, .50)),
+        url("/res/fondos/fondo_acercanosotros.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.panel-adm-card {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 16px;
+    padding: 2.25rem;
+}
+
+.panel-adm-subtitle {
+    color: var(--apex-accent);
+    font-size: 0.98rem;
+    line-height: 1.45;
+}
+
+.panel-adm-form {
+    padding: 0.5rem 0.25rem 0;
+}
+
+/* creo el selector de modos respetando el estilo vidrio y colores de la pagina */
+.panel-adm-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.85rem;
+    padding: 0.45rem;
+    border-radius: 14px;
+    background: rgba(5, 8, 24, 0.45);
+    border: 1px solid rgba(137, 202, 217, 0.22);
+    max-width: 640px;
+    margin-inline: auto;
+}
+
+.panel-adm-tab {
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 46px;
+    padding: 0.65rem 1.15rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--apex-accent);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel-adm-tab:hover {
+    color: var(--apex-light);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.panel-adm-tab.active {
+    background: #2515cc;
+    border-color: rgba(137, 202, 217, 0.45);
+    color: var(--apex-light);
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(12, 2, 78, 0.55);
+}
+
+/* estilizo la barra de busqueda y su desplegable de resultados */
+.admin-search-wrapper {
+    position: relative;
+}
+
+.admin-search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--apex-secondary);
+    opacity: 0.85;
+    pointer-events: none;
+    font-size: 0.95rem;
+}
+
+.vidrio .admin-search-input {
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+}
+
+.admin-search-clear {
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--apex-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.admin-search-clear:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--apex-light);
+}
+
+.admin-search-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 30;
+    max-height: 310px;
+    overflow-y: auto;
+    padding: 0.45rem;
+    border-radius: 12px;
+    background: rgba(11, 15, 38, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(137, 202, 217, 0.35);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+}
+
+.admin-search-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-search-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(137, 202, 217, 0.35);
+    border-radius: 4px;
+}
+
+.admin-search-count {
+    font-size: 0.78rem;
+    color: var(--apex-accent);
+    padding: 0.35rem 0.65rem 0.45rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.admin-search-item {
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--apex-light);
+    padding: 0.65rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.admin-search-item:hover,
+.admin-search-item.is-active {
+    background: rgba(37, 21, 204, 0.35);
+    border-color: rgba(137, 202, 217, 0.4);
+}
+
+.admin-search-item-main {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+    flex: 1;
+}
+
+.admin-search-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(137, 202, 217, 0.2);
+    padding: 3px;
+    flex-shrink: 0;
+}
+
+.admin-search-thumb-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(137, 202, 217, 0.2);
+    color: var(--apex-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-search-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.admin-search-title {
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: var(--apex-light);
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.admin-search-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--apex-accent);
+}
+
+.admin-search-tag {
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(137, 202, 217, 0.14);
+    border: 1px solid rgba(137, 202, 217, 0.25);
+    color: var(--apex-secondary);
+    font-size: 0.72rem;
+}
+
+.admin-search-price {
+    flex-shrink: 0;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--apex-secondary);
+}
+
+.admin-search-empty {
+    padding: 1.25rem 0.75rem;
+    text-align: center;
+    color: var(--apex-accent);
+    font-size: 0.9rem;
+}
+
+.admin-search-hint {
+    color: var(--apex-accent);
+    font-size: 0.86rem;
+}
+
+/* muestro la barra del producto seleccionado para editar */
+.admin-selected-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: rgba(12, 2, 78, 0.42);
+    border: 1px solid rgba(137, 202, 217, 0.4);
+}
+
+.admin-selected-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.admin-selected-label {
+    font-size: 0.85rem;
+    color: var(--apex-secondary);
+    font-weight: 500;
+}
+
+.admin-selected-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--apex-light);
+    overflow-wrap: anywhere;
+}
+
+.admin-selected-clear {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* oscurezco los campos bloqueados hasta que selecciono un producto para editar */
+#camposProducto {
+    transition: opacity 0.2s ease;
+}
+
+#camposProducto:disabled .form-label {
+    color: rgba(137, 202, 217, 0.68);
+}
+
+.vidrio #camposProducto:disabled .form-control,
+.vidrio #camposProducto:disabled .form-select,
+.vidrio #camposProducto:disabled input[type="file"].form-control {
+    background-color: rgba(4, 7, 22, 0.78);
+    border-color: rgba(137, 202, 217, 0.16);
+    color: rgba(255, 255, 255, 0.58);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.vidrio #camposProducto:disabled .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+}
+
+.vidrio #camposProducto:disabled .form-control[type="file"]::file-selector-button {
+    background-color: rgba(13, 110, 253, 0.32);
+    color: rgba(255, 255, 255, 0.62);
+    cursor: not-allowed;
+}
+
+/* muestro las miniaturas de las imagenes actuales del producto */
+.admin-images-preview {
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    background: rgba(5, 8, 24, 0.35);
+    border: 1px solid rgba(137, 202, 217, 0.22);
+}
+
+.admin-images-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.admin-images-title {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--apex-secondary);
+}
+
+.admin-images-help {
+    font-size: 0.8rem;
+    color: var(--apex-accent);
+}
+
+.admin-images-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.admin-image-card {
+    position: relative;
+    width: 82px;
+    height: 82px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(137, 202, 217, 0.3);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.admin-image-remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: #dc3545;
+    color: #fff;
+    font-size: 0.72rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.admin-image-remove:hover {
+    background: #bb2d3b;
+    transform: scale(1.08);
+}
+
+/* acomodo los botones principales y el boton eliminar */
+.panel-adm-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.panel-adm-btn {
+    min-width: 210px;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.75rem;
+}
+
+/* uso color solido en el boton principal del panel */
+.panel-adm-btn.btn-apex-primary {
+    background: #2515cc;
+}
+
+.panel-adm-btn.btn-apex-primary:hover:not(:disabled) {
+    background: #89cad9;
+    color: #131111;
+}
+
+.panel-adm-btn:disabled,
+.panel-adm-btn.btn-apex-primary:disabled,
+.panel-adm-btn.panel-adm-btn-danger:disabled {
+    color: rgba(255, 255, 255, 0.85);
+    opacity: 0.48;
+    cursor: not-allowed;
+    transform: none !important;
+    pointer-events: none;
+}
+
+.panel-adm-btn-danger {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background: #dc3545;
+    border: 1px solid rgba(255, 130, 145, 0.4);
+    border-radius: 10px;
+    padding: 8px 27px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel-adm-btn-danger:hover:not(:disabled) {
+    background: #e64958;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(220, 53, 69, 0.4);
+}
+
+/* estilizo el modal de confirmacion con el mismo tema vidrio oscuro */
+.panel-adm-modal {
+    background: rgba(10, 15, 40, 0.94);
+    border: 1px solid rgba(137, 202, 217, 0.35);
+    border-radius: 16px;
+    padding: 0;
+    color: var(--apex-light);
+}
+
+.panel-adm-modal-header {
+    border-bottom: 1px solid rgba(137, 202, 217, 0.2);
+    padding: 1.15rem 1.4rem;
+}
+
+.panel-adm-modal-body {
+    padding: 1.35rem 1.4rem;
+    color: var(--apex-accent);
+    font-size: 0.96rem;
+    line-height: 1.5;
+}
+
+.panel-adm-modal-note {
+    font-size: 0.85rem;
+    color: rgba(191, 195, 200, 0.8);
+}
+
+.panel-adm-modal-footer {
+    border-top: 1px solid rgba(137, 202, 217, 0.2);
+    padding: 1rem 1.4rem;
+    gap: 0.65rem;
+}
+
+.panel-adm-modal-btn {
+    min-height: 42px;
+    padding: 0.5rem 1.25rem;
+}
+
+/* posiciono las alertas flotantes de bootstrap con el tema del sitio */
+.apex-toast-container {
+    position: fixed;
+    top: 105px;
+    right: 24px;
+    z-index: 1080;
+    max-width: 400px;
+    width: calc(100% - 48px);
+}
+
+.alert.apex-alert {
+    background: rgba(10, 15, 40, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--apex-light);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    font-family: 'Lexend Deca', sans-serif;
+    animation: apexSlideIn 0.3s ease-out;
+}
+
+.alert-success.apex-alert-success {
+    border: 1px solid rgba(137, 202, 217, 0.55);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(137, 202, 217, 0.2);
+}
+
+.alert-danger.apex-alert-error {
+    border: 1px solid rgba(220, 53, 69, 0.65);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(220, 53, 69, 0.2);
+}
+
+.apex-alert-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--apex-light);
+}
+
+.apex-alert-icon-success {
+    color: var(--apex-secondary);
+}
+
+.apex-alert-body {
+    font-size: 0.9rem;
+    color: var(--apex-accent);
+    line-height: 1.45;
+}
+
+.apex-alert-body strong {
+    color: var(--apex-light);
+}
+
+.apex-id-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #0c024e, #2515cc);
+    border: 1px solid rgba(137, 202, 217, 0.4);
+    color: var(--apex-light);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 2px 10px;
+    border-radius: 8px;
+}
+
+/* adapto el boton de cierre de bootstrap para que se vea claro */
+.apex-alert-header .btn-close.apex-alert-close {
+    position: static;
+    padding: 0;
+    margin-left: 0.75rem;
+    width: 0.85em;
+    height: 0.85em;
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.apex-alert-header .btn-close.apex-alert-close:hover {
+    opacity: 1;
+}
+
+.apex-alert-header .btn-close.apex-alert-close:focus {
+    box-shadow: none;
+}
+
+@keyframes apexSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* mantengo el select y el input de archivos en tema oscuro */
+.vidrio .form-select,
+.vidrio input[type="file"].form-control {
+    background-color: rgba(30, 30, 60, 0.6);
+    color: #fff;
+    border: 1px solid rgba(120, 140, 190, 0.5);
+    border-radius: 8px;
+}
+
+/* pinto la flecha del select en blanco para que contraste */
+.vidrio .form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.vidrio .form-select option {
+    background-color: #12122b;
+    color: #fff;
+}
+
+.vidrio .form-select option:disabled {
+    color: #8a8fa8;
+}
+
+.vidrio .form-select option:checked,
+.vidrio .form-select option:hover {
+    background-color: #2515cc;
+    color: #fff;
+}
+
+.vidrio .form-select option:disabled:checked {
+    background-color: #12122b;
+    color: #8a8fa8;
+}
+
+.vidrio .form-select:focus,
+.vidrio input[type="file"].form-control:focus,
+.vidrio input[type="file"].form-control:active {
+    background-color: rgba(30, 30, 60, 0.8);
+    color: #fff;
+    border-color: #4da3ff;
+    box-shadow: 0 0 0 0.2rem rgba(77, 163, 255, 0.25);
+}
+
+/* unifico la altura minima de todos los controles */
+.vidrio .form-select,
+.vidrio .form-control {
+    min-height: 44px;
+}
+
+.vidrio textarea.form-control {
+    min-height: 108px;
+}
+
+/* estilizo el boton interno del selector de archivos */
+.vidrio .form-control[type="file"]::file-selector-button,
+.vidrio .form-control[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.vidrio .form-control[type="file"]:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: #0b5ed7;
+}
+
+/* adapto el contenedor y espacios para tablets y pantallas medianas */
+@media (max-width: 991.98px) {
+    .panel-adm-card {
+        padding: 1.75rem;
+    }
+
+    .panel-adm-tabs {
+        max-width: 100%;
+    }
+}
+
+/* ajusto el formulario cuando las columnas pasan a una sola columna */
+@media (max-width: 767.98px) {
+    .panel-adm-main {
+        background-attachment: scroll;
+    }
+
+    .panel-adm-card {
+        padding: 1.35rem 1.15rem;
+    }
+
+    .panel-adm-form {
+        padding: 0.25rem 0 0;
+    }
+
+    .admin-selected-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-selected-clear {
+        width: 100%;
+        text-align: center;
+    }
+
+    .admin-images-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* optimizo botones pestanas buscador y alertas para celulares */
+@media (max-width: 575.98px) {
+    .panel-adm-main {
+        padding-inline: 0.75rem;
+    }
+
+    .panel-adm-card {
+        padding: 1.15rem 0.9rem;
+        border-radius: 14px;
+    }
+
+    .panel-adm-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.1rem !important;
+    }
+
+    .panel-adm-tabs {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.4rem;
+    }
+
+    .panel-adm-tab {
+        width: 100%;
+        font-size: 0.92rem;
+    }
+
+    .admin-search-dropdown {
+        max-height: 250px;
+    }
+
+    .admin-search-item {
+        padding: 0.55rem 0.6rem;
+        gap: 0.6rem;
+        align-items: flex-start;
+    }
+
+    .admin-search-thumb,
+    .admin-search-thumb-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+
+    .admin-search-title {
+        font-size: 0.88rem;
+    }
+
+    .admin-search-price {
+        font-size: 0.85rem;
+    }
+
+    .panel-adm-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .panel-adm-btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .vidrio .form-control[type="file"] {
+        font-size: 0.86rem;
+        padding: 0.55rem 0.65rem;
+    }
+
+    .vidrio .form-control[type="file"]::file-selector-button {
+        padding: 0.35rem 0.75rem;
+        margin-right: 0.65rem;
+        font-size: 0.84rem;
+    }
+
+    .admin-image-card {
+        width: 70px;
+        height: 70px;
+    }
+
+    .apex-toast-container {
+        top: 96px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        max-width: none;
+    }
+
+    .panel-adm-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .panel-adm-modal-btn {
+        width: 100%;
+    }
+}
+
+/* ajusto textos y margenes para telefonos muy estrechos */
+@media (max-width: 380px) {
+    .panel-adm-main {
+        padding-inline: 0.5rem;
+    }
+
+    .panel-adm-card {
+        padding: 1rem 0.75rem;
+    }
+
+    #tituloFormulario {
+        font-size: 1.3rem;
+    }
+
+    .admin-search-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-search-price {
+        align-self: flex-end;
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "editor.tabSize": 4,
+
+  "liveServer.settings.root": "/src/",
+  "liveServer.settings.mount": [
+    ["/res", "./res"],
+    ["/css", "./compartidos/css"],
+    ["/js", "./compartidos/js"],
+    ["/componentes", "./compartidos/componentes"],
+    ["/agente-ironcito", "./agente-ironcito"]
+  ]
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catalogo</title>
+    <!-- favico -->
+    <link rel="icon" type="image/x-icon" href="/res/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/res/logos/apex-simple.png">
+
+    <!-- Estilos externos -->
+
+    <!-- Estilos nuestros -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <!--Componente Navbar-->
+    <div id="contenedor-navbar" class="sticky-top z-3"></div>
+
+    <main>
+        <!--hero catalogo-->
+        <section class="hero-catalogo">
+            <h1 class="visually-hidden">Catálogo de productos</h1>
+            <div class="velo-bt hero py-4 d-flex align-items-center">
+                <div class="container">
+                    <div class="hero-caja p-4 p-lg-2">
+                        <div class="row align-items-center">
+                            <!--columna izquierda:titulo y cuerpo-->
+                            <div class="col-lg-12">
+                                <p class="hero-texto">¡SOLO ESTE BUEN FIN!</p>
+                                <!--boton hero-->
+                                <div class="hero-boton">
+                                    <a href="#" class="btn btn-hero">¡Comprar ahora!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="velo-tb categorias pt-0 pb-5 d-flex flex-column align-items-center">
+            <h2 class="w-100 text-center text-apex-secondary py-5 titulo-seccion">Nuestros Productos</h2>
+
+            <div class="container">
+                <div class="vidrio justify-content-center w-fit rounded-5 p-2 d-flex flex-wrap gap-4">
+                    <div class="indicador rounded-pill"></div>
+                    <div class="categoria text-apex-secondary activa rounded-pill w-fit px-2 py-1"
+                        data-categoria="componentes-alto-rendimiento">
+                        Componentes de alto rendimiento</div>
+                    <div class="categoria text-apex-secondary w-fit rounded-pill px-2 py-1"
+                        data-categoria="laptops-equipos-armados">
+                        Laptops y
+                        Equipos Armados</div>
+                    <div class="categoria text-apex-secondary w-fit rounded-pill px-2 py-1"
+                        data-categoria="perifericos-accesorios">
+                        Periféricos y
+                        Accesorios</div>
+                </div>
+                <div id="productos" class="row g-5 justify-content-center"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer-->
+    <div id="footer-container"></div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="./js/scripts.js" type="module"></script>
+</body>
+
+</html>
